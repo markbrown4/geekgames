@@ -1,14 +1,58 @@
 <!DOCTYPE html>
-<html>
+<!--[if IE 7 ]> <html lang="en" class="no-js ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="no-js ie ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <title>GeekGames</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+<meta charset="utf-8">
+<title>GeekGames</title>
+<%= stylesheet_link_tag "application", :media => "all" %>
+<!--[if IE]>
+<%= stylesheet_link_tag "ie", :media => "all" %>
+<![endif]-->
+<%= csrf_meta_tags %>
 </head>
 <body>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="/">geekgames</a>
+			<ul class="nav pull-left">
+				<%- menu_items = ['home','rounds','prizes','leaderboard'] %>
+				<%- menu_items.each do |page| %>
+				<li<%= %( class="active").html_safe if menu == page %>><%= link_to t(page), "/#{page}" %></li>
+				<%- end %>
+			</ul>
+			
+			<% if user_signed_in? %>
+			<ul class="nav pull-right">
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" href="#"><%= gravatar_image_tag(current_user.email, :alt => current_user.username) %> <%= current_user.username %> <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Preferences</a></li>
+						<li class="divider"></li>
+						<li><%= link_to "Sign out", destroy_user_session_path, :method=>'delete' %></li>
+					</ul>
+				</li>
+			</ul>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div id="wrapper" class="container">
+	<%- flash.each do |name, msg| %>
+		<%- options = {
+				'notice' => 'alert-info',
+				'success' => 'alert-success',
+				'alert' => 'alert-error'
+			} %>
+		<%= content_tag :div, msg, :class => "alert #{options[name]}" %>
+	<%- end %>
 
-<%= yield %>
+	<div id="content">
+		<%= yield %>
+	</div>
 
+</div>
+<%= javascript_include_tag "application" %>
 </body>
 </html>
