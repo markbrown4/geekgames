@@ -1,0 +1,12 @@
+%h1 Triathlons today
+
+%table
+  %tr
+    %th Step
+    %th Total score
+  - @rounds.each do |round|
+    %tr
+      %td= round.step
+      %td= round.total_score
+
+%p= link_to "Start a new triathlon", start_round_path, :class => "btn"

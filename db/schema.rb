@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420060926) do
+ActiveRecord::Schema.define(:version => 20120504032221) do
 
   create_table "games", :force => true do |t|
     t.string   "title"
@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(:version => 20120420060926) do
     t.integer  "user_id"
     t.decimal  "total_score", :default => 0.0
     t.integer  "step",        :default => 1
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "complete",    :default => false
   end
 
   create_table "scores", :force => true do |t|

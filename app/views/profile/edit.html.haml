@@ -1,0 +1,8 @@
+%h1 Edit profile
+
+= form_for(current_user, :url => profile_path) do |f|
+  = f.label :username
+  = f.text_field :username
+  
+  .form-actions
+    = f.submit :class => 'btn'

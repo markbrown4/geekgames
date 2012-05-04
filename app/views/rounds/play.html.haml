@@ -1,0 +1,20 @@
+%ol#round_games
+  -@round.scores.each do |score|
+    %li
+      %h2= score.game.title
+      %p= score.score
+  
+%h1= @game.title
+%p.description= @game.description
+
+%dl#scoreboard
+  %dt Score:
+  %dd#score= @score.score
+  %dt Count down:
+  %dd#countdown
+    %span 20
+    seconds
+
+.game{ :id=> "game-#{@game.id}" }
+
+%a#play.btn.btn-primary.btn-large{ :href => "#" } Play now
