@@ -1,0 +1,14 @@
+%h2 Todays Leader Board
+%ol
+  - @leaders_today.each do |round|
+    %li= render(round.user)
+
+%h2 Overall Leader Board
+%ol
+  - @leaders.each do |round|
+    %li= render(round.user)
+
+%h2 Overall Country
+%ol
+  - @countries.each do |country|
+    %li= country

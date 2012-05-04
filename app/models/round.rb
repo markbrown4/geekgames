@@ -1,5 +1,5 @@
 class Round < ActiveRecord::Base  
-  
+  belongs_to :user
   has_many :scores
   attr_accessible :step, :total_score
   validates_inclusion_of :total_score, :in => 0..300, :message => "can only be between 1 and 300."
@@ -41,5 +41,7 @@ class Round < ActiveRecord::Base
   end
   
   scope :today, where("created_at > ?", Date.today)
+  
+  scope :leaders, order('total_score DESC').limit(10)
   
 end

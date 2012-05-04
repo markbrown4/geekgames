@@ -17,7 +17,7 @@
 		<div class="container">
 			<a class="brand" href="/">geekgames</a>
 			<ul class="nav pull-left">
-				<%- menu_items = ['home','rounds','prizes','leaderboard'] %>
+				<%- menu_items = ['home','rounds','leaderboard','prizes'] %>
 				<%- menu_items.each do |page| %>
 				<li<%= %( class="active").html_safe if menu == page %>><%= link_to t(page), "/#{page}" %></li>
 				<%- end %>
