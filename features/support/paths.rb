@@ -1,5 +1,9 @@
 module NavigationHelpers
-
+  
+  # when /^the group page for "(.*)"$/i
+  #   group = Group.find_by_name($1)
+  #   group_path(group)
+  
   def path_to(page_name)
     case page_name
 
@@ -18,13 +22,8 @@ module NavigationHelpers
     when /games/
       games_path
 
-    when /the (.*) page/
+    when /"(.*)"/
       page_path($1)
-
-    # when /^the group page for "(.*)"$/i
-    #   group = Group.find_by_name($1)
-    #   group_path(group)
-
     end
   end
   

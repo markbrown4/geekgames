@@ -1,0 +1,28 @@
+
+@import "common";
+@import "bootstrap";
+
+body {
+	color: #333;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+small {
+	color: #777;
+}
+#wrapper {
+	padding: 60px 0;
+}
+.flash {
+	padding: 20px;
+}
+.nav img {
+	height: 20px;
+	margin-right: 5px
+}
+
+
+table img {
+	height: 36px;
+	float: left;
+	margin-right: 10px;
+}

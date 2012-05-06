@@ -9,8 +9,10 @@ gem 'delayed_job'
 gem 'haml'
 gem 'haml-rails'
 gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem 'country-select'
-gem 'cancan'
+gem 'decent_exposure'
 
 group :assets do
   gem 'compass-rails'

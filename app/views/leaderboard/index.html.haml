@@ -1,17 +1,29 @@
 .page-header
   %h1 The Leaderboard
-  
-%h2 Todays best times
-%ol.leaderboard
-  - @leaders_today.each do |round|
-    %li= render(round.user)
+
+%h2 Todays best scores
+%ol#today.leaderboard
+  - @leaders_today.each_with_index do |round, i|
+    %li{:class => "pos-#{i+1}"}
+      .place= (i+1).ordinalize
+      =render(round.user)
+      .score= round.total_score
 
 %h2 Olympic records
-%ol.leaderboard
-  - @leaders.each do |round|
-    %li= render(round.user)
+%ol#all-time.leaderboard
+  - @leaders.each_with_index do |round, i|
+    %li{:class => "pos-#{i+1}"}
+      .place= (i+1).ordinalize
+      =render(round.user)
+      .score= round.total_score
 
 %h2 By country
-%ol
-  - @countries.each do |country|
-    %li= country
+%ol#country.leaderboard
+  - for i in 0..2
+    %li{:class => "pos-#{i+1}"}
+      .place= (i+1).ordinalize
+      - if @country_scores.length > i
+        .country= @country_scores.keys[i]
+        .score= @country_scores[@country]
+      - else
+        = "No #{(i+1).ordinalize} place yet";

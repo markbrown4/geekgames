@@ -31,6 +31,7 @@ class Round < ActiveRecord::Base
   end
 
   def save_score(value)
+    value = BigDecimal(value)
     score = current_score
     score.score = value
     if score.save
@@ -39,9 +40,17 @@ class Round < ActiveRecord::Base
       return nil
     end
   end
-
+  
+  # db queries
   scope :today, where("created_at > ?", Time.zone.now.beginning_of_day)
-
   scope :leaders, order('total_score DESC').limit(10)
+  
+  def self.top_three_countries
+    Round.joins(:user)
+      .group('users.country')
+      .order('average_rounds_total_score DESC')
+      .limit(3)
+      .average("rounds.total_score")
+  end
 
 end

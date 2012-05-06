@@ -1,26 +1,11 @@
 
-@import "compass/reset";
+@import "common";
 @import "bootstrap";
-
-body {
-	color: #333;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+#footer {
+	border-top: 1px solid #E5E5E5;
+	margin-top: 45px;
+	padding: 35px 0 36px;
 }
-small {
-	color: #777;
-}
-
-#wrapper {
-	padding: 60px 0;
-}
-.flash {
-	padding: 20px;
-}
-.nav img {
-	height: 20px;
-	margin-right: 5px
-}
-
 .game {
 	background: #ccc;
 	width: 100%;
@@ -51,13 +36,21 @@ small {
 			border: none
 		}
 	}
-	.avatar {
+	.place {
 		float: left;
-		height: 36px;
-		margin-right: 10px;
-		img {
-			height: 100%;
-			display: block;
-		}
+		font-size: 20px;
+		line-height: 36px;
+		width: 50px;
+		text-align: right;
+		padding-right: 10px;
+	}
+	.user {
+		float: left;
+		width: 200px;
+	}
+	.score {
+		float: left;
+		font-size: 20px;
+		line-height: 36px;
 	}
 }

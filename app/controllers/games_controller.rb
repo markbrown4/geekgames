@@ -32,8 +32,7 @@ class GamesController < ApplicationController
   def submit
     @round = current_user.current_round
     if @round.present?
-      score = BigDecimal(params[:score])
-      if @round.save_score(score)
+      if @round.save_score(params[:score])
         success()
       else
         error()

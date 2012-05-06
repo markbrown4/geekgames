@@ -1,0 +1,17 @@
+.page-header
+  %h1 Sign in
+
+/ %p= #link_to "Twitter", user_omniauth_authorize_path(:twitter)
+/ %p= #link_to "Facebook", user_omniauth_authorize_path(:facebook)
+
+= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  = f.label :email
+  = f.email_field :email
+
+  = f.label :password
+  = f.password_field :password
+
+  .form-actions
+    = f.submit "Sign in",:class => 'btn'
+
+= render "links"

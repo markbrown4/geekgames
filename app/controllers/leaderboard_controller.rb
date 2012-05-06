@@ -5,7 +5,7 @@ class LeaderboardController < ApplicationController
     
     @leaders = Round.leaders
     @leaders_today = Round.leaders.today
-    @countries = ['Australia']
+    @country_scores = Round.top_three_countries
   end
   
 end

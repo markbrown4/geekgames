@@ -1,6 +1,7 @@
-.avatar
-  = gravatar_image_tag(user.email, :alt => user.username)
-.name
-  = user.username
-%small
-  = user.country
+.user
+  .avatar
+    = gravatar_image_tag(user.email, :alt => user.username)
+  .name
+    = user.username
+  %small
+    = user.country

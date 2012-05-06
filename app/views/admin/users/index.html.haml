@@ -1,0 +1,21 @@
+.page-header
+  %h1 Users
+
+%table.table.table-bordered.table-bordered
+  %tr
+    %th User
+    %th Email
+    %th 
+  - users.each do |user|
+    %tr
+      %td
+        .avatar
+          = gravatar_image_tag(user.email, :alt => user.username)
+        .name
+          = user.username
+        %small
+          = user.country
+      %td
+        = user.email
+      %td
+        = link_to "Edit", edit_admin_user_path(user), :class => 'btn'
