@@ -1,5 +1,9 @@
 class ProfileController < ApplicationController
 
+  before_filter do
+    @menu = 'profile'
+  end
+  
   def edit
   end
   

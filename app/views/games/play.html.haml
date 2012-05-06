@@ -1,4 +1,7 @@
-%ol#round_games
+.page-header
+  %h1 Play
+  
+%ol#games
   -@round.scores.each do |score|
     %li
       %h2= score.game.title

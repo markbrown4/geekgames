@@ -1,22 +1,23 @@
-class RoundsController < ApplicationController
+class GamesController < ApplicationController
 
   before_filter :authenticate_user!
   before_filter do
-    @menu = 'rounds'
+    @menu = 'games'
   end
 
-  # GET rounds/start
-  def start
-    @round = current_user.rounds.create()
-    redirect_to :controller => :rounds, :action => :play
-  end
-
-  # GET rounds
+  # GET games/
   def index
     @rounds = current_user.rounds.today
   end
+  
+  # GET games/start
+  def start
+    logger.debug Time.now()
+    @round = current_user.rounds.create()
+    redirect_to :action => :play
+  end
 
-  # GET rounds/play
+  # GET games/play
   def play
     @round = current_user.current_round
     if @round.incomplete
@@ -27,7 +28,7 @@ class RoundsController < ApplicationController
     end
   end
   
-  # POST rounds/submit
+  # POST games/submit
   def submit
     @round = current_user.current_round
     if @round.present?

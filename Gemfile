@@ -8,11 +8,9 @@ gem 'gravatar_image_tag'
 gem 'delayed_job'
 gem 'haml'
 gem 'haml-rails'
-gem "nifty-generators", :group => :development
 gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-gem 'omniauth-google'
+gem 'country-select'
+gem 'cancan'
 
 group :assets do
   gem 'compass-rails'
@@ -22,11 +20,13 @@ group :assets do
   gem 'uglifier'
 end
 
-group :test, :development do
-  gem "rspec-rails"
-end
-
 group :test do
-  gem "rspec"
-  gem "cucumber-rails"
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  gem 'machinist'
+  gem 'faker'
 end

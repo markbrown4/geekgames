@@ -3,10 +3,13 @@ development:
   adapter: postgresql
   database: geekgames_development
 
-test:
+test: &test
   adapter: postgresql
   database: geekgames_test
 
 production:
   adapter: postgresql
   database: geekgames
+
+cucumber:
+  <<: *test

@@ -1,5 +1,5 @@
 module ApplicationHelper
   def menu
-    @menu || 'home'
+    @menu || ''
   end
 end

@@ -5,6 +5,6 @@
 # Authorize URL     https://api.twitter.com/oauth/authorize
 # Access token URL  https://api.twitter.com/oauth/access_token
 
-Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :twitter, '***REMOVED***', '***REMOVED***'
-end
+# Rails.application.config.middleware.use OmniAuth::Builder do
+#   provider :twitter, '***REMOVED***', '***REMOVED***'
+# end

@@ -3,7 +3,7 @@ class Game
     @score = 0
     
   submit: () ->
-    $.ajax '/rounds/submit',
+    $.ajax '/games/submit',
       type: 'post',
       data:
         score: @score

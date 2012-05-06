@@ -9,3 +9,21 @@
 Game.create(title: 'The 10cm Dash', description: 'Be a straight shooter')
 Game.create(title: 'Mouseathalon', description: 'Click those targets like a boss')
 Game.create(title: 'Ping Long', description: 'Go head to head with a Pong Master')
+
+Page.create(
+  title: 'Terms',
+  slug: 'terms',
+  body: ''
+)
+
+Page.create(
+  title: 'Privacy',
+  slug: 'privacy',
+  body: ''
+)
+
+Page.create(
+  title: 'Rules',
+  slug: 'rules',
+  body: ''
+)
