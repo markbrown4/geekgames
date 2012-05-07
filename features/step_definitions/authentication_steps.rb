@@ -6,7 +6,7 @@ def login_user
 end
 
 def logout_user
-	visit '/users/sign_out'
+  visit '/users/sign_out'
 end
 
 Given /^A logged out user$/ do

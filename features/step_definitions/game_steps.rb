@@ -11,3 +11,9 @@ Given /^these rounds$/ do |table|
     round.save_score(row[:score3])
   end
 end
+
+Given /^the games exist$/ do
+    Game.find(1) || Game.make!(:id => 1)
+    Game.find(2) || Game.make!(:id => 2)
+    Game.find(3) || Game.make!(:id => 3)
+end

@@ -1,6 +1,6 @@
 Feature: Accurate Leaderboard
   Leaderboard should show top users for today, all time and the leading country
-
+  
   Scenario:
     Given these rounds
       | username    | country   | score1  | score2  | score3  | date         |
