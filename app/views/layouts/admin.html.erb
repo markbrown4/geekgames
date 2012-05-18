@@ -35,12 +35,13 @@
 	</div>
 </div>
 <div id="wrapper" class="container">
+	<p><%= flash[:success] %></p>
 	<%- flash.each do |name, msg| %>
 		<%- options = {
-				'notice' => 'alert-info',
-				'success' => 'alert-success',
-				'alert' => 'alert-error'
-			} %>
+			'notice' 	=> 'alert-info',
+			'success' => 'alert-success',
+			'alert' 	=> 'alert-error'
+		} %>
 		<%= content_tag :div, msg, :class => "alert #{options[name]}" %>
 	<%- end %>
 	<div id="content">

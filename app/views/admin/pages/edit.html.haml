@@ -1,2 +1,56 @@
 .page-header
-  %h1 Edit Page
+  %h1 Pages
+
+.row-fluid
+  .span4
+    .well
+      %ul.nav.nav-list
+        %li.nav-header Pages
+        - pages.each do |page_item|
+          %li{:class => ("active" if page_item == page)}= link_to page_item.title, edit_admin_page_path(page_item)
+        / %li.divider
+        /   &nbsp;
+        / %li.nav-header Tools
+        / %li{:class => ("active" if page.id.nil?)}= link_to "New Page", new_admin_page_path
+    .well
+      %h3 Markdown guide
+      %p Markdown is the syntax used in the pages content, here's some common elements if you want to add headings, lists, links or emphasis.
+      %p
+        %b
+          \# Header 1
+          %br
+          \## Header 2
+          %br
+          \### Header 3
+          %br
+          *Italic*
+          %br
+          **Bold**
+      %p
+        = "[Google](http://www.google.com/)"
+        %a{ :href => 'http://www.google.com/' }= "Google"
+      %h4 Unordered Lists
+      %p
+        \- One
+        %br
+        \- Two
+        %br
+        \- Three
+
+      %h4 Ordered Lists
+      %p
+        1. One
+        %br
+        1. Two
+        %br
+        1. Three
+
+  .span8
+    = form_for page, :url => page.id ? admin_page_path(page) : admin_pages_path do |f|
+
+      = f.text_field :title, :class=> 'span8', :placeholder => 'Title'
+      / = f.text_field :slug, :class=> 'span8', :placeholder => 'URL slug'
+      = f.text_area :body, :class=> 'span8', :placeholder => 'Body'
+
+      %p.form-actions
+        = f.submit "Save", :class => "btn btn-primary"

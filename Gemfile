@@ -13,6 +13,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'country-select'
 gem 'decent_exposure'
+gem 'rdiscount'
 
 group :assets do
   gem 'compass-rails'
