@@ -1,3 +1,0 @@
-== Geek Games
-
-Competition built for Sitepoint, a series of game with a leaderboard and prizes.
