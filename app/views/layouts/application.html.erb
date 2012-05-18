@@ -38,14 +38,7 @@
 	</div>
 </div>
 <div id="wrapper" class="container">
-	<%- flash.each do |name, msg| %>
-		<%- options = {
-				'notice' => 'alert-info',
-				'success' => 'alert-success',
-				'alert' => 'alert-error'
-			} %>
-		<%= content_tag :div, msg, :class => "alert #{options[name]}" %>
-	<%- end %>
+	<%= render 'flashes' %>
 	<div id="content">
 		<%= yield %>
 	</div>

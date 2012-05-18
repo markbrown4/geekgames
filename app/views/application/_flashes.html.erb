@@ -1,0 +1,8 @@
+<%- flash.each do |name, msg| %>
+	<%- options = {
+		:notice => 'alert-info',
+		:success => 'alert-success',
+		:alert => 'alert-error'
+	} %>
+	<%= content_tag :div, msg, :class => "alert #{options[name.to_sym]}" %>
+<%- end %>
