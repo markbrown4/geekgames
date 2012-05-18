@@ -4,4 +4,8 @@
   .name
     = user.username
   %small
-    = user.country
+    - if user.country?
+      %div{ :class => "flag flag-#{user.country.downcase}"}
+      = t("countries.#{user.country.downcase}.name")
+    - else
+      Unknown

@@ -1,7 +1,18 @@
 class Game
   constructor: () ->
     @score = 0
+    @time = 20
     
+  
+  start: () ->
+    
+    setTimeout ->
+      
+      $('#countdown').html(@time)
+      
+      setTimeout(arguments.callee, 10)
+    , 10
+  
   submit: () ->
     $.ajax '/games/submit',
       type: 'post',
@@ -18,6 +29,6 @@ $ ->
   
   $('#play').click ->
     game.score = 50
-    game.submit()
+    game.start()
     
     false

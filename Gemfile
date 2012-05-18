@@ -11,7 +11,7 @@ gem 'haml-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-gem 'country-select'
+gem 'country_code_select'
 gem 'decent_exposure'
 gem 'rdiscount'
 
