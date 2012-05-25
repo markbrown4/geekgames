@@ -3,11 +3,12 @@ class window.Game
     @wrapper = $('.game')
     @score = 0
     @time = 20000
-
-  start: () ->
+    
     @init()
     @addEvents()
-    
+    @render()
+
+  start: () ->
     @timer = new Date()
     @loop()
   
@@ -59,9 +60,9 @@ class window.Game
     @ctx.clearRect(0, 0, 700, 400);
 
 $ ->
-  
+  game = new Pong
   $('#play').click ->
-    game = new Pong
+    $('.game').addClass('playing')
     game.start()
     
     false

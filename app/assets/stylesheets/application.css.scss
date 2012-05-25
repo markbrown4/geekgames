@@ -1,4 +1,5 @@
 
+@import "compass/css3";
 @import "common";
 @import "fonts";
 @import "bootstrap";
@@ -18,10 +19,17 @@
 	overflow: hidden;
 }
 #play {
+	@include transition(opacity .2s linear);
+	opacity: 1;
+	position: absolute;
 	display: block;
 	width: 100px;
-	margin: 200px auto 0;
+	top: 50%;
+	left: 50%;
+	margin-left: -50px;
+	margin-top: -10px;
 }
+.playing #play { opacity: 0 }
 #scoreboard {
 	background: rgba(white, .2);
 	position: absolute;
