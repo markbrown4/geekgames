@@ -11,8 +11,24 @@
 }
 .game {
 	background: #ccc;
-	width: 100%;
+	box-shadow: 0 0 10px rbga(#000, .3) inset;
+	width: 700px;
 	height: 400px;
+	position: relative;
+	overflow: hidden;
+}
+#play {
+	display: block;
+	width: 100px;
+	margin: 200px auto 0;
+}
+#scoreboard {
+	background: rgba(white, .2);
+	float: right;
+	margin: 0;
+	padding: 20px;
+	text-align: right;
+	width: 200px;
 }
 #games {
 	list-style: none;
