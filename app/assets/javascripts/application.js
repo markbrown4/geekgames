@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require games
+//= require pong
 
 document.documentElement.className = document.documentElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2');
 $body = $("body");

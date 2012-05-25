@@ -24,7 +24,8 @@
 }
 #scoreboard {
 	background: rgba(white, .2);
-	float: right;
+	position: absolute;
+	right: 0;
 	margin: 0;
 	padding: 20px;
 	text-align: right;

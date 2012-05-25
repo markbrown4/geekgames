@@ -1,25 +1,25 @@
-class Game
+class window.Game
   constructor: () ->
     @wrapper = $('.game')
-    
     @score = 0
     @time = 20000
-    
 
   start: () ->
     @init()
     @addEvents()
     
     @timer = new Date()
-    setTimeout =>
-      ms = new Date().getTime() - @timer.getTime()
-      if ms < @time
-        @updateCountdown ms
-        setTimeout(arguments.callee, 10)
-      else
-       @end()
-    , 10
-      
+    @loop()
+  
+  loop: =>
+    ms = new Date().getTime() - @timer.getTime()
+    if ms < @time
+      @updateCountdown ms
+      @frame()
+      setTimeout(@loop, 10)
+    else
+      @end()
+
   addEvents: ->
     for event, callback of @events
       @wrapper.bind event, callback
@@ -30,8 +30,12 @@ class Game
   updateCountdown: (ms)->
     $('#countdown').html ((@time-ms)/1000).toFixed(2)
 
+  addScore: (points)->
+    @score += points
+    $('#score').html @score
+      
   end: () ->
-    updateCountdown(@time)
+    @updateCountdown(@time)
     #@submit()
 
   postUpdate: (data)->
@@ -47,49 +51,17 @@ class Game
       error: ->
         console.log 'aw, Snap!'
 
-class Pong extends Game
+  getCanvas: ->
+    $canvas = $('#canvas').append('<canvas width="700" height="400">')
+    @ctx = $canvas.find('canvas')[0].getContext("2d")
   
-  init: ->
-    @events = keydown: @keydown
-    @speed = 20
-    
-  keydown: (e)->
-    console.log e.which
-    if e.which == 38
-      console.log 'up'
-    else if e.which == 40
-      console.log 'down'
-    
-    false
+  clearCanvas: ->
+    @ctx.clearRect(0, 0, 700, 400);
 
-class Dash extends Game
-
-  init: =>
-    @events = mousemove: @mousemove
-  
-  mousemove: (e)->
-    pos = x: e.pageX - this.offsetLeft, y: e.pageY - this.offsetTop
-    console.log pos
-    
-    false
-
-class Mouse extends Game
-
-  init: ->
-    @events = click: @click
-
-  click: (e)->
-    pos = x: e.pageX - this.offsetLeft, y: e.pageY - this.offsetTop
-    console.log pos
-
-    false
 $ ->
-
-  window.game = new Pong
-  #window.game = new Dash
-  #window.game = new Mouse
   
   $('#play').click ->
+    game = new Pong
     game.start()
     
     false
