@@ -2,13 +2,48 @@
 @import "compass/css3";
 @import "common";
 @import "fonts";
-@import "bootstrap";
 @import "flags";
 
+#header {
+	.drop-down {
+		float: right;
+		height: 28px;
+		margin: 10px 0 0 20px;
+		font-size: 14px;
+		.trigger {
+			color: rgba(#fff, .85);
+			font-weight: bold;
+		}
+		img {
+			height: 20px;
+			margin-right: 5px
+		}
+	}
+}
+#menu {
+	float: left;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	li {
+		float: left;
+		margin: 0 10px 0 0;
+		padding: 0;
+	}
+}
 #footer {
 	border-top: 1px solid #E5E5E5;
 	margin-top: 45px;
 	padding: 35px 0 36px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	li {
+		display: inline;
+		margin: 0;
+		padding: 0;
+	}
 }
 .game {
 	background: #ccc;

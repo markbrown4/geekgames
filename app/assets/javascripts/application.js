@@ -3,9 +3,10 @@
 //= require bootstrap
 //= require games
 //= require pong
+//= require dash
 
-document.documentElement.className = document.documentElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2');
 $body = $("body");
+
 ie = (function() {
 	var undef, v = 3,
 	div = document.createElement('div'),
@@ -14,4 +15,29 @@ ie = (function() {
   return v > 4 ? v : undef;
 }());
 
-$('.dropdown-toggle').dropdown()
+// drop downs
+var closeDropDown = function() {
+  $('html').unbind();
+  $('.drop-down').removeClass('open');
+}
+var dropDownBlur = function(e) {
+  if (e.type == 'click') {
+    closest = $(e.target).closest('.drop-down');
+    if (closest.length == 0) {
+      closeDropDown();
+      return false;
+    }
+    else {
+      return false;
+    }
+  }
+  else if (e.which == 27) {
+    closeDropDown();
+    return false;
+  }
+}
+$body.on('click', '.drop-down .trigger', function(e) {
+  dd = $(this).closest('.drop-down').toggleClass('open');
+  $('html').on('click keyup', dropDownBlur);
+  return false;
+})

@@ -1,8 +1,10 @@
-.hero-unit
-	%h1 Geek Games
-	%p Join the geek olympics and compete to win some stuff.
-	%ul
-		%li The 10cm Dash
-		%li MOUSE-ATHALON
-		%li PING-LONG
-	%p= link_to "Compete", games_path, :class => 'btn btn-primary btn-large'
+
+%h1 Play to win
+%p Join in the fun and compete with geeks, techies and web devs around the world
+%p - as you play 3 online games to WIN a [INSERT PRIZE HERE] - 
+%p and qualify for DISCOUNTS of up to 90% on SitePoint books and more.
+
+%p= link_to "Play", games_path, :class => 'btn btn-primary btn-large'
+%p.see-leaderboard
+	See who is at the top of the
+	= link_to "Leaderboard", leaderboard_path

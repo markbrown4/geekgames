@@ -4,7 +4,7 @@ class window.Pong extends Game
     @events = keydown: @keydown, keyup: @keyup
     
     @getCanvas()
-    @ctx.fillStyle = 'white'
+    @ctx.fillStyle = 'red'
     
     @ai = paddle: new Image()
     @player = paddle: new Image()

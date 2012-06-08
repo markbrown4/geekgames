@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--[if IE 7 ]> <html lang="en" class="no-js ie ie7"> <![endif]-->
 <!--[if IE 8 ]> <html lang="en" class="no-js ie ie8"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <title>GeekGames</title>
@@ -12,37 +12,38 @@
 <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="container">
-			<a class="brand" href="/">geekgames</a>
-			<ul class="nav pull-left">
-				<%- menu_items = ['home','games','leaderboard','prizes'] %>
-				<%- menu_items.each do |page| %>
-				<li<%= %( class="active").html_safe if menu == page %>><%= link_to t(page), "/#{page}" %></li>
-				<%- end %>
+<div id="wrapper">
+	<div id="header">
+		<% if user_signed_in? %>
+		<div class="drop-down" id="profile">
+			<a class="dropdown-toggle" data-toggle="drop-down" href="#profile"><%= gravatar_image_tag(current_user.email, :alt => current_user.username) %> Hi <%= current_user.username %> <b class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<li<%= ' class="active"'.html_safe if menu == "profile" %>><%= link_to "Profile", profile_path %></li>
+				<li class="divider"></li>
+				<li><%= link_to "Sign out", destroy_user_session_path, :method=>'delete' %></li>
 			</ul>
-			<% if user_signed_in? %>
-			<ul class="nav pull-right">
-				<li class="dropdown" id="profile">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#profile"><%= gravatar_image_tag(current_user.email, :alt => current_user.username) %> <%= current_user.username %> <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li<%= ' class="active"'.html_safe if menu == "profile" %>><%= link_to "Profile", profile_path %></li>
-						<li class="divider"></li>
-						<li><%= link_to "Sign out", destroy_user_session_path, :method=>'delete' %></li>
-					</ul>
-				</li>
-			</ul>
-			<% end %>
 		</div>
+		<ul id="menu">
+			<%- menu_items = ['home','game1','game2','game3'] %>
+			<%- menu_items.each do |page| %>
+			<li class="<%= page %> <%= 'active' if menu == page %>"><%= link_to t(page), "/#{page}" %></li>
+			<%- end %>
+		</ul>
+		<% else %>
+		<ul id="menu">
+			<li class="home <%='active' if menu == 'home' %>"><%= link_to t('home'), "/home" %></li>
+		</ul>
+		<% end %>
 	</div>
-</div>
-<div id="wrapper" class="container">
-	<%= render 'flashes' %>
+	<div id="sidebar">
+		
+	</div>
 	<div id="content">
+		<%= render 'flashes' %>
 		<%= yield %>
 	</div>
 	<ul id="footer">
+		<li>&copy; Sitepoint 2012</li>
 		<li><%= link_to "Rules of the Game", page_path('rules') %></li>
 		<li><%= link_to "Terms and Conditions", page_path('terms') %></li>
 		<li><%= link_to "Privacy Policy", page_path('privacy') %></li>
