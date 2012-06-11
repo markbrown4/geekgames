@@ -27,9 +27,6 @@ var dropDownBlur = function(e) {
       closeDropDown();
       return false;
     }
-    else {
-      return false;
-    }
   }
   else if (e.which == 27) {
     closeDropDown();

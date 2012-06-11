@@ -11,55 +11,40 @@
   <![endif]-->
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= controller.controller_name %>">
+<body class="home">
 <div id="wrapper">
   <div id="header">
+    <p><a href="http://www.sitepoint.com/"><%= image_tag "logo.png" %></a></p>
     <% if user_signed_in? %>
     <div class="drop-down" id="profile">
       <a class="trigger" href="#"><%= gravatar_image_tag(current_user.email, :alt => current_user.username) %> Hi <%= current_user.username %> <b class="caret"></b></a>
-      <ul>
+      <ul class="dropdown-menu">
         <li<%= ' class="active"'.html_safe if menu == "profile" %>><%= link_to "Profile", profile_path %></li>
         <li class="divider"></li>
         <li><%= link_to "Sign out", destroy_user_session_path, :method=>'delete' %></li>
       </ul>
     </div>
-    <ul id="menu">
-      <%- menu_items = ['home','game1','game2','game3'] %>
-      <%- menu_items.each do |page| %>
-      <li class="<%= page %> <%= 'active' if menu == page %>"><%= link_to t(page), "/#{page}" %></li>
-      <%- end %>
-    </ul>
-    <% else %>
-    <ul id="menu">
-      <li class="home <%='active' if menu == 'home' %>"><%= link_to t('home'), "/home" %></li>
-    </ul>
     <% end %>
+    <ul id="menu">
+      <li class="home active"><%= link_to t('home'), "/home" %></li>
+    </ul>
   </div>
   <div id="middle">
     <div class="inner">
-      <%= yield :before_content %>
-      <% if content_for?(:sidebar) %>
-      <div id="sidebar">
-        <%= yield :sidebar %>
-      </div>
-      <% end %>
-      <div id="content<%= " max" unless content_for?(:sidebar) %>">
+      <div id="content">
         <%= yield %>
       </div>
     </div>
   </div>
-  <% if content_for?(:button_area) %>
   <div class="btn-area">
     <%= yield :button_area %>
   </div>
-  <% end %>
   <ul id="footer">
     <li>&copy; Sitepoint 2012</li>
     <li><%= link_to "Rules of the Game", page_path('rules') %></li>
     <li><%= link_to "Terms and Conditions", page_path('terms') %></li>
     <li><%= link_to "Privacy Policy", page_path('privacy') %></li>
   </ul>
-  <p><%= image_tag "logo-small.png" %></p>
 </div>
 <%= javascript_include_tag "application" %>
 </body>

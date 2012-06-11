@@ -18,8 +18,6 @@ GeekGames::Application.routes.draw do
   get  "profile" => "profile#edit", :as => :profile
   put  "profile" => "profile#update"
 
-  get  "games/start"  => "games#start", :as => 'start_round'
-  get  "games/play"   => "games#play", :as => 'play_game'
   post "games/submit" => "games#submit", :as => 'score_submission'
   get  "games"        => "games#index", :as => 'games'
 

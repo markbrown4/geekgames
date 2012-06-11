@@ -1,0 +1,71 @@
+form {
+  padding-bottom: 30px;
+  text-align: left;
+  label {
+    font-size: 16px;
+    display: block;
+    padding-bottom: 5px;
+  }
+  .button-area {
+    clear: both;
+  }
+  input[type=text], select, input[type=submit] {
+    width: 200px;
+  }
+  input[type=text], select, input[type=email], input[type=password] {
+    font-size: 16px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-bottom: 10px;
+  }
+  input[type=text], input[type=email], input[type=password] {
+    background: #fff;
+    @include box-shadow(0 0 10px rgba(0, 0, 0, 0.4) inset);
+    border-radius: 2px;
+    border: 1px solid #fff;
+    padding: 7px 11px;
+    width: 180px;
+    color: #333;
+  }
+  input[type=submit] {
+    font-size: 16px;
+    padding: 5px 15px;
+  }
+  label.checkbox {
+    width: 100%;
+    clear: both;
+    font-size: 12px;
+  }
+}
+.links {
+  clear: both;
+  font-size: 12px;
+}
+.sign_in {
+  background: #c4e2ff;
+  @include box-shadow(0 0 10px #888 inset);
+  border-radius: 2px;
+  border: 1px solid #fff;
+  padding: 40px 50px;
+  width: 500px;
+  margin: 0 auto;
+  #auth {
+    float: left;
+    width: 210px;
+    padding-right: 10px;
+    a {
+      display: block;
+      text-align: center;
+      padding: 50px 0 10px;
+      color: #333;
+    }
+    .auth_twitter {
+      padding-top: 70px;
+      margin-bottom: 50px;
+    }
+  }
+  form {
+    float: left;
+    border-left: 2px solid #fff;
+    padding-left: 30px;
+  }
+}

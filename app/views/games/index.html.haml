@@ -1,13 +1,23 @@
-.page-header
-  %h1 Triathlons today
+- content_for :before_content do
+  %h1= @game.title
+  %p.description= @game.description
 
-%table
-  %tr
-    %th Step
-    %th Total score
-  - @rounds.each do |round|
-    %tr
-      %td= round.step
-      %td= round.total_score
+.game{ :id=> "game-#{@game.id}" }
+  #canvas
 
-%p= link_to "Start a new triathlon", start_round_path, :class => "btn"
+- content_for :button_area do
+  %a.btn.btn-orange{ :href => "#" } Play again
+  %a.btn.btn-green{ :href => "#" } Next game
+
+- content_for :sidebar do
+  %ul
+    %li
+      %a#demo.btn.btn-small.btn-orange{ :href => "#" } Demo
+    %li.stats
+      #score 5
+      #countdown 20
+    %li.twitter= link_to "TWEET YOUR SCORE", "#"
+    %li.facebook= link_to "UPDATE YOUR STATUS", "#"
+    %li.email= link_to "EMAIL A FRIEND", "#"
+    %li
+      %a#demo.btn.btn-blue{ :href => leaderboard_path } Leaderboard

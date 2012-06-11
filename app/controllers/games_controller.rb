@@ -7,25 +7,12 @@ class GamesController < ApplicationController
 
   # GET games/
   def index
-    @rounds = current_user.rounds.today
-  end
-  
-  # GET games/start
-  def start
-    logger.debug Time.now()
-    @round = current_user.rounds.create()
-    redirect_to :action => :play
-  end
-
-  # GET games/play
-  def play
     @round = current_user.current_round
-    if @round.incomplete
-      @score = @round.current_score
-      @game = @score.game
-    else
-      redirect_to :action => :index
+    if !@round.incomplete
+      @round = current_user.rounds.create()
     end
+    @score = @round.current_score
+    @game = @score.game
   end
   
   # POST games/submit

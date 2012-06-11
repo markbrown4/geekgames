@@ -1,0 +1,46 @@
+$icons-twitter-spacing: 35;
+$icons-facebook-spacing: 35;
+$icons-email-spacing: 35;
+$icons-auth_twitter-spacing: 50;
+$icons-auth_facebook-spacing: 50;
+
+@import "icons/*.png";
+
+#menu {
+  .home a, .game1 a, .game2 a, .game3 a {
+    text-indent: -9999px;
+  }
+  .home a {
+    @include icons-sprite(home, true);
+  }
+  .game1 a {
+    @include icons-sprite(game1, true);
+  }
+  .game2 a {
+    @include icons-sprite(game2, true);
+  }
+  .game3 a {
+    @include icons-sprite(game3, true);
+  }
+}
+
+.twitter a {
+  @include icons-sprite(twitter, false, 85px, 10px);
+}
+.facebook a {
+  @include icons-sprite(facebook, false, 59px, 10px);
+}
+.email a {
+  @include icons-sprite(email, false, 90px, 10px);
+}
+
+.auth_twitter {
+  @include icons-sprite(auth_twitter, false, 60px, 0);
+}
+.auth_facebook {
+  @include icons-sprite(auth_facebook, false, 19px, 0);
+}
+
+.games #header {
+  @include icons-sprite(dude, false, 95px, 9px);
+}

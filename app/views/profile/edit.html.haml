@@ -1,4 +1,4 @@
-.page-header
+- content_for :before_content do
   %h1 Edit profile
 
 = form_for(current_user, :url => profile_path) do |f|
@@ -8,5 +8,5 @@
   = f.label :country
   = f.country_code_select :country
   
-  .form-actions
-    = f.submit :class => 'btn'
+  .button-area
+    = f.submit :value => 'Update'

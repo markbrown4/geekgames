@@ -1,10 +1,18 @@
 
 %h1 Play to win
-%p Join in the fun and compete with geeks, techies and web devs around the world
-%p - as you play 3 online games to WIN a [INSERT PRIZE HERE] - 
-%p and qualify for DISCOUNTS of up to 90% on SitePoint books and more.
+%p
+  Join in the fun and compete with geeks, techies and web devs around the world
+  %br
+  \- as you play 3 online games to WIN a [INSERT PRIZE HERE] -
+  %br
+  and qualify for DISCOUNTS of up to 90% on SitePoint books and more.
+= image_tag("screen.png", :class => 'screen')
+= image_tag("dude.png", :class => 'dude')
 
-%p= link_to "Play", games_path, :class => 'btn btn-primary btn-large'
-%p.see-leaderboard
-	See who is at the top of the
-	= link_to "Leaderboard", leaderboard_path
+- content_for :button_area do
+  = link_to "Play", games_path, :class => 'btn btn-orange'
+  %p.see-leaderboard
+    See who is at the top
+    %br
+    of the
+    = link_to "Leaderboard", leaderboard_path
