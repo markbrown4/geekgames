@@ -4,6 +4,9 @@ GeekGames::Application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   
+  resources :authentications
+  match '/auth/:provider/callback' => 'authentications#create'
+  
   namespace :admin do
     get '/' => "dashboard#index"
     get 'dashboard' => "dashboard#index"

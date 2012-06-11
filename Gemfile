@@ -8,9 +8,13 @@ gem 'gravatar_image_tag'
 gem 'delayed_job'
 gem 'haml'
 gem 'haml-rails'
-gem 'omniauth'
+gem "omniauth",
+  :git => "https://github.com/intridea/omniauth.git",
+  :ref => "21b8db64c3"
+gem 'omniauth-facebook',
+  :git => 'https://github.com/mkdynamic/omniauth-facebook.git',
+  :ref => '0a878f3520'
 gem 'omniauth-twitter'
-gem 'omniauth-facebook'
 gem 'country_code_select'
 gem 'decent_exposure'
 gem 'rdiscount'

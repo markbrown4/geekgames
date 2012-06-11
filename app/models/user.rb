@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :rounds
-  has_many :authentications
+  has_many :authentications, :dependent => :destroy
+
   validates :username, :uniqueness => true
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :country
   
