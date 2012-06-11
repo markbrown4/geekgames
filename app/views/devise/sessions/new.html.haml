@@ -2,19 +2,20 @@
   %h1 Sign in
 
 .sign_in
-  #auth
-    = link_to "Sign in via Twitter", "#", :class => 'auth_twitter' #user_omniauth_authorize_path(:twitter)
-    = link_to "Sign in via Facebook", "#", :class => 'auth_facebook' #user_omniauth_authorize_path(:facebook)
-
   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    = f.label :email
-    = f.email_field :email
+    #auth
+      = link_to "Sign in via Twitter", "#", :class => 'auth_twitter' #user_omniauth_authorize_path(:twitter)
+      = link_to "Sign in via Facebook", "#", :class => 'auth_facebook' #user_omniauth_authorize_path(:facebook)
 
-    = f.label :password
-    = f.password_field :password
+    .login
+      = f.label :email
+      = f.email_field :email
 
-    .button-area
-      = f.submit "Sign in",:class => 'btn'
+      = f.label :password
+      = f.password_field :password
+
+      .button-area
+        = f.submit "Sign in",:class => 'btn'
 
   .links
     = render "links"

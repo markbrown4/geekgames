@@ -2,26 +2,27 @@
   %h1 Sign up
 
 .sign_in
-  #auth
-    = link_to "Sign in via Twitter", "#", :class => 'auth_twitter' #user_omniauth_authorize_path(:twitter)
-    = link_to "Sign in via Facebook", "#", :class => 'auth_facebook' #user_omniauth_authorize_path(:facebook)
-
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = f.label :email
-    = f.email_field :email
+    #auth
+      = link_to "Sign up via Twitter", "#", :class => 'auth_twitter' #user_omniauth_authorize_path(:twitter)
+      = link_to "Sign up via Facebook", "#", :class => 'auth_facebook' #user_omniauth_authorize_path(:facebook)
 
-    = f.label :password
-    = f.password_field :password
-  
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
+    .login
+      = f.label :email
+      = f.email_field :email
 
-    .button-area
-      = f.submit "Sign up", :class => 'btn'
+      = f.label :password
+      = f.password_field :password
 
-    %label.checkbox
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+
+      .button-area
+        = f.submit "Sign up", :class => 'btn'
+
+    %label.checkbox{ :for => 'user_opt_in' }
       = f.check_box :opt_in
       Receive Cool tech deals from SitePoint &amp; carefully selected 3rd-party partners.
-
+      
   .links
     = render "links"
