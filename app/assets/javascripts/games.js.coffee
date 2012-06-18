@@ -56,18 +56,15 @@ class window.Game
     $('#timer').html time
 
   submit: =>
-    lastGame = @constructor.name == 'Pong'
+    url = if (@constructor.name == 'Pong') then "/rounds/summary" else window.location
+    console.log url
     $.ajax '/games/submit',
       type: 'POST'
       dataType: "json"
       data: @data
-      success: =>
-        url = if lastGame then "/rounds/summary" else window.location
-        window.location = url
-      error: ->
-        url = if lastGame then "/rounds/summary" else window.location
-        window.location = url
-        #alert 'aw, Snap! There was an error, try submitting again.'
+      success: -> window.location = url
+      error: -> window.location = url
+    #alert 'aw, Snap! There was an error, try submitting again.'
 
   getCanvas: ->
     $canvas = $('#canvas').append('<canvas width="700" height="400">')
