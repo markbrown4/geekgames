@@ -15,7 +15,7 @@ class Round < ActiveRecord::Base
   end
   
   def proccess_score(data)
-    self.save_score(50)
+    self.save_score("50")
     
     # events = data.split('*')
     # events.each do |event|
