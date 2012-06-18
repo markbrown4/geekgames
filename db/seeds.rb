@@ -45,3 +45,12 @@ u = User.new(
 )
 u.admin = true
 u.save
+
+u = User.new(
+  username: 'tonydossantos',
+  email: 'tony@juicegroup.com.au',
+  password: 'MM2kFTW',
+  password_confirmation: 'MM2kFTW'
+)
+u.admin = true
+u.save
