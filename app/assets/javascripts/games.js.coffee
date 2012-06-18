@@ -57,7 +57,6 @@ class window.Game
 
   submit: =>
     url = if (@constructor.name == 'Pong') then "/rounds/summary" else window.location
-    console.log url
     $.ajax '/games/submit',
       type: 'POST'
       dataType: "json"
