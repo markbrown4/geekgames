@@ -1,11 +1,9 @@
 
-%h1 Play to win
-%p
-  Join in the fun and compete with geeks, techies and web devs around the world
-  %br
-  \- as you play 3 online games to WIN a [INSERT PRIZE HERE] -
-  %br
-  and qualify for DISCOUNTS of up to 90% on SitePoint books and more.
+%h1= @page.title
+
+:markdown
+  #{@page.body}
+
 = image_tag("screen.png", :class => 'screen')
 = image_tag("dude.png", :class => 'dude')
 

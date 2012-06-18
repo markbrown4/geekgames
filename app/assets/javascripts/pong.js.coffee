@@ -1,3 +1,4 @@
+data = []
 class window.Pong extends Game
   
   init: ->
@@ -5,28 +6,32 @@ class window.Pong extends Game
     
     @getCanvas()
     @ctx.fillStyle = 'red'
-    
+    @lives = 5
     @ai = paddle: new Image()
     @player = paddle: new Image()
     @player.paddle.src = '/assets/paddle.png'
     @ai.paddle.src = '/assets/paddle-ai.png'
+    @player.y = 160
+    @ai.y = 160
     
-    @yMoves = [-6, -2, 2, 6]
+    @ySpeeds = [-6, -2, 2, 6]
     
     @reset()
     
   reset: ->
-    @player.yMove = 0
-    @player.y = 180
-    @ai.y = 180
-    @ball = x: 350, y: 200, xMove: 6
+    @player.ySpeed = 0
+    @player.y = 160
+    @ai.y = 160
+    @ball = x: 350, y: 200, xSpeed: 6
+    @ballSpeed = .1
+    @paddleSpeed = 10
+    @ball.ySpeed = @ySpeeds[Math.floor(Math.random()*@ySpeeds.length)]
     
-    @ball.yMove = @yMoves[Math.floor(Math.random()*@yMoves.length)]
-    
-  frame: =>
+  frame: (ms)=>
+    distance = ms * @ballSpeed
     # player movement
-    if @player.yMove != 0
-      @player.y -= @player.yMove
+    if @player.ySpeed != 0
+      @player.y -= @player.ySpeed
       if @player.y < 0
         @player.y = 0
       else if @player.y > 320
@@ -37,51 +42,58 @@ class window.Pong extends Game
     
     # boundaries
     if !@missed
-      if @ball.y < 30 || @ball.y > 370
-        @ball.yMove = 0 - @ball.yMove
-      if @ball.x < 60
+      if (@ball.y < 0 && @ball.ySpeed < 0) || (@ball.y > 400 && @ball.ySpeed > 0)
+        @ball.ySpeed = (0 - @ball.ySpeed)
+      if @ball.x < 60 && @ball.xSpeed < 0
         diff = @ball.y - @player.y
-        if diff < 0 || diff > 80
+        data.push([new Date().getTime(), diff, @ball.x, @ball.y].join('|'))
+        if diff < 0 || diff > 80 # missed paddle
           @inTheNet()
-        else
-          @ball.yMove = @yMoves[Math.floor(diff / 20)]
-          @ball.xMove = 0 - @ball.xMove
-      else if @ball.x > 640
-        @ball.xMove = 0 - @ball.xMove
+        else # bounced off paddle
+          @ball.ySpeed = @ySpeeds[Math.floor(diff / 20)]
+          @ball.xSpeed = (0 - @ball.xSpeed)
+      else if @ball.x > 640 && @ball.xSpeed > 0
+        @ball.xSpeed = (0 - @ball.xSpeed)
 
-    @ball.x += @ball.xMove
-    @ball.y += @ball.yMove
+    @ball.x += Math.floor(@ball.xSpeed * distance)
+    @ball.y += Math.floor(@ball.ySpeed * distance)
             
     @render()
   
   inTheNet: ->
     @missed = true
-    setTimeout =>
-      @missed = false
-      @addScore(1)
-      @reset()
-    , 300
-  
+    @lives--;
+    if (@lives > 0)
+      setTimeout =>
+        @missed = false
+        @reset()
+      , 300
+    else
+      @finish()
+
   render: ->
     @clearCanvas()
-
-    @ctx.drawImage(@player.paddle, 20, @player.y, 30, 80)
-    @ctx.drawImage(@ai.paddle, 650, @ai.y, 30, 80)
+    
+    @ctx.drawImage @player.paddle, 20, @player.y, 30, 80
+    @ctx.drawImage @ai.paddle, 650, @ai.y, 30, 80
     
     @ctx.beginPath()
-    @ctx.arc(@ball.x,@ball.y,10,0,Math.PI*2,true);
+    @ctx.arc @ball.x, @ball.y, 10, 0, Math.PI*2 ,true
     @ctx.fill()
 
   keydown: (e) =>
     if e.which == 38
-      @player.yMove = 5
+      @player.ySpeed = @paddleSpeed
     else if e.which == 40
-      @player.yMove = -5
+      @player.ySpeed = (0-@paddleSpeed)
     
     false
-  
+
   keyup: (e)=>
-    @player.yMove = 0
+    @player.ySpeed = 0
     
     false
-    
+
+  finish: =>
+    @data = data.join('*')
+    @stop()

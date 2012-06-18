@@ -1,9 +1,11 @@
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require raphael
+
 //= require games
 //= require pong
-//= require dash
+//= require mouse
+//= require shoot
 
 $body = $("body");
 

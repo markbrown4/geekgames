@@ -17,7 +17,7 @@
     <p><a href="http://www.sitepoint.com/"><%= image_tag "logo.png" %></a></p>
     <% if user_signed_in? %>
     <div class="drop-down" id="profile">
-      <a class="trigger" href="#"><%= gravatar_image_tag(current_user.email, :alt => current_user.username) %> Hi <%= current_user.username %> <b class="caret"></b></a>
+      <a class="trigger" href="#"><%= gravatar_image_tag(current_user.email, :alt => "") %> Hi <%= current_user.username %> <b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li<%= ' class="active"'.html_safe if menu == "profile" %>><%= link_to "Profile", profile_path %></li>
         <li class="divider"></li>

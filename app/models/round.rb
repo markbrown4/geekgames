@@ -1,4 +1,4 @@
-class Round < ActiveRecord::Base  
+class Round < ActiveRecord::Base
   belongs_to :user
   has_many :scores
   attr_accessible :step, :total_score
@@ -10,6 +10,47 @@ class Round < ActiveRecord::Base
     end
   end
 
+  def current_score
+    self.scores.where('game_id = ?', self.step).last
+  end
+  
+  def proccess_score(data)
+    self.save_score(50)
+    
+    # events = data.split('*')
+    # events.each do |event|
+    #   event = event.split('|')
+    # end
+    
+    # Mouse - [ts, penalty, x, y]
+    # - sum ts*penalty
+    # - validate length > 15ish
+    # Shoot - [ts, evil, x, y]
+    # - if x > 700
+    #   if evil == 1
+    #     points++
+    # - else
+    #   if evil == 0
+    #     points--
+    #   
+    # Pong - [ts, diff, x, y]
+    # - if diff < 0 || diff > 80 # missed paddle
+    
+  end
+
+  def save_score(value)
+    value = BigDecimal(value)
+    logger.debug "*** #{value}"
+    score = current_score
+    score.score = value
+    if score.save
+      logger.debug "*** #{current_score}"
+      self.progress(value)
+    else
+      return nil
+    end
+  end
+  
   def progress(value)
     unless complete?
       if self.step == 3
@@ -19,25 +60,6 @@ class Round < ActiveRecord::Base
       end
       self.total_score += value
       self.save()
-    end
-  end
-
-  def current_score
-    self.scores.where('game_id = ?', step).last
-  end
-
-  def incomplete
-    complete == false
-  end
-
-  def save_score(value)
-    value = BigDecimal(value)
-    score = current_score
-    score.score = value
-    if score.save
-      self.progress(value)
-    else
-      return nil
     end
   end
   

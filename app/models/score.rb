@@ -4,7 +4,7 @@ class Score < ActiveRecord::Base
   
   attr_accessible :score, :game_id
   
-  validates_inclusion_of :score, :in => 0..100, :message => "can only be between 1 and 100."
+  validates_inclusion_of :score, :in => 0..100, :message => "can only be between 0 and 100."
   
   default_scope order("game_id")
 end

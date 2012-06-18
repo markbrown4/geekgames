@@ -1,68 +1,115 @@
 class window.Game
-  constructor: () ->
+
+  constructor: ->
     @wrapper = $('.game')
-    @score = 0
-    @time = 20000
+    @frameRate = 10
     
     @init()
     @addEvents()
     @render()
-
-  start: () ->
-    @timer = new Date()
-    @loop()
   
-  loop: =>
-    ms = new Date().getTime() - @timer.getTime()
-    if ms < @time
-      @updateCountdown ms
-      @frame()
-      setTimeout(@loop, 10)
-    else
-      @end()
+  countdown: =>
+    $body.addClass('counting');
+    $countdown = $('#countdown')
+    $countdown.html 3
+    setTimeout ->
+      $countdown.html 2
+    , 1000
+    setTimeout ->
+      $countdown.html 1
+    , 2000
+    setTimeout =>
+      $body.removeClass('counting');
+      $countdown.html "GO!"
+      @start()
+    , 3000
 
-  addEvents: ->
+  start: =>
+    @onStart() if @onStart
+    $body.addClass('playing');
+    @prev = @startTime = new Date().getTime()
+    @timer = setInterval(@loop, @frameRate)
+    null
+
+  stop: ->
+    $body.removeClass('playing');
+    $body.addClass('finished');
+    clearInterval(@timer)
+
+  loop: =>
+    now = new Date().getTime()
+    ms = now - @prev
+    @prev = now
+    
+    #@updateTimer(now)
+    @frame(ms) if @frame
+
+  addEvents: =>
     for event, callback of @events
-      @wrapper.bind event, callback
+      $body.on event, callback
 
   removeEvents: ->
-    @wrapper.unbind()
+    $body.unbind()
 
-  updateCountdown: (ms)->
-    $('#countdown').html ((@time-ms)/1000).toFixed(2)
+  updateTimer: (now)->
+    time = ((now-@startTime)/1000).toFixed(2)
+    $('#timer').html time
 
-  addScore: (points)->
-    @score += points
-    $('#score').html @score
-      
-  end: () ->
-    @updateCountdown(@time)
-    #@submit()
-
-  postUpdate: (data)->
-    $.ajax '/games/update',
-      type: 'post',
-      data: data
-
-  submit: () ->
+  submit: =>
+    lastGame = @constructor.name == 'Pong'
     $.ajax '/games/submit',
-      type: 'post',
-      success: ->
-        window.location = window.location
+      type: 'POST'
+      dataType: "json"
+      data: @data
+      success: =>
+        url = if lastGame then "/rounds/summary" else window.location
+        window.location = url
       error: ->
-        console.log 'aw, Snap!'
+        url = if lastGame then "/rounds/summary" else window.location
+        window.location = url
+        #alert 'aw, Snap! There was an error, try submitting again.'
 
   getCanvas: ->
     $canvas = $('#canvas').append('<canvas width="700" height="400">')
     @ctx = $canvas.find('canvas')[0].getContext("2d")
-  
+
   clearCanvas: ->
     @ctx.clearRect(0, 0, 700, 400);
 
+  getPaper: ->
+    @paper = Raphael('canvas', 700, 400);
+
 $ ->
-  game = new Pong
-  $('#play').click ->
-    $('.game').addClass('playing')
-    game.start()
+  
+  $body.keydown (e)->
+    if (e.which == 27)
+      $body.removeClass('finished')
+  $(".close").click ->
+    $body.removeClass('finished')
     
     false
+      
+  if $body.hasClass('games')
+    window.game = null
+    if ($body.hasClass('game-1'))
+      window.game = new Mouse()
+    else if ($body.hasClass('game-2'))
+      window.game = new Shoot()
+    else if ($body.hasClass('game-3'))
+      window.game = new Pong()
+    else
+      return
+  
+    $('#play').click ->
+      game.countdown()
+      
+      false
+    $('#submit').click ->
+      game.submit()
+      
+      false
+    $('#restart').click ->
+      window.location = window.location
+
+      false
+  

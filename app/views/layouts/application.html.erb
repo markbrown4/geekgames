@@ -11,12 +11,13 @@
   <![endif]-->
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= controller.controller_name %>">
+<body class="<%= controller.controller_name %> <%= @body_class %>">
+<div id="overlay"></div>
 <div id="wrapper">
   <div id="header">
     <% if user_signed_in? %>
     <div class="drop-down" id="profile">
-      <a class="trigger" href="#"><%= gravatar_image_tag(current_user.email, :alt => current_user.username) %> Hi <%= current_user.username %> <b class="caret"></b></a>
+      <a class="trigger" href="#"><%= gravatar_image_tag(current_user.email, :alt => "") %> Hi <%= current_user.username %> <b class="caret"></b></a>
       <ul>
         <li<%= ' class="active"'.html_safe if menu == "profile" %>><%= link_to "Profile", profile_path %></li>
         <li class="divider"></li>
@@ -24,10 +25,10 @@
       </ul>
     </div>
     <ul id="menu">
-      <%- menu_items = ['home','game1','game2','game3'] %>
-      <%- menu_items.each do |page| %>
-      <li class="<%= page %> <%= 'active' if menu == page %>"><%= link_to t(page), "/#{page}" %></li>
-      <%- end %>
+      <li class="home<%= ' active' if menu == 'home' %>"><%= link_to "Home", "/home" %></li>
+      <li class="game1<%= ' active' if menu == 'game1' %>"><%= link_to "Mouseathalon", "/games" %></li>
+      <li class="game2<%= ' active' if menu == 'game2' %>"><%= link_to "Spammers", "/games" %></li>
+      <li class="game3<%= ' active' if menu == 'game3' %>"><%= link_to "PONG", "/games" %></li>
     </ul>
     <% else %>
     <ul id="menu">
@@ -43,7 +44,7 @@
         <%= yield :sidebar %>
       </div>
       <% end %>
-      <div id="content<%= " max" unless content_for?(:sidebar) %>">
+      <div id="content"<%= "class=\"max\"".html_safe unless content_for?(:sidebar) %>>
         <%= yield %>
       </div>
     </div>
@@ -59,7 +60,7 @@
     <li><%= link_to "Terms and Conditions", page_path('terms') %></li>
     <li><%= link_to "Privacy Policy", page_path('privacy') %></li>
   </ul>
-  <p><%= image_tag "logo-small.png" %></p>
+  <p><a href="http://www.sitepoint.com/"><%= image_tag "logo-small.png" %></a></p>
 </div>
 <%= javascript_include_tag "application" %>
 </body>

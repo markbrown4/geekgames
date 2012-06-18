@@ -1,23 +1,22 @@
+- @body_class = "game-#{@game.id}"
+
 - content_for :before_content do
   %h1= @game.title
   %p.description= @game.description
 
 .game{ :id=> "game-#{@game.id}" }
+  #message
+    .close &times;
+    %h1 Good game.
+    %p
+      Submit your score to continue or Play again,
+      %br
+      you can compete three times a day for each sport.
+    .btn-area
+      %a.btn.btn-green{  :href => "#", :id => 'submit' } Submit score
+      %a.btn.btn-orange{ :href => "#", :id => 'restart' } Play again
+  #countdown
   #canvas
 
 - content_for :button_area do
-  %a.btn.btn-orange{ :href => "#" } Play again
-  %a.btn.btn-green{ :href => "#" } Next game
-
-- content_for :sidebar do
-  %ul
-    %li
-      %a#demo.btn.btn-small.btn-orange{ :href => "#" } Demo
-    %li.stats
-      #score 5
-      #countdown 20
-    %li.twitter= link_to "TWEET YOUR SCORE", "#"
-    %li.facebook= link_to "UPDATE YOUR STATUS", "#"
-    %li.email= link_to "EMAIL A FRIEND", "#"
-    %li
-      %a#demo.btn.btn-blue{ :href => leaderboard_path } Leaderboard
+  %a.btn.btn-orange{ :href => "#", :id => 'play' } Play

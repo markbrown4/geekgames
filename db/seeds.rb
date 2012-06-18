@@ -27,6 +27,16 @@ Page.create(
   body: ''
 )
 
+Page.create(
+  title: 'Play to win',
+  slug: 'home',
+  body: "Join in the fun and compete with geeks, techies and web devs around the world
+  - as you play 3 online games to WIN a [INSERT PRIZE HERE] -
+  and qualify for DISCOUNTS of up to 90% on SitePoint books and more."
+)
+
+
+
 u = User.new(
   username: 'markbrown4',
   email: 'markbrown4@gmail.com',

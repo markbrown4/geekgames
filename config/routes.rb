@@ -12,6 +12,7 @@ GeekGames::Application.routes.draw do
     get 'dashboard' => "dashboard#index"
     resources :pages
     resources :users
+    resources :games
   end
 
   get  "prizes" => 'prizes#index'
@@ -21,8 +22,9 @@ GeekGames::Application.routes.draw do
   get  "profile" => "profile#edit", :as => :profile
   put  "profile" => "profile#update"
 
-  post "games/submit" => "games#submit", :as => 'score_submission'
-  get  "games"        => "games#index", :as => 'games'
+  get  "rounds/summary"  => "rounds#summary"
+  post "games/submit" => "games#submit"
+  get  "games"        => "games#index",   :as => 'games'
 
   get  'home' => "home#index", :as => 'home'
 

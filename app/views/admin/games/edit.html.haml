@@ -1,0 +1,12 @@
+.page-header
+  %h1 Edit game
+  
+= form_for [:admin, game], :wrapper => :inline do |form|
+  
+  = form.label :title
+  = form.text_field :title
+  = form.label :description
+  = form.text_area :description, :rows => 4, :class => 'span7'
+
+  .form-actions
+    = form.submit 'Update', :class => 'primary'

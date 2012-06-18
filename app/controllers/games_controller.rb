@@ -8,18 +8,18 @@ class GamesController < ApplicationController
   # GET games/
   def index
     @round = current_user.current_round
-    if !@round.incomplete
-      @round = current_user.rounds.create()
+    if @round.present?
+      @game = Game.find(@round.step)
+    else
+      render :inline => 'Sorry you cant compete now', :status => 200
     end
-    @score = @round.current_score
-    @game = @score.game
   end
   
   # POST games/submit
   def submit
     @round = current_user.current_round
     if @round.present?
-      if @round.save_score(params[:score])
+      if @round.proccess_score(params[:data])
         success()
       else
         error()

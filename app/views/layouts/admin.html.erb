@@ -14,7 +14,7 @@
 		<div class="container">
 			<a class="brand" href="/admin/">geekgames admin</a>
 			<ul class="nav pull-left">
-				<%- menu_items = ['dashboard', 'pages','users'] %>
+				<%- menu_items = ['dashboard', 'pages','games','users'] %>
 				<%- menu_items.each do |page| %>
 				<li<%= %( class="active").html_safe if menu == page %>><%= link_to t(page), [:admin, page] %></li>
 				<%- end %>
@@ -22,7 +22,7 @@
 			<% if user_signed_in? %>
 			<ul class="nav pull-right">
 				<li class="dropdown" id="profile">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#profile"><%= gravatar_image_tag(current_user.email, :alt => current_user.username) %> <%= current_user.username %> <b class="caret"></b></a>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#profile"><%= gravatar_image_tag(current_user.email, :alt => "") %> <%= current_user.username %> <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li<%= ' class="active"'.html_safe if menu == "profile" %>><%= link_to "Profile", profile_path %></li>
 						<li class="divider"></li>
