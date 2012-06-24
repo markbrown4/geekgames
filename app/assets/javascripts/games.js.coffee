@@ -9,6 +9,7 @@ class window.Game
     @render()
   
   countdown: =>
+    $('#instructions').hide()
     $body.addClass('counting');
     $countdown = $('#countdown')
     $countdown.html 3
@@ -32,16 +33,15 @@ class window.Game
     null
 
   stop: ->
-    $body.removeClass('playing');
-    $body.addClass('finished');
-    clearInterval(@timer)
+    $body.removeClass 'playing'
+    clearInterval @timer
+    @submit()
 
   loop: =>
     now = new Date().getTime()
     ms = now - @prev
     @prev = now
     
-    #@updateTimer(now)
     @frame(ms) if @frame
 
   addEvents: =>
@@ -51,11 +51,10 @@ class window.Game
   removeEvents: ->
     $body.unbind()
 
-  updateTimer: (now)->
-    time = ((now-@startTime)/1000).toFixed(2)
-    $('#timer').html time
-
   submit: =>
+    # console.log @data
+    # console.log @munge(@data, 5)
+    
     url = if (@constructor.name == 'Pong') then "/rounds/summary" else window.location
     $.ajax '/games/submit',
       type: 'POST'
@@ -63,7 +62,6 @@ class window.Game
       data: @data
       success: -> window.location = url
       error: -> window.location = url
-    #alert 'aw, Snap! There was an error, try submitting again.'
 
   getCanvas: ->
     $canvas = $('#canvas').append('<canvas width="700" height="400">')
@@ -74,6 +72,12 @@ class window.Game
 
   getPaper: ->
     @paper = Raphael('canvas', 700, 400);
+  
+  munge: (text, key)->
+    result = "";
+    for i in [0..text.length]
+      result += String.fromCharCode(key^text.charCodeAt(i))
+    result
 
 $ ->
   
@@ -84,7 +88,7 @@ $ ->
     $body.removeClass('finished')
     
     false
-      
+  
   if $body.hasClass('games')
     window.game = null
     if ($body.hasClass('game-1'))
@@ -99,13 +103,5 @@ $ ->
     $('#play').click ->
       game.countdown()
       
-      false
-    $('#submit').click ->
-      game.submit()
-      
-      false
-    $('#restart').click ->
-      window.location = window.location
-
       false
   

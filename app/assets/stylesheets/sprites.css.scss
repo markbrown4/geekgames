@@ -41,6 +41,8 @@ $icons-auth_facebook-spacing: 50;
   @include icons-sprite(auth_facebook, false, 19px, 0);
 }
 
-.games #header {
-  @include icons-sprite(dude, false, 95px, 9px);
-}
+.games, .rounds {
+  #header {
+    @include icons-sprite(dude, false, 95px, 9px);
+  }
+} 

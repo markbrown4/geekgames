@@ -17,6 +17,7 @@ class GamesController < ApplicationController
   
   # POST games/submit
   def submit
+    # data = munge(params[:data], 5)
     @round = current_user.current_round
     if @round.present?
       if @round.proccess_score(params[:data])
@@ -39,6 +40,18 @@ class GamesController < ApplicationController
   
   def error
     render :inline => ':(', :status => 500
+  end
+  
+  
+  
+  private
+  
+  def munge(text, key)
+    result = ""
+    text.each_byte do |c|
+      result += (key ^ c).chr;
+    end
+    result
   end
 
 end

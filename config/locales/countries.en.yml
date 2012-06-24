@@ -482,11 +482,11 @@ en:
       official_name: !!null
     kp:
       common_name: !!null
-      name: Korea, Democratic People's Republic of
-      official_name: Democratic People's Republic of Korea
+      name: North Korea
+      official_name: !!null
     kr:
       common_name: !!null
-      name: Korea, Republic of
+      name: South Korea
       official_name: !!null
     kw:
       common_name: !!null
@@ -962,7 +962,7 @@ en:
       official_name: Virgin Islands of the United States
     vn:
       common_name: !!null
-      name: Viet Nam
+      name: Vietnam
       official_name: Socialist Republic of Viet Nam
     vu:
       common_name: !!null

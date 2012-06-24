@@ -23,9 +23,11 @@ class window.Pong extends Game
     @player.y = 160
     @ai.y = 160
     @ball = x: 350, y: 200, xSpeed: 6
-    @ballSpeed = .1
-    @paddleSpeed = 10
+    @ballSpeed = .08
+    @paddleSpeed = 8
     @ball.ySpeed = @ySpeeds[Math.floor(Math.random()*@ySpeeds.length)]
+    
+    $('#lives').html(@lives).show()
     
   frame: (ms)=>
     distance = ms * @ballSpeed
@@ -42,7 +44,7 @@ class window.Pong extends Game
     
     # boundaries
     if !@missed
-      if (@ball.y < 0 && @ball.ySpeed < 0) || (@ball.y > 400 && @ball.ySpeed > 0)
+      if (@ball.y < 10 && @ball.ySpeed < 0) || (@ball.y > 390 && @ball.ySpeed > 0)
         @ball.ySpeed = (0 - @ball.ySpeed)
       if @ball.x < 60 && @ball.xSpeed < 0
         diff = @ball.y - @player.y
@@ -53,6 +55,7 @@ class window.Pong extends Game
           @ball.ySpeed = @ySpeeds[Math.floor(diff / 20)]
           @ball.xSpeed = (0 - @ball.xSpeed)
       else if @ball.x > 640 && @ball.xSpeed > 0
+        @ballSpeed += .005
         @ball.xSpeed = (0 - @ball.xSpeed)
 
     @ball.x += Math.floor(@ball.xSpeed * distance)
@@ -70,6 +73,7 @@ class window.Pong extends Game
       , 300
     else
       @finish()
+    $('#lives').html @lives
 
   render: ->
     @clearCanvas()

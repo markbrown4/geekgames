@@ -36,6 +36,10 @@ body {
     border-color: #2e2e2e transparent transparent;
   }
 }
+h1,h2,h3,h4,h5 {
+  font-family: "Gill Sans", "Arial Black";
+  text-transform: uppercase;
+}
 small {
   color: #777;
 }
@@ -125,20 +129,40 @@ a {
     float: left;
     margin-left: 350px;
   }
-  .see-leaderboard {
-    text-transform: uppercase;
-    float: left;
-    width: 200px;
-    padding-left: 15px;
-    font-size: 12px;
-    color: #6d6c6c;
-    text-align: left;
-  }
+}
+.btn-aside {
+  text-transform: uppercase;
+  float: left;
+  width: 230px;
+  padding-left: 15px;
+  font-size: 12px;
+  color: #6d6c6c;
+  text-align: left;
 }
 .leaderboard {
   #content {
-    min-height: 400px;
     margin-right: 0;
+  }
+}
+.rounds {
+  .game {
+    margin: 0;
+    position: static;
+    padding: 20px;
+    text-align: center;
+  }
+  #main-prize {
+    float: right;
+    width: 180px;
+    padding: 0 20px;
+    border-left: 2px solid #eee;
+  }
+  #todays-deal {
+    overflow: hidden;
+  }
+  #deal {
+    float: left;
+    margin-left: 150px;
   }
 }
 #menu {
@@ -174,10 +198,17 @@ a {
     margin: 0;
   }
 }
-.game-2 #canvas {
-  cursor: crosshair;
+#game-2 {
+  cursor: url(/assets/target.png) 35 35, default;
+}
+canvas {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 #countdown {
+  background: #fff;
   @include transition(opacity .5s ease-out);
   top: -700px;
   opacity: 0;
@@ -190,9 +221,22 @@ a {
   left: 50%;
   margin-top: -55px;
   margin-left: -55px;
-  border: 15px solid rgba(0,0,0,.2);
+  border: 15px solid #3787d5;
   border-radius: 80px 80px 80px 80px;
+  box-shadow: 0 0 20px;
   font-size: 30px;
+  font-weight: bold;
+}
+#lives {
+  float: right;
+  background: #fff;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  border: 15px solid #3787d5;
+  border-radius: 80px 80px 80px 80px;
+  font-size: 40px;
   font-weight: bold;
 }
 #sidebar {
@@ -239,11 +283,17 @@ a {
     background: rgba(#fff, .2);
   }
 }
-.games, .leaderboard, .home {
+.games, .leaderboard, .home, .rounds {
   #middle {
     background: image-url("bg.jpg") no-repeat 50% 100%;
   }
 }
+.games, .rounds {
+  #middle {
+    min-height: 350px;
+  }
+}
+
 .games #middle {
   padding-bottom: 20px;
 }
@@ -281,20 +331,10 @@ a {
   width: 700px;
   height: 400px;
   position: relative;
-  left: 50%;
-  margin-left: -350px;
+  left: 130px;
   overflow: hidden;
 }
 
-#scoreboard {
-  background: rgba(white, .2);
-  position: absolute;
-  right: 0;
-  margin: 0;
-  padding: 20px;
-  text-align: right;
-  width: 200px;
-}
 #games {
   list-style: none;
   overflow: hidden;
@@ -465,7 +505,8 @@ a {
 }
 
 #message {
-  @include transition(all .5s ease-in);
+  cursor: auto;
+  @include transition(top .5s ease-in);
   position: fixed;
   z-index: 3;
   top: -700px;
@@ -477,6 +518,16 @@ a {
   padding: 30px;
   min-height: 300px;
   h1 { margin-top: 0 }
+}
+#instructions {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  border: 1px solid #fff;
 }
 #overlay {
   z-index: 2;

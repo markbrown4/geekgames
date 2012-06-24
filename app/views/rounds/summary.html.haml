@@ -1,18 +1,29 @@
 - content_for :before_content do
-  %h1 Nice round!
-  %p.description You can compete 3 times a day to be in the running.
+  %h1
+    Congrats ~ You are ranked
+    = @round.rank.ordinalize
 
-%table
-  - @round.scores.each do |score|
-    %tr
-      %th= score.game.title
-      %td= score.score
-  %tr
-    %th Total
-    %td= @round.total_score
-  
+  %p.description
+    You're now in the draw to WIN GREAT PRIZES!
+    %br
+    PLUS... you've qualified for TODAY'S DEAL
+
+.game
+  #main-prize
+    %h2 Main prize
+    %p You're now in the running to WIN the Main Prize!
+    %p= image_tag "main-prize.png"
+  #todays-deal
+    %h1 Today's deal
+    
+
 - content_for :button_area do
-  %a.btn.btn-green{ :href => "#", :id => 'play' } Next round
+  %a.btn.btn-green{ :href => "#", :id => 'deal' } Grab today's deal
+  %p.btn-aside
+    YOU HAVE 3 CHANCES AT GETTING
+    %br
+    YOUR BEST SCORE! ~
+    = link_to "PLAY AGAIN", games_path
 
 - content_for :sidebar do
   %ul

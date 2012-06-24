@@ -2,9 +2,15 @@
 
 - content_for :before_content do
   %h1= @game.title
-  %p.description= @game.description
+  %p.description
+    :markdown
+      #{@game.description}
 
+#sidebar
+  #lives{:style => 'display:none'}
 .game{ :id=> "game-#{@game.id}" }
+  #instructions
+    = image_tag "instructions-#{@game.id}.png"
   #message
     .close &times;
     %h1 Good game.

@@ -14,6 +14,10 @@ class Round < ActiveRecord::Base
     self.scores.where('game_id = ?', self.step).last
   end
   
+  def rank
+    Round.where("total_score > ?", self.total_score).count
+  end
+  
   def proccess_score(data)
     self.save_score("50")
     
