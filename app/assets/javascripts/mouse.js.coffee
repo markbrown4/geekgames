@@ -43,6 +43,7 @@ class window.Mouse extends Game
     @startPoint.mouseout(@prepStart, @start)
 
   prepStart: =>
+    data.push(new Date().getTime())
     @playing = true
     @endPoint.hover @win
     @deathLine.hover @lose
@@ -77,6 +78,7 @@ class window.Mouse extends Game
   win: =>
     @playing = false
     @unbindEvents()
+    data.push(new Date().getTime())
     @data = data.join('*')
     @stop()
     
