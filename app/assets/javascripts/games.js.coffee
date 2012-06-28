@@ -24,6 +24,8 @@ class window.Game
       $countdown.html "GO!"
       @start()
     , 3000
+    
+    false
 
   start: =>
     @onStart() if @onStart
@@ -34,8 +36,9 @@ class window.Game
 
   stop: ->
     $body.removeClass 'playing'
+    $body.addClass 'finished'
+    
     clearInterval @timer
-    @submit()
 
   loop: =>
     now = new Date().getTime()
@@ -62,6 +65,8 @@ class window.Game
       data: @data
       success: -> window.location = url
       error: -> window.location = url
+    
+    false
 
   getCanvas: ->
     $canvas = $('#canvas').append('<canvas width="700" height="400">')
@@ -89,6 +94,8 @@ $ ->
     
     false
   
+  
+    
   if $body.hasClass('games')
     window.game = null
     if ($body.hasClass('game-1'))
@@ -100,8 +107,6 @@ $ ->
     else
       return
   
-    $('#play').click ->
-      game.countdown()
-      
-      false
+    $('#play, #instructions').click game.countdown
+    $("#submit").click game.submit
   
