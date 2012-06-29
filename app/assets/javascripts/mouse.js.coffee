@@ -40,10 +40,11 @@ class window.Mouse extends Game
     @endPoint = @paper.image("/assets/finish.png", 642, 153, 30, 76);
 
   onStart: =>
+    data = []
+    data.push([String(new Date().getTime())])
     @startPoint.mouseout(@prepStart, @start)
 
   prepStart: =>
-    data.push(new Date().getTime())
     @playing = true
     @endPoint.hover @win
     @deathLine.hover @lose
@@ -51,7 +52,7 @@ class window.Mouse extends Game
       line.hover @blur
 
   blur: (event, x, y)->
-    penalty = 8 - this.id
+    penalty = 6 - this.id
     winningLine.attr('stroke', colors[this.id-1])
     data.push([new Date().getTime(), penalty, x, y].join('|'))
 
@@ -72,14 +73,12 @@ class window.Mouse extends Game
   lose: =>
     @playing = false
     @unbindEvents()
-    @stop()
-    @reset()
+    $('body').addClass("retry")
 
   win: =>
     @playing = false
     @unbindEvents()
-    data.push(new Date().getTime())
+    data.push([String(new Date().getTime())])
     @data = data.join('*')
     @stop()
-    
 

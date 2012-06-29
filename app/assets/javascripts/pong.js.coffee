@@ -18,7 +18,7 @@ class window.Pong extends Game
     
     @reset()
 
-  onStart: -> data.push(new Date().getTime())
+  onStart: -> data.push([String(new Date().getTime())])
 
   reset: ->
     @player.ySpeed = 0
@@ -103,6 +103,6 @@ class window.Pong extends Game
     false
 
   finish: =>
-    data.push(new Date().getTime())
+    data.push([String(new Date().getTime())])
     @data = data.join('*')
     @stop()

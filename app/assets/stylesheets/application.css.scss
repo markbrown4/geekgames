@@ -304,9 +304,6 @@ canvas {
   padding-bottom: 20px;
 }
 .description {
-  border-bottom: 1px solid rgba(#000, .2);
-  @include box-shadow(0 1px #fff);
-  padding-bottom: 15px;
   margin-bottom: 15px;
 }
 #footer {
@@ -528,7 +525,7 @@ canvas {
   }
 }
 
-#message {
+.dialog {
   cursor: auto;
   @include transition(top .5s ease-in);
   position: fixed;
@@ -593,6 +590,19 @@ canvas {
     @include opacity(.5);
   }
   #message {
+    top: 30px;
+    opacity: 1;
+  }
+}
+.retry {
+  #overlay {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    @include opacity(.5);
+  }
+  #retry {
     top: 30px;
     opacity: 1;
   }

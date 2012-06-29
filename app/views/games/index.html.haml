@@ -2,7 +2,7 @@
 
 - content_for :before_content do
   %h1= @game.title
-  %p.description
+  .description
     :markdown
       #{@game.description}
 
@@ -15,12 +15,21 @@
 .game{ :id=> "game-#{@game.id}" }
   #instructions
     = image_tag "instructions-#{@game.id}.jpg"
-  #message
+    
+  #message.dialog
     .close &times;
     %h1 Good game.
     %p You can compete three times a day for each sport.
     .btn-area
       %a.btn.btn-green{  :href => "#", :id => 'submit' } Continue
+      
+  #retry.dialog
+    .close &times;
+    %h1 Oops
+    %p You can't stray too from the line and live to tell the story, please try again.
+    .btn-area
+      %a.btn.btn-green{  :href => "#", :id => 'retry' } Retry
+  
   #countdown
   #canvas
 

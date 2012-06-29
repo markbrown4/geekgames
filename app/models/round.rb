@@ -19,39 +19,78 @@ class Round < ActiveRecord::Base
   end
   
   def proccess_score(data)
-    self.save_score("50")
+    score = 0
+    events = data.split('*')
+    event_data = {
+      start_time: events.shift().to_i,
+      end_time: events.pop().to_i,
+      events: events
+    }
     
-    # events = data.split('*')
-    # events.each do |event|
-    #   event = event.split('|')
-    # end
+    if step == 1
+      score = proccess_mouse_score(event_data)
+    elsif step == 2
+      score = proccess_shoot_score(event_data)
+    elsif step == 3
+      score = proccess_pong_score(event_data)
+    end
     
-    # Mouse - [ts, penalty, x, y]
-    # - sum ts*penalty
-    # - validate length > 15ish
-    # Shoot - [ts, evil, x, y]
+    self.save_score(score, data)
+  end
+  
+  def proccess_mouse_score(data)
+    # [ts, penalty, x, y]
+    # - sum ts * penalty
+    # - validate length > 5
+    score = 0
+    if data[:events].length > 5
+      time = 0
+      last_time = data[:start_time]
+      data[:events].each do |event|
+        event = event.split('|')
+        ts = event[0].to_f
+        time+= (ts - last_time) * event[1].to_i
+        last_time = ts
+      end
+      time+= data[:end_time] - last_time
+      calc_score = (1 - (time.to_f / 30000)) * 100
+      
+      if score < 0
+        score = 0
+      end
+    end
+    
+    calc_score
+  end
+  
+  def proccess_shoot_score(data)
+    # [ts, evil, x, y]
     # - if x > 700
     #   if evil == 1
     #     points++
     # - else
     #   if evil == 0
     #     points--
-    #   
-    # Pong - [ts, diff, x, y]
-    # - if diff < 0 || diff > 80 # missed paddle
+    data.events.each do |event|
+      event = event.split('|')
+    end
     
   end
+  
+  def proccess_pong_score(data)
+    # [ts, diff, x, y]
+    # - if diff < 0 || diff > 80 # missed paddle
+    data.events.each do |event|
+      event = event.split('|')
+    end
+  end
 
-  def save_score(value)
-    value = BigDecimal(value)
-    logger.debug "*** #{value}"
+  def save_score(value, data)
     score = current_score
     score.score = value
+    score.data = data
     if score.save
-      logger.debug "*** #{current_score}"
       self.progress(value)
-    else
-      return nil
     end
   end
   

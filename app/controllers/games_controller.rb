@@ -45,7 +45,6 @@ class GamesController < ApplicationController
   end
   
   
-  
   private
   
   def munge(text, key)

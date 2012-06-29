@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624141534) do
+ActiveRecord::Schema.define(:version => 20120629042406) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20120624141534) do
 
   create_table "rounds", :force => true do |t|
     t.integer  "user_id"
-    t.decimal  "total_score", :default => 0.0
+    t.float    "total_score", :default => 0.0
     t.integer  "step",        :default => 1
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
@@ -50,9 +50,10 @@ ActiveRecord::Schema.define(:version => 20120624141534) do
   create_table "scores", :force => true do |t|
     t.integer  "round_id"
     t.integer  "game_id"
-    t.decimal  "score",      :default => 0.0
+    t.float    "score",      :default => 0.0
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+    t.text     "data"
   end
 
   create_table "users", :force => true do |t|

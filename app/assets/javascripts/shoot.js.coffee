@@ -26,7 +26,7 @@ class window.Shoot extends Game
     $('#lives_count').html(@lives)
     $('#lives').show()
 
-  onStart: -> data.push(new Date().getTime())
+  onStart: -> data.push([String(new Date().getTime())])
 
   push: ->
     @objects.push
@@ -90,7 +90,7 @@ class window.Shoot extends Game
         @ctx.drawImage @image, object.x, object.y, @objWidth, @objHeight
 
   finish: =>
-    data.push(new Date().getTime())
+    data.push([String(new Date().getTime())])
     @data = data.join('*')
     @stop()
   

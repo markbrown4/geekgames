@@ -7,7 +7,7 @@ class window.Game
     @init()
     @addEvents()
     @render()
-  
+
   countdown: =>
     $('#instructions').hide()
     $body.addClass('counting');
@@ -55,14 +55,13 @@ class window.Game
     $body.unbind()
 
   submit: =>
-    # console.log @data
     # console.log @munge(@data, 5)
     
     url = if (@constructor.name == 'Pong') then "/rounds/summary" else window.location
     $.ajax '/games/submit',
       type: 'POST'
       dataType: "json"
-      data: @data
+      data: { data: @data }
       success: -> window.location = url
       error: -> window.location = url
     
@@ -94,8 +93,6 @@ $ ->
     
     false
   
-  
-    
   if $body.hasClass('games')
     window.game = null
     if ($body.hasClass('game-1'))
@@ -109,4 +106,5 @@ $ ->
   
     $('#play, #instructions').click game.countdown
     $("#submit").click game.submit
+    $('#retry').click -> window.location = window.location
   
