@@ -51,7 +51,7 @@ a {
 #wrapper {
   padding: 0 0 60px;
 }
-#header, #footer, .inner, #wrapper > .btn-area {
+#header, #footer, .inner, #wrapper > .btn-area, #sub-footer {
   width: 959px;
   margin: 0 auto;
 }
@@ -176,7 +176,7 @@ a {
     margin: 0 10px 0 0;
     padding: 0;
   }
-  .game1 { margin-left: 340px }
+  .game1 { margin-left: 307px }
   .game1, .game2, .game3 {
     margin-top: -15px;
   }
@@ -190,7 +190,8 @@ a {
 }
 .game-1 #menu .game1 a,
 .game-2 #menu .game2 a,
-.game-3 #menu .game3 a { @include opacity(.75) }
+.game-3 #menu .game3 a,
+.rounds #menu .win a { @include opacity(.75) }
 #content {
   position: relative;
   margin-right: 257px;
@@ -229,6 +230,11 @@ canvas {
   font-weight: bold;
 }
 #lives {
+  float: right;
+  width: 110px;
+  text-align: center;
+}
+#lives_count {
   float: right;
   background: #fff;
   width: 80px;
@@ -321,6 +327,24 @@ canvas {
   li:last-child { border: none }
   a {
     color: #6d6c6c;
+  }
+}
+#sub-footer {
+  padding-top: 20px;
+  position: relative;
+  img {
+    vertical-align: middle;
+  }
+  #new-relic {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    font-size: 12px;
+    color: #6D6C6C;
+    text-transform: uppercase;
+    a {
+      margin-left: 10px;
+    }
   }
 }
 
@@ -487,21 +511,21 @@ canvas {
   @include box-shadow(inset 0 0 2px #fff);
   text-shadow: 0 1px 1px rgba(#000,.5);
   text-decoration: none;
-  @include background(linear-gradient(top, #fa8f25, darken(#fa8f25, 10%)));
+  @include background(linear-gradient(top, #fa8f25, #fe711d));
   &:hover {
-    @include background(linear-gradient(top, darken(#fa8f25, 10%), darken(#fa8f25, 12%)));
+    @include background(linear-gradient(top, darken(#fa8f25, 10%), darken(#fe711d, 10%)));
   }
 }
 .btn-green {
-  @include background(linear-gradient(top, #8ac63f, darken(#8ac63f, 10%)));
+  @include background(linear-gradient(top, #8ac63f, #04a750));
   &:hover {
-    @include background(linear-gradient(top, darken(#8ac63f, 10%), darken(#8ac63f, 12%)));
+    @include background(linear-gradient(top, darken(#8ac63f, 10%), darken(#04a750, 10%)));
   }
 }
 .btn-blue {
-  @include background(linear-gradient(top, #3582d0, darken(#3582d0, 10%)));
+  @include background(linear-gradient(top, #3685d3, #255ba9));
   &:hover {
-    @include background(linear-gradient(top, darken(#3582d0, 10%), darken(#3582d0, 12%)));
+    @include background(linear-gradient(top, darken(#3685d3, 10%), darken(#255ba9, 10%)));
   }
 }
 

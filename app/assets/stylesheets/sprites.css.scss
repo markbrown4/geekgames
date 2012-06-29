@@ -7,7 +7,7 @@ $icons-auth_facebook-spacing: 50;
 @import "icons/*.png";
 
 #menu {
-  .home a, .game1 a, .game2 a, .game3 a {
+  .home a, .game1 a, .game2 a, .game3 a, .win a {
     text-indent: -9999px;
   }
   .home a {
@@ -21,6 +21,9 @@ $icons-auth_facebook-spacing: 50;
   }
   .game3 a {
     @include icons-sprite(game3, true);
+  }
+  .win a {
+    @include icons-sprite(win, true);
   }
 }
 

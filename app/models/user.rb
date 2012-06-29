@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
     round = self.rounds.create() if !round.present? || round.complete?
     round
   end
+  
+  def best_round()
+    rounds.order('total_score desc').limit(1).first
+  end
 
   # Auth
   def apply_authentication(params = {})

@@ -7,7 +7,10 @@
       #{@game.description}
 
 #sidebar
+  
   #lives{:style => 'display:none'}
+    %h2 Lives
+    #lives_count
 
 .game{ :id=> "game-#{@game.id}" }
   #instructions

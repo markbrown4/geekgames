@@ -29,7 +29,9 @@ class window.Pong extends Game
     @paddleSpeed = 8
     @ball.ySpeed = @ySpeeds[Math.floor(Math.random()*@ySpeeds.length)]
     
-    $('#lives').html(@lives).show()
+    
+    $('#lives_count').html(@lives)
+    $('#lives').show()
     
   frame: (ms)=>
     distance = ms * @ballSpeed
@@ -75,7 +77,7 @@ class window.Pong extends Game
       , 300
     else
       @finish()
-    $('#lives').html @lives
+    $('#lives_count').html @lives
 
   render: ->
     @clearCanvas()

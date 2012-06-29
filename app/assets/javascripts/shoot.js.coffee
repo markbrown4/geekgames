@@ -23,7 +23,8 @@ class window.Shoot extends Game
     @spam = new Image()
     @spam.src = '/assets/spam.png'
     
-    $('#lives').html(@lives).show()
+    $('#lives_count').html(@lives)
+    $('#lives').show()
 
   onStart: -> data.push(new Date().getTime())
 
@@ -67,14 +68,14 @@ class window.Shoot extends Game
         if @pos && object.x > 0 && (@pos.x > object.x && @pos.x < object.x + @objWidth) && (@pos.y > object.y && @pos.y < object.y + @objHeight)
           if !object.drEvil
             @lives--
-            $('#lives').html @lives
+            $('#lives_count').html @lives
           evil = if object.drEvil then 1 else 0
           data.push([new Date().getTime(), evil, object.x, object.y].join('|'))
           @objects.splice(i,1)
         else if object.x > 700 # miss detect
           if object.drEvil
             @lives--
-            $('#lives').html @lives
+            $('#lives_count').html @lives
           data.push([new Date().getTime(), evil, object.x, object.y].join('|'))
           @objects.splice(i,1)
 

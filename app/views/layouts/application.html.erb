@@ -25,10 +25,11 @@
       </ul>
     </div>
     <ul id="menu">
-      <li class="home<%= ' active' if menu == 'home' %>"><%= link_to "Home", "/home" %></li>
-      <li class="game1<%= ' active' if menu == 'game1' %>"><%= link_to "Mouseathalon", "/games" %></li>
-      <li class="game2<%= ' active' if menu == 'game2' %>"><%= link_to "Spammers", "/games" %></li>
-      <li class="game3<%= ' active' if menu == 'game3' %>"><%= link_to "PONG", "/games" %></li>
+      <li class="home"><%= link_to "Home", "/home" %></li>
+      <li class="game1"><%= link_to "Mouseathalon", "/games" %></li>
+      <li class="game2"><%= link_to "Spammers", "/games" %></li>
+      <li class="game3"><%= link_to "PONG", "/games" %></li>
+      <li class="win"><%= link_to "Win!", "/rounds/summary" %></li>
     </ul>
     <% else %>
     <ul id="menu">
@@ -58,7 +59,10 @@
     <li>&copy; Sitepoint 2012</li>
     <li><%= link_to "Competition details", page_path('terms') %></li>
   </ul>
-  <p><a href="http://www.sitepoint.com/"><%= image_tag "logo-small.png" %></a></p>
+  <p id="sub-footer">
+    <span id="new-relic">Geek Games brought to you by <a href="http://newrelic.com/"><%= image_tag "new-relic-logo.png" %></a></span>    
+    <a href="http://www.sitepoint.com/"><%= image_tag "logo-small.png" %></a>
+  </p>
 </div>
 <%= javascript_include_tag "application" %>
 </body>

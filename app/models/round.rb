@@ -15,7 +15,7 @@ class Round < ActiveRecord::Base
   end
   
   def rank
-    Round.where("total_score > ?", self.total_score).count
+    Round.where("total_score > ?", self.total_score).count + 1
   end
   
   def proccess_score(data)
