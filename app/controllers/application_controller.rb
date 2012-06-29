@@ -8,5 +8,13 @@ class ApplicationController < ActionController::Base
   def filter_attr attribute_hash, valid_attributes
     attribute_hash.dup.select { |attr, value| valid_attributes.collect(&:to_s).include?(attr) }
   end
+  
+  def after_sign_in_path_for resource
+    if resource.kind_of? User
+      games_path
+    else
+      super resource
+    end
+  end
 
 end
