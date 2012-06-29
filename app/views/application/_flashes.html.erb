@@ -4,5 +4,5 @@
 		:success => 'alert-success',
 		:alert => 'alert-error'
 	} %>
-	<%= content_tag :div, msg, :class => "alert #{options[name.to_sym]}" %>
+	<%= content_tag :div, msg, :class => "flash #{options[name.to_sym]}" %>
 <%- end %>

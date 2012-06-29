@@ -38,6 +38,7 @@
     <% end %>
   </div>
   <div id="middle">
+    <%= render :partial => 'flashes' %>
     <div class="inner">
       <%= yield :before_content %>
       <% if content_for?(:sidebar) %>

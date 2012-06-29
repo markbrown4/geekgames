@@ -39,7 +39,9 @@ body {
 h1,h2,h3,h4,h5 {
   font-family: "Gill Sans", "Arial Black";
   text-transform: uppercase;
+  margin: 1em 0 10px;
 }
+p { margin: 0 0 1em 0 }
 small {
   color: #777;
 }
@@ -51,9 +53,14 @@ a {
 #wrapper {
   padding: 0 0 60px;
 }
-#header, #footer, .inner, #wrapper > .btn-area, #sub-footer {
+#header, #footer, .inner, #wrapper > .btn-area, #sub-footer, .flash {
   width: 959px;
   margin: 0 auto;
+}
+.flash {
+  border-bottom: 1px solid #BBBABA;
+  padding: 10px 0;
+  background: #fff;
 }
 .avatar {
   float: left;
@@ -127,7 +134,7 @@ a {
   }
   .btn-area > a {
     float: left;
-    margin-left: 350px;
+    margin-left: 316px;
   }
 }
 .btn-aside {
@@ -138,10 +145,12 @@ a {
   font-size: 12px;
   color: #6d6c6c;
   text-align: left;
+  margin-top: 1em;
 }
 .leaderboard {
   #content {
     margin-right: 0;
+    min-height: 400px;
   }
 }
 .rounds {
@@ -229,12 +238,12 @@ canvas {
   font-size: 30px;
   font-weight: bold;
 }
-#lives {
+#score {
   float: right;
   width: 110px;
   text-align: center;
 }
-#lives_count {
+#score_count {
   float: right;
   background: #fff;
   width: 80px;
@@ -250,12 +259,12 @@ canvas {
   float: right;
   width: 200px;
   font-size: 12px;
+  text-transform: uppercase;
   .btn {
     padding: 5px 0;
     width: 100%;
     text-align: center;
     display: block;
-    font-size: 16px;
   }
   ul {
     list-style: none;
@@ -269,23 +278,21 @@ canvas {
     border-bottom: 1px solid rgba(0,0,0,.2);
     text-align: center;
     &:first-child {
-      padding-top: 0;
       border-top: none;
     }
     &:last-child {
-      padding-bottom: 0;
       border-bottom: none;
     }
   }
-  .twitter, .facebook, .email {
+  .twitter, .facebook, .email, .time {
     padding: 0;
-    background: rgba(#fff, .2);
     a {
       display: block;
       padding: 35px 0 10px;
       color: #333;
     }
   }
+  .time { padding: 35px 0 10px }
   .stats {
     background: rgba(#fff, .2);
   }
@@ -318,7 +325,7 @@ canvas {
   li {
     display: inline;
     margin: 0;
-    padding: 0 5px;
+    padding: 0 10px 0 7px;
     border-right: 1px solid #f7941d;
   }
   li:last-child { border: none }
@@ -355,6 +362,7 @@ canvas {
   position: relative;
   left: 130px;
   overflow: hidden;
+  h1, h2 { margin-top: 10px }
 }
 
 #games {
@@ -520,6 +528,9 @@ canvas {
   }
 }
 .btn-blue {
+  font-size: 16px;
+  padding-bottom: 5px;
+  padding-top: 5px;
   @include background(linear-gradient(top, #3685d3, #255ba9));
   &:hover {
     @include background(linear-gradient(top, darken(#3685d3, 10%), darken(#255ba9, 10%)));
@@ -528,6 +539,7 @@ canvas {
 
 .dialog {
   cursor: auto;
+  text-align: center;
   @include transition(top .5s ease-in);
   position: fixed;
   z-index: 3;
@@ -538,7 +550,6 @@ canvas {
   width: 500px;
   background: #fff;
   padding: 30px;
-  min-height: 300px;
   h1 { margin-top: 0 }
 }
 #instructions {

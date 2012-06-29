@@ -35,6 +35,12 @@ class Round < ActiveRecord::Base
       score = proccess_pong_score(event_data)
     end
     
+    if score < 0
+      score = 0
+    elsif score > 100
+      score = 100
+    end
+    
     self.save_score(score, data)
   end
   
@@ -53,36 +59,52 @@ class Round < ActiveRecord::Base
         last_time = ts
       end
       time+= data[:end_time] - last_time
-      calc_score = (1 - (time.to_f / 30000)) * 100
-      
-      if score < 0
-        score = 0
-      end
+      score = (1 - (time.to_f / 20000)) * 100
     end
     
-    calc_score
+    score
   end
   
   def proccess_shoot_score(data)
     # [ts, evil, x, y]
-    # - if x > 700
-    #   if evil == 1
-    #     points++
-    # - else
-    #   if evil == 0
-    #     points--
-    data.events.each do |event|
+    score = 0
+    data[:events].each do |event|
       event = event.split('|')
+      evil = event[1] == '1'
+      if event[2].to_i > 700
+        # missed
+        if evil
+          score -= 10
+        else
+          score += 0.3
+        end
+      else
+        # shot
+        if evil
+          score += 1
+        else
+          score -= 5
+        end
+      end
     end
     
+    score
   end
   
   def proccess_pong_score(data)
     # [ts, diff, x, y]
     # - if diff < 0 || diff > 80 # missed paddle
-    data.events.each do |event|
+    score = 0
+    data[:events].each do |event|
       event = event.split('|')
+      diff = event[1].to_i
+      if (diff > -1 && diff < 81)
+        score += 1
+      end
     end
+    score *= 2
+    
+    score
   end
 
   def save_score(value, data)

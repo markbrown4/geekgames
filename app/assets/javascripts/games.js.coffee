@@ -77,6 +77,9 @@ class window.Game
   getPaper: ->
     @paper = Raphael('canvas', 700, 400);
   
+  incrementScore: ->
+    $('#score_count').html(Number($('#score_count').html()) + 1)
+  
   munge: (text, key)->
     result = "";
     for i in [0..text.length]
