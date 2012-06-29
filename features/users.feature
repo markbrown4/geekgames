@@ -25,4 +25,17 @@ Feature: Authentication
 
     When  I check "Receive Cool tech deals from SitePoint & carefully selected 3rd-party partners."
       And I press "Submit"
-    Then  I should see "Games"
+    Then  I should see "The 10cm Dash"
+
+  Scenario: Signing Up via Twitter
+    Given I am on the home page
+      And I follow "Play"
+      And I follow "Sign up via Twitter"
+    Then  I should be signed in
+      And I should see "Confirm your email"
+      And the "Email" field should be empty
+
+    When  I fill in "Email" with "mark@inspire9.com"
+      And I check "Receive Cool tech deals from SitePoint & carefully selected 3rd-party partners."
+      And I press "Submit"
+    Then  I should see "The 10cm Dash"

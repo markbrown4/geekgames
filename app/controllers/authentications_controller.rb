@@ -13,12 +13,15 @@ class AuthenticationsController < ApplicationController
 
       if user.save
         session[:after_email_return_to] = session[:user_return_to] if user.email.blank?
-        sign_in_and_redirect user
+        if auth_params[:opt_in] and user.email
+          sign_in_and_redirect user
+        else
           sign_in user
           render :edit
+        end
       else
         session[:omniauth] = omniauth.except('extra')
-        redirect_to new_user_registration_url
+        # redirect_to new_user_registration_url
       end
     end
   end

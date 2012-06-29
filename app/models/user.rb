@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   has_many :rounds
   has_many :authentications, :dependent => :destroy
 
-  validates :username, :uniqueness => true
+  validates :username,  :uniqueness => true, :allow_blank => true
+  validates :email,     :presence => true, :if => :email_required?
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :country, :opt_in
   
   # Include default devise modules. Others available are:
@@ -52,5 +53,9 @@ class User < ActiveRecord::Base
 
     @fb_user ||= FbGraph::User.me(self.authentications.find_by_provider('facebook').token).fetch
   end
-  
+
+  private
+  def email_required?
+    authentications.empty?
+  end
 end
