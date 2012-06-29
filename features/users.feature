@@ -20,3 +20,9 @@ Feature: Authentication
       And I follow "Play"
       And I follow "Sign up via Facebook"
     Then  I should be signed in
+      And I should see "Confirm your email"
+      And my email should be filled in
+
+    When  I check "Receive Cool tech deals from SitePoint & carefully selected 3rd-party partners."
+      And I press "Submit"
+    Then  I should see "Games"

@@ -1,0 +1,16 @@
+- content_for :before_content do
+  %h1 Confirm your email
+
+.sign_in
+  = form_for current_user, :url => authentication_path(current_user.id), :html => { :id => "authentication_form" } do |form|
+
+    %ul
+      %li
+        = form.label :email
+        = form.text_field :email
+      %li
+        = form.label :opt_in, :class => "checkbox" do
+          = form.check_box :opt_in, :checked => 'checked'
+          Receive Cool tech deals from SitePoint & carefully selected 3rd-party partners.
+      %li
+        = form.submit "Submit"

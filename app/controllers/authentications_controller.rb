@@ -1,7 +1,8 @@
 class AuthenticationsController < ApplicationController
+  before_filter :authenticate_user!, :only => [:edit, :update]
   def create
     if authentication.present?
-      flash[:notice] = "Ah, it's you.  How have you been?"
+      flash[:notice] = "Welcome back"
       sign_in_and_redirect authentication.user
     elsif user_signed_in?
       current_user.apply_authentication(omniauth) and current_user.save
@@ -13,10 +14,20 @@ class AuthenticationsController < ApplicationController
       if user.save
         session[:after_email_return_to] = session[:user_return_to] if user.email.blank?
         sign_in_and_redirect user
+          sign_in user
+          render :edit
       else
         session[:omniauth] = omniauth.except('extra')
         redirect_to new_user_registration_url
       end
+    end
+  end
+
+  def update
+    if current_user.update_attributes filter_attr params[:user], %w(email opt_in)
+      redirect_to after_sign_in_path_for current_user
+    else
+      render :edit
     end
   end
 
