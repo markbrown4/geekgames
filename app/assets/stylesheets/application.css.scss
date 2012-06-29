@@ -145,6 +145,7 @@ a {
   }
 }
 .rounds {
+  #content { padding-bottom: 20px }
   .game {
     margin: 0;
     position: static;
@@ -572,4 +573,10 @@ canvas {
     top: 30px;
     opacity: 1;
   }
+}
+
+#signup-signin {
+  font-size: 18px;
+  margin-bottom: 10px;
+  a { font-weight: bold }
 }

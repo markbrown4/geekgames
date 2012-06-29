@@ -4,8 +4,9 @@
 :markdown
   #{@page.body}
 
-= image_tag("screen.png", :class => 'screen')
-= image_tag("dude.png", :class => 'dude')
+%a{ :href => games_path }
+  = image_tag("screen.png", :class => 'screen')
+  = image_tag("dude.png", :class => 'dude')
 
 - content_for :button_area do
   = link_to "Play", games_path, :class => 'btn btn-orange'
