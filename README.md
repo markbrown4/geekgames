@@ -3,9 +3,9 @@
 Competition built for Sitepoint, a series of game with a leaderboard and prizes.
 
 ## Deployment to Heroku
-git remote add heroku git@heroku.com:young-galaxy-2891.git
+git remote add heroku git@heroku.com:geek-games.git
 
-http://young-galaxy-2891.heroku.com/
+http://geek-games.herokuapp.com/
 
 ## Security for a game session
 
