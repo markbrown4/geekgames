@@ -14,13 +14,13 @@
 
 .game{ :id=> "game-#{@game.id}" }
   #instructions
-    = image_tag "instructions-#{@game.id}.png"
+    = image_tag "instructions-#{@game.id}.jpg"
   #message
     .close &times;
     %h1 Good game.
     %p You can compete three times a day for each sport.
     .btn-area
-      %a.btn.btn-green{  :href => "#", :id => 'submit' } Next game
+      %a.btn.btn-green{  :href => "#", :id => 'submit' } Continue
   #countdown
   #canvas
 
