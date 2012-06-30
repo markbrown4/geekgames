@@ -588,31 +588,82 @@ canvas {
     opacity: 0;
   }
 }
-.finished {
-  #play { display: none }
+.show-dialog {
   #overlay {
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     @include opacity(.5);
-  }
-  #message {
-    top: 30px;
-    opacity: 1;
   }
 }
-.retry {
-  #overlay {
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    @include opacity(.5);
+.finished {
+  #play { display: none }
+}
+.show-deal #deal-dialog,
+.finished #message,
+.retry #retry {
+  top: 30px;
+  opacity: 1;
+}
+
+#deal-dialog {
+  width: 900px;
+  height: 400px;
+  margin-left: -450px;
+  text-align: left;
+  h1 { color: #fb8723 }
+  .prizes {
+    text-align: center;
+    float: right;
+    width: 430px;
+    ul {
+      text-align: left;
+      list-style: none;
+      margin: 30px 0;
+      padding: 0;
+      float: left;
+    }
+    b { display: block }
+    li {
+      float: left;
+      width: 100%;
+      clear: left;
+      margin-bottom: 15px;
+    }
+    input {
+      float: left;
+      margin-top: 3px;
+      margin-left: -25px;
+    }
+    label {
+      float: left;
+      clear: left;
+      width: 280px;
+    }
+    label, small { font-size: 14px }
+    .price, .reduced {
+      text-align: right;
+      float: left;
+      width: 75px;
+      color: #434343;
+      font-weight: bold;
+      line-height: 35px;
+    }
+    .price {
+      text-decoration: line-through;
+      color: #7e7e7e;
+    }
   }
-  #retry {
-    top: 30px;
-    opacity: 1;
+  .deal-content {
+    margin-right: 450px;
+    font-size: 14px;
+    height: 340px;
+    overflow: hidden;
+    img {
+      display: block;
+      margin-bottom: 20px;
+    }
   }
 }
 

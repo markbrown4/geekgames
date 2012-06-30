@@ -36,7 +36,7 @@ class window.Game
 
   stop: ->
     $body.removeClass 'playing'
-    $body.addClass 'finished'
+    $body.addClass 'finished show-dialog'
     
     clearInterval @timer
 

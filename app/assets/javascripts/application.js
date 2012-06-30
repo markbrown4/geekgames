@@ -7,6 +7,8 @@
 //= require mouse
 //= require shoot
 
+//= require deals
+
 $body = $("body");
 
 ie = (function() {

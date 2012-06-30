@@ -73,7 +73,7 @@ class window.Mouse extends Game
   lose: =>
     @playing = false
     @unbindEvents()
-    $('body').addClass("retry")
+    $body.addClass("retry show-dialog")
 
   win: =>
     @playing = false
