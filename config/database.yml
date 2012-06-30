@@ -3,9 +3,9 @@ development:
   adapter: postgresql
   database: geekgames_development
 
-# production:
-#   adapter:  postgresql
-#   database: geekgames
+staging:
+  adapter:  postgresql
+  database: geekgames
 
 production:
   adapter:  postgresql
