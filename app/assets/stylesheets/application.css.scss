@@ -78,7 +78,16 @@ a {
     display: block;
   }
 }
-
+.btn-aside {
+  text-transform: uppercase;
+  float: left;
+  width: 230px;
+  padding-left: 15px;
+  font-size: 12px;
+  color: #6d6c6c;
+  text-align: left;
+  margin-top: 1em;
+}
 #header {
   border-bottom: 1px solid #bbbaba;
   box-shadow: 0 1px 0 #fff;
@@ -111,6 +120,104 @@ a {
     }
   }
 }
+#content {
+  position: relative;
+  margin-right: 257px;
+  text-align: left;
+  &.max {
+    margin: 0;
+  }
+}
+#sidebar {
+  float: right;
+  width: 200px;
+  font-size: 12px;
+  text-transform: uppercase;
+  .btn {
+    padding: 5px 0;
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    margin: 0;
+    padding: 10px 0;
+    border-top: 1px solid rgba(#fff, .5);
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    text-align: center;
+    &:first-child {
+      border-top: none;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  .twitter, .facebook, .email, .time {
+    padding: 0;
+    a {
+      display: block;
+      padding: 35px 0 10px;
+      color: #333;
+    }
+  }
+  .time { padding: 35px 0 10px }
+  .stats {
+    background: rgba(#fff, .2);
+  }
+}
+.description {
+  margin-bottom: 15px;
+}
+#footer {
+  border-top: 1px solid #E5E5E5;
+  padding: 20px 0 0;
+  list-style: none;
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #6d6c6c;
+  li {
+    display: inline;
+    margin: 0;
+    padding: 0 10px 0 7px;
+    border-right: 1px solid #f7941d;
+  }
+  li:last-child { border: none }
+  a {
+    color: #6d6c6c;
+  }
+}
+#sub-footer {
+  padding-top: 20px;
+  position: relative;
+  img {
+    vertical-align: middle;
+  }
+  #new-relic {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    font-size: 12px;
+    color: #6D6C6C;
+    text-transform: uppercase;
+    a {
+      margin-left: 10px;
+    }
+  }
+}
+
+.games, .leaderboard, .home, .rounds {
+  #middle {
+    background: image-url("bg.jpg") no-repeat 50% 100%;
+    min-height: 350px;
+    padding-bottom: 20px;
+  }
+}
 .home {
   .dude {
     position: absolute;
@@ -140,24 +247,16 @@ a {
     margin-left: 316px;
   }
 }
-.btn-aside {
-  text-transform: uppercase;
-  float: left;
-  width: 230px;
-  padding-left: 15px;
-  font-size: 12px;
-  color: #6d6c6c;
-  text-align: left;
-  margin-top: 1em;
-}
 .leaderboard {
   #content {
     margin-right: 0;
     min-height: 400px;
   }
+  #middle {
+    padding-bottom: 0;
+  }
 }
 .rounds {
-  #content { padding-bottom: 20px }
   .game {
     margin: 0;
     position: static;
@@ -210,14 +309,6 @@ a {
 .game-2 #menu .game2 a,
 .game-3 #menu .game3 a,
 .rounds #menu .win a { @include opacity(.75) }
-#content {
-  position: relative;
-  margin-right: 257px;
-  text-align: left;
-  &.max {
-    margin: 0;
-  }
-}
 #game-2 {
   cursor: url(/assets/target.png) 35 35, default;
 }
@@ -264,103 +355,6 @@ canvas {
   font-size: 40px;
   font-weight: bold;
 }
-#sidebar {
-  float: right;
-  width: 200px;
-  font-size: 12px;
-  text-transform: uppercase;
-  .btn {
-    padding: 5px 0;
-    width: 100%;
-    text-align: center;
-    display: block;
-  }
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  li {
-    margin: 0;
-    padding: 10px 0;
-    border-top: 1px solid rgba(#fff, .5);
-    border-bottom: 1px solid rgba(0,0,0,.2);
-    text-align: center;
-    &:first-child {
-      border-top: none;
-    }
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-  .twitter, .facebook, .email, .time {
-    padding: 0;
-    a {
-      display: block;
-      padding: 35px 0 10px;
-      color: #333;
-    }
-  }
-  .time { padding: 35px 0 10px }
-  .stats {
-    background: rgba(#fff, .2);
-  }
-}
-.games, .leaderboard, .home, .rounds {
-  #middle {
-    background: image-url("bg.jpg") no-repeat 50% 100%;
-  }
-}
-.games, .rounds {
-  #middle {
-    min-height: 350px;
-  }
-}
-
-.games #middle {
-  padding-bottom: 20px;
-}
-.description {
-  margin-bottom: 15px;
-}
-#footer {
-  border-top: 1px solid #E5E5E5;
-  padding: 20px 0 0;
-  list-style: none;
-  text-align: center;
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #6d6c6c;
-  li {
-    display: inline;
-    margin: 0;
-    padding: 0 10px 0 7px;
-    border-right: 1px solid #f7941d;
-  }
-  li:last-child { border: none }
-  a {
-    color: #6d6c6c;
-  }
-}
-#sub-footer {
-  padding-top: 20px;
-  position: relative;
-  img {
-    vertical-align: middle;
-  }
-  #new-relic {
-    position: absolute;
-    top: 30px;
-    right: 0;
-    font-size: 12px;
-    color: #6D6C6C;
-    text-transform: uppercase;
-    a {
-      margin-left: 10px;
-    }
-  }
-}
-
 .game {
   background: #fff;
   @include box-shadow(0 0 10px rgba(0, 0, 0, 0.5) inset);
@@ -371,7 +365,7 @@ canvas {
   position: relative;
   left: 130px;
   overflow: hidden;
-  h1, h2 { margin-top: 10px }
+  h1, h2 { margin-top: 20px }
 }
 
 #games {
@@ -412,30 +406,24 @@ canvas {
     }
   }
   .place {
+    text-transform: uppercase;
+    font-weight: bold;
     float: left;
-    height: 34px;
     width: 34px;
-    margin: -4px 10px -4px 0;
-    border: 5px solid rgba(black,.08);
-    border-radius: 34px;
+    margin: 7px 10px -4px 0;
     padding: 0;
-    background: #9F9F9F;
-    font: 18px/36px 'BebasNeueRegular';
-    text-align: center;
-    color: #fff;
-    text-shadow: 0 1px 4px rgba(#000, .4), 0 1px 2px rgba(#000, .2);
+    font-size: 16px;
+    text-shadow: 0 1px white;
+    color: #333;
   }
-  .pos-1, .pos-2, .pos-3 {
+  .pos-1 , .pos-2, .pos-3 {
     background: #FFF7D3;
     padding: 20px;
     font-size: 14px;
     .place {
-      box-shadow: 0 1px 2px 1px rgba(#000,.4)
+      color: #000;
     }
   }
-  .pos-1 .place { background: #EBDEB2 }
-  .pos-2 .place { background: #E1DACA }
-  .pos-3 .place { background: #D7A98A; box-shadow: 0 1px 2px 1px rgba(#000, .6) }
   .user {
     float: left;
     width: 200px;
@@ -448,7 +436,6 @@ canvas {
     color: #333;
   }
 }
-
 
 .drop-down {
   position: relative;
