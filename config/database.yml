@@ -3,19 +3,19 @@ development:
   adapter: postgresql
   database: geekgames_development
 
-production:
-  adapter:  postgresql
-  database: geekgames
-
 # production:
 #   adapter:  postgresql
-#   encoding: unicode
-#   pool:     5
-#   database: ***REMOVED***
-#   username: ***REMOVED***
-#   password: ***REMOVED***
-#   host:     ***REMOVED***
-#   port:     5612
+#   database: geekgames
+
+production:
+  adapter:  postgresql
+  encoding: unicode
+  pool:     5
+  database: ***REMOVED***
+  username: ***REMOVED***
+  password: ***REMOVED***
+  host:     ***REMOVED***
+  port:     5612
 
 test: &test
   adapter: postgresql
