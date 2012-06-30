@@ -1,25 +1,32 @@
-# Twitter oath
+
+# PRODUCTION
+# http://games.sitepoint.com/
+# Twitter
+# key     ***REMOVED***
+# secret  ***REMOVED***
+# Facebook
 # key     ***REMOVED***
 # secret  ***REMOVED***
 
-# facebook
-# key     ***REMOVED*** 
+# DEV
+# http://geek-games.dev/
+# Twitter
+# key     ***REMOVED***
 # secret  ***REMOVED***
-
-# Site URL    http://geek-games.dev/
+# Facebook
+# key     ***REMOVED***
+# secret  ***REMOVED***
 
 Rails.application.config.middleware.use OmniAuth::Builder do
 
-  provider :twitter, '***REMOVED***', '***REMOVED***'
-  provider :facebook, '***REMOVED***', '***REMOVED***'
-
-  # case Rails.env
-  #   when 'production'
-  #     provider :twitter, '***REMOVED***', '***REMOVED***'
-  #     provider :facebook, '***REMOVED***', '***REMOVED***'
-  #   else
-  #     provider :twitter, '***REMOVED***', '***REMOVED***'
-  #     provider :facebook, '***REMOVED***', '***REMOVED***'
-  # end
+  case Rails.env
+    when 'production'
+      provider :twitter, '***REMOVED***', '***REMOVED***'
+      provider :facebook, '***REMOVED***', '***REMOVED***'
+    else
+      provider :twitter, '***REMOVED***', '***REMOVED***'
+      provider :facebook, '***REMOVED***', '***REMOVED***'
+    end
+  end
 
 end

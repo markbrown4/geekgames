@@ -20,6 +20,7 @@
       <a class="trigger" href="#"><%= gravatar_image_tag(current_user.email, :alt => "") %> Hi <%= current_user.username %> <b class="caret"></b></a>
       <ul>
         <li<%= ' class="active"'.html_safe if menu == "profile" %>><%= link_to "Profile", profile_path %></li>
+        <li><%= link_to "Update avatar", "https://en.gravatar.com/site/login/" %></li>
         <li class="divider"></li>
         <li><%= link_to "Sign out", destroy_user_session_path, :method=>'delete' %></li>
       </ul>
