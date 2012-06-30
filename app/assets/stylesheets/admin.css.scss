@@ -1,5 +1,6 @@
 
 @import "bootstrap";
+@import "bootstrap-datepicker";
 
 body {
 	color: #333;
@@ -12,7 +13,8 @@ small {
 	padding: 60px 0;
 }
 .flash {
-	padding: 20px;
+	padding: 10px;
+	border-radius: 5px;
 }
 .nav img {
 	height: 20px;
@@ -20,9 +22,9 @@ small {
 	margin-right: 5px
 }
 
-
 table img {
 	height: 36px;
+	width: auto;
 	float: left;
 	margin-right: 10px;
 }

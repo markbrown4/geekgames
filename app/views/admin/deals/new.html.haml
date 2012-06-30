@@ -1,0 +1,9 @@
+.page-header
+  %h1 New deal
+  
+= form_for [:admin, deal], :wrapper => :inline do |form|
+  
+  = render :partial => 'form', :locals => {:f => form, :deal => deal }
+
+  .form-actions
+    = form.submit 'Create', :class => 'btn btn-primary'

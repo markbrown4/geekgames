@@ -99,10 +99,9 @@ class Round < ActiveRecord::Base
       event = event.split('|')
       diff = event[1].to_i
       if (diff > -1 && diff < 81)
-        score += 1
+        score += 2
       end
     end
-    score *= 2
     
     score
   end

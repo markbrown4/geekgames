@@ -1,0 +1,11 @@
+= f.label :title
+= f.text_field :title
+
+= f.label :description
+= f.text_area :description, :rows => 4, :class => 'span7'
+
+= f.label :image_url
+= f.text_field :image_url, :class => 'span7'
+
+= label_tag :end_time, "End time"
+= text_field_tag :end_time, deal.end_time.strftime('%d/%m/%Y'), :class => 'datepicker'

@@ -15,21 +15,23 @@
 .game{ :id=> "game-#{@game.id}" }
   #instructions
     = image_tag "instructions-#{@game.id}.jpg"
-    
+
   #message.dialog
-    .close &times;
-    %h1 Good game.
-    %p You can compete three times a day for each sport.
+    %h1 Good game
     .btn-area
-      %a.btn.btn-green{  :href => "#", :id => 'submit' } Continue
-      
+      %a.btn.btn-green{  :href => "#", :id => 'submit' }= (@game.id == 3) ? "Continue" : "Play the next game"
+    %p
+      %small
+        %br
+        %b hint:
+        you can try to beat your score once you've played all 3 games
+
   #retry.dialog
-    .close &times;
     %h1 Oops
     %p You can't stray too from the line and live to tell the story, please try again.
     .btn-area
       %a.btn.btn-green{  :href => "#", :id => 'retry' } Retry
-  
+
   #countdown
   #canvas
 

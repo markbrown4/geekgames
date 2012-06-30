@@ -1,0 +1,9 @@
+.page-header
+  %h1 New prize
+  
+= form_for [:admin, deal, prize], :wrapper => :inline do |form|
+  
+  = render :partial => 'form', :locals => {:f => form }
+
+  .form-actions
+    = form.submit 'Create', :class => 'btn btn-primary'

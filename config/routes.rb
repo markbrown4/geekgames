@@ -13,23 +13,22 @@ GeekGames::Application.routes.draw do
     resources :pages
     resources :users
     resources :games
+    resources :deals do
+      resources :prizes
+    end
   end
-
-  get  "prizes" => 'prizes#index'
 
   get  "leaderboard" => 'leaderboard#index'
 
   get  "profile" => "profile#edit", :as => :profile
   put  "profile" => "profile#update"
 
-  get  "rounds/summary"  => "rounds#summary"
+  get  "win"  => "rounds#summary", :as => :win
   post "games/submit" => "games#submit"
-  get  "games"        => "games#index",   :as => 'games'
-
-  get  'home' => "home#index", :as => 'home'
+  get  "games"        => "games#index", :as => :games
 
   get ":slug" => "pages#show", :as => :page
 
-  root :to => "home#index"
+  root :to => "home#index", :as => :home
 
 end

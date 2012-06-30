@@ -1,9 +1,9 @@
 .page-header
-  %h1 Edit game
+  %h1 Edit prize
   
-= form_for [:admin, game], :wrapper => :inline do |form|
+= form_for [:admin, :deal, prize], :wrapper => :inline do |form|
   
   = render :partial => 'form', :locals => {:f => form }
-  
+
   .form-actions
     = form.submit 'Update', :class => 'btn btn-primary'

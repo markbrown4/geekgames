@@ -58,9 +58,12 @@ a {
   margin: 0 auto;
 }
 .flash {
-  border-bottom: 1px solid #BBBABA;
-  padding: 10px 0;
-  background: #fff;
+  border: 1px solid rgba(black, .2);
+  border-radius: 4px 4px 4px 4px;
+  color: rgba(black, .5);
+  margin-bottom: 18px;
+  padding: 8px 35px 8px 14px;
+  text-shadow: 0 1px 0 rgba(white, .5);
 }
 .avatar {
   float: left;
@@ -169,6 +172,12 @@ a {
   }
   #todays-deal {
     overflow: hidden;
+    text-align: center;
+    img {
+      width: 410px;
+      height: 240px;
+      margin-bottom: 15px;
+    }
   }
   #deal {
     float: left;

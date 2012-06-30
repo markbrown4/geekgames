@@ -57,7 +57,7 @@ class window.Game
   submit: =>
     # console.log @munge(@data, 5)
     
-    url = if (@constructor.name == 'Pong') then "/rounds/summary" else window.location
+    url = if (@constructor.name == 'Pong') then "/win" else window.location
     $.ajax '/games/submit',
       type: 'POST'
       dataType: "json"

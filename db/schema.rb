@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120629042406) do
+ActiveRecord::Schema.define(:version => 20120630021457) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(:version => 20120629042406) do
     t.datetime "updated_at", :null => false
     t.text     "extra"
     t.text     "token"
+  end
+
+  create_table "deals", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "image_url"
+    t.datetime "end_time"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "games", :force => true do |t|
@@ -37,6 +46,19 @@ ActiveRecord::Schema.define(:version => 20120629042406) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "prizes", :force => true do |t|
+    t.string   "title"
+    t.string   "sub_title"
+    t.string   "url"
+    t.decimal  "price",         :precision => 8, :scale => 2
+    t.decimal  "reduced_price", :precision => 8, :scale => 2
+    t.integer  "deal_id"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+  end
+
+  add_index "prizes", ["deal_id"], :name => "index_prizes_on_deal_id"
 
   create_table "rounds", :force => true do |t|
     t.integer  "user_id"

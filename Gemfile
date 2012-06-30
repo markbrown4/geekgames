@@ -20,6 +20,7 @@ gem 'omniauth-twitter'
 gem 'country_code_select'
 gem 'decent_exposure'
 gem 'rdiscount'
+gem 'dotiw'
 
 group :assets do
   gem 'compass-rails'

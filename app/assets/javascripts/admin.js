@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-datepicker
 
 document.documentElement.className = document.documentElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2');
 $body = $("body");
@@ -11,5 +12,9 @@ ie = (function() {
 	while (div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->', all[0]);
   return v > 4 ? v : undef;
 }());
+
+$('.datepicker').datepicker({
+  format: 'dd/mm/yyyy'
+})
 
 //$('.dropdown-toggle').dropdown()

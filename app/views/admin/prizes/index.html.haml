@@ -1,0 +1,11 @@
+.page-header
+  = link_to "New", new_admin_deal_prize_path(deal), :class => 'btn pull-right'
+  %h1= "Prizes for #{deal.title}"
+
+%table.table.table-bordered.table-bordered
+  %tr
+    %th Name
+  - prizes.each do |prize|
+    %tr
+      %td
+        = link_to prize.title, edit_admin_deal_prize_path(deal, prize)

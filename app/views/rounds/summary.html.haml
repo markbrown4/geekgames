@@ -9,15 +9,16 @@
     PLUS... you've qualified for TODAY'S DEAL
 
 .game
+  #message
+  
   #main-prize
     %h2 Main prize
     %p You're now in the running to WIN the Main Prize!
     %p= image_tag "main-prize.png"
   #todays-deal
     %h1 Today's deal
-    %img{ height: '240px', width: '410px', style: "background: grey" }
-    = link_to "View more", "#", :class => "btn blue-btn"
-    
+    %img{ height: '240', width: '410', src: @deal.image_url }
+    = link_to "View more", "#", :class => "btn btn-blue", :id => 'view-deal'
 
 - content_for :button_area do
   %a.btn.btn-green{ :href => "#", :id => 'deal' } Grab today's deal
@@ -30,9 +31,9 @@
 - content_for :sidebar do
   %ul
     %li.time
-      %b Round ends
+      %b Deal ends in
       %br
-      12 hours 10 minutes
+      = time_until @deal.end_time
     %li.twitter= link_to "TWEET YOUR SCORE", "http://twitter.com/share?url=geekgames.sitepoint.com&text=I am ranked #{@rank} on Geek Games at Sitepoint: "
     %li.facebook= link_to "UPDATE YOUR STATUS", "#"
     %li.email= link_to "EMAIL A FRIEND", "mailto:friend@gmail.com&content=I am ranked #{@rank} on Geek Games at Sitepoint: "
