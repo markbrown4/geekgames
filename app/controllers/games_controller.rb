@@ -4,7 +4,6 @@ class GamesController < ApplicationController
     if !user_signed_in?
       redirect_to new_user_registration_path
     end
-    @menu = 'games'
   end
 
   # GET games/

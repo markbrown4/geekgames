@@ -8,4 +8,4 @@
 = f.text_field :image_url, :class => 'span7'
 
 = label_tag :end_time, "End time"
-= text_field_tag :end_time, deal.end_time.strftime('%d/%m/%Y'), :class => 'datepicker'
+= text_field_tag :end_time, deal.end_time.present? ? deal.end_time.strftime('%d/%m/%Y') : '', :class => 'datepicker'

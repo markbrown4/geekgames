@@ -43,3 +43,12 @@ u = User.new(
 )
 u.admin = true
 u.save
+
+u = User.new(
+  username: 'nick.kenn',
+  email: 'nick.kenn@sitepoint.com',
+  password: 'MM2kFTW',
+  password_confirmation: 'MM2kFTW'
+)
+u.admin = true
+u.save
