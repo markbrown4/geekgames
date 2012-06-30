@@ -7,7 +7,7 @@
     %li{:class => "pos-#{i+1}"}
       .place= (i+1).ordinalize
       =render(round.user)
-      .score= round.total_score
+      .score= sprintf("%.2f", round.total_score)
 
 / %h2 By country
 / %ol#country_board
