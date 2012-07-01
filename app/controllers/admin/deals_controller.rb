@@ -20,13 +20,19 @@ class Admin::DealsController < Admin::ApplicationController
   end
   
   def create
-    deal.end_time = Date(params[:end_time]).end_of_day
+    deal.end_time = Date.strptime(params[:end_time], '%d/%m/%Y').end_of_day
     if deal.save
       flash[:success] = "Deal created"
       redirect_to edit_admin_deal_path(deal)
     else
       render :new
     end
+  end
+  
+  def destroy
+    deal.destroy
+    flash[:success] = "Deal deleted"
+    respond_with(deal)
   end
   
 end

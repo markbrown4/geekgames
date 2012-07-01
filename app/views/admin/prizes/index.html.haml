@@ -9,3 +9,5 @@
     %tr
       %td
         = link_to prize.title, edit_admin_deal_prize_path(deal, prize)
+      %td
+        = link_to 'Destroy', [:admin, deal, prize], :confirm => 'Are you sure?', :method => :delete

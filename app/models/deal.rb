@@ -1,5 +1,5 @@
 class Deal < ActiveRecord::Base
-  has_many :prizes
+  has_many :prizes, :dependent => :destroy
   attr_accessible :title, :description, :image_url
   
   def time_from_now
@@ -10,6 +10,6 @@ class Deal < ActiveRecord::Base
   end
   
   def self.todays
-    where("DATE(created_at) = DATE(?)", Time.now).limit(1).first
+    where("DATE(end_time) = DATE(?)", Time.now).limit(1).first
   end
 end
