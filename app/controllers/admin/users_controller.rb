@@ -1,7 +1,10 @@
 class Admin::UsersController < Admin::ApplicationController
   
-  expose(:users) { User.search(params[:search], params[:page]) }
   expose(:user)
+  
+  def index
+    @users = User.search(params[:search], params[:page])
+  end
   
   def update
     if user.save
