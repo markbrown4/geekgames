@@ -1,17 +1,16 @@
 # Geek Games
-
 Competition built for Sitepoint, a series of game with a leaderboard and prizes.
 
 ## Deployment
-http://games.sitepoint.com/
+http://games.sitepoint.com/  
 git remote add production git@heroku.com:sitepoint-geekgames.git
 
-http://geek-games-staging.herokuapp.com/
+http://geek-games-staging.herokuapp.com/  
 git remote add staging git@heroku.com:geek-games-staging.git
 
 ## Git workflow
 ### Push changes to github
-git pull origin master
+git pull origin master  
 git push origin master
 
 ### Deploy to staging
