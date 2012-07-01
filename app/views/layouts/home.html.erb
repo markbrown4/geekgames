@@ -14,7 +14,7 @@
 <body class="home">
 <div id="wrapper">
   <div id="header">
-    <p><a href="http://www.sitepoint.com/"><%= image_tag "logo.png" %></a></p>
+    <a id="logo" href="http://www.sitepoint.com/"><%= image_tag "logo.png" %></a>
     <% if user_signed_in? %>
     <div class="drop-down" id="profile">
       <a class="trigger" href="#"><%= gravatar_image_tag(current_user.email, :alt => "") %> Hi <%= current_user.username %> <b class="caret"></b></a>
@@ -32,6 +32,7 @@
   <div id="middle">
     <div class="inner">
       <div id="content">
+        <%= render :partial => 'flashes' %>
         <%= yield %>
       </div>
     </div>

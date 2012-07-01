@@ -33,6 +33,7 @@
       <li class="win"><%= link_to "Win!", win_path %></li>
     </ul>
     <% else %>
+    <a id="logo" href="http://www.sitepoint.com/"><%= image_tag "logo.png" %></a>
     <ul id="menu">
       <li class="home <%='active' if menu == 'home' %>"><%= link_to t('home'), home_path %></li>
     </ul>
