@@ -21,6 +21,8 @@ gem 'country_code_select'
 gem 'decent_exposure'
 gem 'rdiscount'
 gem 'dotiw'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 group :assets do
   gem 'compass-rails'

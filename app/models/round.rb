@@ -1,6 +1,6 @@
 class Round < ActiveRecord::Base
   belongs_to :user
-  has_many :scores
+  has_many :scores, :dependent => :destroy
   attr_accessible :step, :total_score
   validates_inclusion_of :total_score, :in => 0..300, :message => "can only be between 1 and 300."
 

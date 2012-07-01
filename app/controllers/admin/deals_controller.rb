@@ -3,12 +3,6 @@ class Admin::DealsController < Admin::ApplicationController
   expose(:deals) { Deal.all }
   expose(:deal)
   
-  def index
-  end
-  
-  def new
-  end
-    
   def update
     deal.end_time = Date.strptime(params[:end_time], '%d/%m/%Y').end_of_day
     if deal.save

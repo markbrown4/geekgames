@@ -3,12 +3,6 @@ class Admin::PrizesController < Admin::ApplicationController
   expose(:deal)
   expose(:prizes) { deal.prizes }
   expose(:prize)
-  
-  def index
-  end
-  
-  def edit
-  end
 
   def update
     if prize.save

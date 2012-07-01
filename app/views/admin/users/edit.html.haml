@@ -1,2 +1,10 @@
 .page-header
   %h1 Edit user
+
+= form_for [:admin, user], :wrapper => :inline do |form|
+
+  = render :partial => 'form', :locals => {:f => form }
+
+  .form-actions
+    = form.submit 'Update', :class => 'btn btn-primary'
+    = link_to 'Destroy', [:admin, user], :confirm => 'Are you sure? This will delete all this users data and game sessions.', :method => :delete, :class => 'btn btn-danger'

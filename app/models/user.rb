@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :rounds
+  has_many :rounds, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
 
   validates :username,  :uniqueness => true, :allow_blank => true
@@ -19,6 +19,12 @@ class User < ActiveRecord::Base
   
   def best_round()
     rounds.order('total_score desc').limit(1).first
+  end
+  
+  def self.search(search, page)
+    paginate :per_page => 20, :page => page,
+             :conditions => ['username like ?', "%#{search}%"],
+             :order => 'username'
   end
 
   # Auth

@@ -2,12 +2,6 @@ class Admin::GamesController < Admin::ApplicationController
 
   expose(:games) { Game.all }
   expose(:game)
-  
-  def index
-  end
-  
-  def edit
-  end
 
   def update
     if game.save
