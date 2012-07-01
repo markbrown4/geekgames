@@ -83,8 +83,6 @@ class Game
     $body.unbind()
 
   submit: =>
-    # console.log @munge(@data, 5)
-    
     url = if (@constructor.name == 'Pong') then "/win" else window.location
     $.ajax '/games/submit',
       type: 'POST'
@@ -181,6 +179,10 @@ class Mouse extends Game
     @prev = @pos
 
   lose: =>
+    # Double check
+    if @lines[0].isPointInside(@pos.x, @pos.y)
+      return
+    
     @playing = false
     @unbindEvents()
     $body.addClass("retry show-dialog")

@@ -14,7 +14,7 @@ Ready... Aim... Fire!'
 g.id = 2
 g.save
 g = Game.new(
-  title: 'PING LONG',
+  title: 'PONG LONG',
   description: 'Out-last the computer in a **game of pong.** 
 Ready... Steady... Serve!'
 )
