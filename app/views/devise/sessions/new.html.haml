@@ -1,7 +1,7 @@
 - content_for :before_content do
   %h1 Sign in
 
-.sign_in
+.bluey
   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
     #auth
       = link_to "Sign in via Twitter", "/auth/twitter", :class => 'auth_twitter'

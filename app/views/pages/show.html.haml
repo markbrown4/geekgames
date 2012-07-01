@@ -1,5 +1,6 @@
-.page-header
+- content_for :before_content do
   %h1= @page.title
 
-:markdown
-  #{@page.body}
+.bluey
+  :markdown
+    #{@page.body}

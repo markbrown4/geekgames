@@ -135,6 +135,10 @@ a {
     }
   }
 }
+#middle {
+  background: image-url("bg.jpg") no-repeat 50% 0;
+  padding-bottom: 20px;
+}
 #content {
   position: relative;
   margin-right: 257px;
@@ -226,13 +230,6 @@ a {
   }
 }
 
-.games, .leaderboard, .home, .rounds {
-  #middle {
-    background: image-url("bg.jpg") no-repeat 50% 100%;
-    min-height: 350px;
-    padding-bottom: 20px;
-  }
-}
 .home {
   .dude {
     position: absolute;
@@ -262,7 +259,6 @@ a {
 .leaderboard {
   #content {
     margin-right: 0;
-    min-height: 400px;
   }
   #middle {
     padding-bottom: 0;
@@ -678,7 +674,35 @@ canvas {
     }
   }
 }
-
+.bluey {
+  background: #c4e2ff;
+  @include box-shadow(0 0 10px #888 inset);
+  border-radius: 2px;
+  border: 1px solid #fff;
+  padding: 20px 50px;
+  width: 500px;
+  margin: 0 auto;
+  #auth {
+    float: left;
+    width: 210px;
+    padding-right: 10px;
+    a {
+      display: block;
+      text-align: center;
+      padding: 50px 0 10px;
+      color: #333;
+    }
+    .auth_twitter {
+      padding-top: 70px;
+      margin-bottom: 50px;
+    }
+  }
+  .login {
+    float: left;
+    border-left: 2px solid #fff;
+    padding-left: 30px;
+  }
+}
 #signup-signin {
   font-size: 18px;
   margin-bottom: 10px;
