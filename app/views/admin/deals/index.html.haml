@@ -11,4 +11,4 @@
         = link_to deal.title, edit_admin_deal_path(deal)
       %td
         = link_to "Prizes", admin_deal_prizes_path(deal)
-        = link_to 'Destroy', [:admin, :deal], :confirm => 'Are you sure?', :method => :delete
+        = link_to 'Destroy', [:admin, deal], :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger'
