@@ -15,11 +15,22 @@ class User < ActiveRecord::Base
 
   def current_round
     round = rounds.last
-    round = self.rounds.create() if !round.present? || round.complete?
-    round
+    
+    # if you haven't got one create it
+    return self.rounds.create() unless round.present?
+    # if it's not complete use it
+    return round unless round.complete?
+    # if you've completed and can have another go create it
+    return self.rounds.create() if round.complete? && number_of_rounds_today < 3
+    
+    nil
   end
   
-  def best_round()
+  def number_of_rounds_today
+    rounds.where("DATE(created_at) = DATE(?)", Time.now).count
+  end
+  
+  def best_round
     rounds.order('total_score desc').limit(1).first
   end
   

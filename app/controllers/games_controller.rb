@@ -3,29 +3,25 @@ class GamesController < ApplicationController
   before_filter do
     if !user_signed_in?
       redirect_to new_user_registration_path
+    else
+      @round = current_user.current_round
+      unless @round.present?
+        flash[:alert] = "Sorry, you can only compete 3 times a day, please try again tomorrow."
+        redirect_to win_path
+      end
     end
   end
 
   # GET games/
   def index
-    @round = current_user.current_round
-    if @round.present?
-      @game = Game.find(@round.step)
-    else
-      render :inline => 'Sorry you cant compete now', :status => 200
-    end
+    @game = Game.find(@round.step)
   end
   
   # POST games/submit
   def submit
     # data = munge(params[:data], 5)
-    @round = current_user.current_round
-    if @round.present?
-      if @round.proccess_score(params[:data])
-        success()
-      else
-        error()
-      end
+    if @round.proccess_score(params[:data])
+      success()
     else
       error()
     end

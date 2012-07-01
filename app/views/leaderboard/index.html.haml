@@ -6,7 +6,7 @@
   - @leaders.each_with_index do |round, i|
     %li{:class => "pos-#{i+1}"}
       .place= (i+1).ordinalize
-      =render(round.user)
+      = render(round.user)
       .score= sprintf("%.2f", round.total_score)
 
 / %h2 By country

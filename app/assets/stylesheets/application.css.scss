@@ -59,9 +59,9 @@ a {
 }
 .flash {
   font-size: 16px;
-  background: #fff;
-  border-bottom: 1px solid rgba(black, .2);
-  color: rgba(black, .5);
+  background-color: #dff0d8;
+  border-bottom: 1px solid #d6e9c6;
+  color: #468847;
   text-align: center;
   margin-bottom: 18px;
   padding: 10px 0;
@@ -71,11 +71,6 @@ a {
   background-color: #f2dede;
   border-color: #eed3d7;
   color: #b94a48;
-}
-.alert-success, .alert-info {
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #468847;
 }
 
 .avatar {
