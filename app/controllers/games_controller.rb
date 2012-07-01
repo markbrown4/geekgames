@@ -19,8 +19,8 @@ class GamesController < ApplicationController
   
   # POST games/submit
   def submit
-    # data = munge(params[:data], 5)
-    if @round.proccess_score(params[:data])
+    data = Base64.decode64(params[:data])
+    if @round.proccess_score(data)
       success()
     else
       error()
@@ -37,17 +37,6 @@ class GamesController < ApplicationController
   
   def error
     render :inline => ':(', :status => 500
-  end
-  
-  
-  private
-  
-  def munge(text, key)
-    result = ""
-    text.each_byte do |c|
-      result += (key ^ c).chr;
-    end
-    result
   end
 
 end
