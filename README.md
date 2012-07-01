@@ -17,7 +17,7 @@ git push origin master
 git push staging master
 
 ### Deploy to production
-git pull production master
+git push production master
 
 ## Security for a game session
 
