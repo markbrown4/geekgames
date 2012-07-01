@@ -1,0 +1,15 @@
+development:
+  campaign_monitor: 
+    api_key: ***REMOVED***
+    list_id: ***REMOVED***
+
+staging:
+  campaign_monitor: 
+    api_key: ***REMOVED***
+    list_id: ***REMOVED***
+
+production:
+  campaign_monitor: 
+    api_key: ***REMOVED***
+    list_id: ***REMOVED***
+

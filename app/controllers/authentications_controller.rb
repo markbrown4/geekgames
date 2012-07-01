@@ -10,10 +10,11 @@ class AuthenticationsController < ApplicationController
       redirect_to request.env['omniauth.origin'] || edit_user_path(current_user)
     else
       user = new_user_with_authentication
-
       if user.save
+        user.send_to_campaign_monitor
         session[:after_email_return_to] = session[:user_return_to] if user.email.blank?
         if auth_params[:opt_in] and user.email
+          
           sign_in_and_redirect user
         else
           sign_in user

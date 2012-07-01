@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   validates :email,     :presence => true, :if => :email_required?
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :country, :opt_in
   
+  after_create :send_to_campaign_monitor, :if => :opt_in
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -25,6 +27,27 @@ class User < ActiveRecord::Base
     paginate :per_page => 20, :page => page,
              :conditions => ['username like ?', "%#{search}%"],
              :order => 'username'
+  end
+  
+  def name
+    if self.first_name.present?
+      "#{first_name} #{last_name}"
+    elsif self.username.present?
+      self.username
+    else
+      self.email[/[^@]+/]
+    end
+  end
+  
+  def send_to_campaign_monitor
+    api_key = APP_CONFIG['campaign_monitor']['api_key']
+    list_id = APP_CONFIG['campaign_monitor']['list_id']
+    domain = "api.createsend.com"
+    path = "/api/api.asmx/Subscriber.Add?ApiKey=#{api_key}&ListID=#{list_id}&Email=#{email}&Name=#{name}"
+    http = Net::HTTP.new(domain, 80)
+    
+    # logger.debug("CAMPAIGN MONITOR: #{domain}#{path}")
+    http.get(path)
   end
 
   # Auth
