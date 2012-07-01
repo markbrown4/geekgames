@@ -18,7 +18,7 @@ class Round < ActiveRecord::Base
     Round.where("total_score > ?", self.total_score).count + 1
   end
   
-  def proccess_score(data)
+  def process_score(data)
     score = 0
     events = data.split('*')
     event_data = {
@@ -28,11 +28,11 @@ class Round < ActiveRecord::Base
     }
     
     if step == 1
-      score = proccess_mouse_score(event_data)
+      score = process_mouse_score(event_data)
     elsif step == 2
-      score = proccess_shoot_score(event_data)
+      score = process_shoot_score(event_data)
     elsif step == 3
-      score = proccess_pong_score(event_data)
+      score = process_pong_score(event_data)
     end
     
     if score < 0
@@ -44,7 +44,7 @@ class Round < ActiveRecord::Base
     self.save_score(score, data)
   end
   
-  def proccess_mouse_score(data)
+  def process_mouse_score(data)
     # [ts, penalty, x, y]
     # - sum ts * penalty
     # - validate length > 5
@@ -65,7 +65,7 @@ class Round < ActiveRecord::Base
     score
   end
   
-  def proccess_shoot_score(data)
+  def process_shoot_score(data)
     # [ts, evil, x, y]
     score = 0
     data[:events].each do |event|
@@ -91,7 +91,7 @@ class Round < ActiveRecord::Base
     score
   end
   
-  def proccess_pong_score(data)
+  def process_pong_score(data)
     # [ts, diff, x, y]
     # - if diff < 0 || diff > 80 # missed paddle
     score = 0
@@ -117,12 +117,12 @@ class Round < ActiveRecord::Base
   
   def progress(value)
     unless complete?
+      self.total_score += value
       if self.step == 3
         self.complete = true
       else
         self.step += 1
       end
-      self.total_score += value
       self.save()
     end
   end

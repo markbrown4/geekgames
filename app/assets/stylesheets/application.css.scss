@@ -254,7 +254,8 @@ a {
 }
 .leaderboard {
   #content {
-    margin-right: 0;
+    margin: 20px auto 0;
+    width: 770px;
   }
   #middle {
     padding-bottom: 0;
@@ -388,7 +389,6 @@ canvas {
   list-style: none;
   margin: 1em 0 -15px 0;
   padding: 0;
-  width: 400px;
   margin: 0 auto;
   background: rgba(#fff, .8);
   border: 1px solid rgba(#000,.1);
@@ -396,6 +396,12 @@ canvas {
   color: #000;
   font-size: 14px;
   text-align: left;
+  width: 400px;
+  float: left;
+  #content {
+    width: 770px;
+    margin: 0 auto;
+  }
   small {
     font-size: 100%;
     color: #333;
@@ -439,6 +445,44 @@ canvas {
     line-height: 36px;
     color: #333;
   }
+}
+#country_board {
+  background: #c4e2ff;
+  @include box-shadow(0 0 10px #888 inset);
+  border-radius: 3px;
+  border: 1px solid #fff;
+  padding: 20px;
+  width: 300px;
+  float: right;
+  text-align: center;
+  h2 { margin: 10px 0 20px }
+  ol {
+    list-style: none;
+    margin: 0 0 0 41px;
+    padding: 0;
+  }
+  li {
+    float: left;
+    width: 65px;
+    margin-right: 10px;
+  }
+  img {
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .place {
+    @include box-shadow(0 0 10px #888 inset);
+    background: #0897cf;
+    color: #fff;
+    font-family: "Gill Sans", "Arial Black";
+    font-weight: bold;
+    font-size: 50px;
+  }
+  .pos-2 { padding-top: 20px }
+  .pos-3 { padding-top: 50px }
+  .pos-2 .place { padding-top: 30px }
+  .pos-1 .place { padding-top: 50px }
 }
 
 .drop-down {

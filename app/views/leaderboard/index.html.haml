@@ -1,6 +1,6 @@
 - content_for :before_content do
   %h1 The Leaderboard
-  %p.description All time Olympic records
+  %p.description Challenge the best to WIN the overall Prize
 
 %ol#leaderboard
   - @leaders.each_with_index do |round, i|
@@ -9,13 +9,15 @@
       = render(round.user)
       .score= sprintf("%.2f", round.total_score)
 
-/ %h2 By country
-/ %ol#country_board
-/   - for i in 0..2
-/     %li{:class => "pos-#{i+1}"}
-/       .place= (i+1).ordinalize
-/       - if @country_scores.length > i
-/         .country= @country_scores.keys[i]
-/         .score= @country_scores[@country]
-/       - else
-/         = "No #{(i+1).ordinalize} place yet";
+#country_board
+  %h2 Overall country leaderboard
+  %ol
+    %li.pos-2
+      .country= image_tag "flags/#{@country_scores.keys[1] || 'none'}.png".downcase
+      .place 2
+    %li.pos-1
+      .country= image_tag "flags/#{@country_scores.keys[0] || 'none'}.png".downcase
+      .place 1
+    %li.pos-3
+      .country= image_tag "flags/#{@country_scores.keys[2] || 'none'}.png".downcase
+      .place 3

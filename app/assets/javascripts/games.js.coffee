@@ -83,13 +83,15 @@ class Game
     $body.unbind()
 
   submit: =>
-    url = if (@constructor.name == 'Pong') then "/win" else window.location
-    $.ajax '/games/submit',
-      type: 'POST'
-      dataType: "json"
-      data: { data: Base64.encode(@data) }
-      success: -> window.location = url
-      error: -> window.location = url
+    if !@submitted
+      @submitted = true
+      pong = @constructor.name == 'Pong'
+      $.ajax '/games/submit',
+        type: 'POST'
+        dataType: "json"
+        data: { data: Base64.encode(@data) }
+        success: (data)-> window.location = if pong then "/win?score=#{data.score}" else window.location
+        error: (data)-> window.location = if pong then "/win?score=#{data.score}" else window.location
     
     false
 

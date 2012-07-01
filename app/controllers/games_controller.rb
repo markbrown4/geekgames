@@ -20,7 +20,7 @@ class GamesController < ApplicationController
   # POST games/submit
   def submit
     data = Base64.decode64(params[:data])
-    if @round.proccess_score(data)
+    if @round.process_score(data)
       success()
     else
       error()
@@ -28,7 +28,7 @@ class GamesController < ApplicationController
   end
   
   def success
-    render :inline => ':)', :status => 200
+    render :json => { :score => @round.total_score }.to_json
   end
   
   def invalid
