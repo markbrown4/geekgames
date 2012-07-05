@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<!--[if IE 7 ]> <html lang="en" class="no-js ie ie7"> <![endif]-->
-<!--[if IE 8 ]> <html lang="en" class="no-js ie ie8"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>GeekGames</title>
-  <%= stylesheet_link_tag "application", :media => "all" %>
-  <!--[if IE]>
-  <%= stylesheet_link_tag "ie", :media => "all" %>
-  <![endif]-->
-  <%= csrf_meta_tags %>
+<meta charset="utf-8">
+<title>GeekGames</title>
+<%= stylesheet_link_tag "application", :media => "all" %>
+<%= csrf_meta_tags %>
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-30131-11']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
 </head>
 <body class="<%= controller.controller_name %> <%= @body_class %>">
 <div id="overlay"></div>

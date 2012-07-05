@@ -1,12 +1,13 @@
 - content_for :before_content do
   %h1 Edit profile
 
-= form_for(current_user, :url => profile_path) do |f|
-  = f.label :username
-  = f.text_field :username
+.bluey
+  = form_for(current_user, :url => profile_path) do |f|
+    = f.label :username
+    = f.text_field :username
   
-  = f.label :country
-  = f.country_code_select :country
+    = f.label :country
+    = f.country_code_select :country
   
-  .button-area
-    = f.submit :value => 'Update'
+    .button-area
+      = f.submit :value => 'Save'

@@ -101,9 +101,10 @@ a {
   box-shadow: 0 1px 0 #fff;
   padding: 60px 0 12px;
   height: 40px;
+  position: relative;
   @include clearfix;
   #logo {
-    left: 390px;
+    left: 310px;
     position: absolute;
     top: 27px;
   }
@@ -227,6 +228,7 @@ a {
 }
 
 .home {
+  #header { background: none }
   .dude {
     position: absolute;
     bottom: 0;
@@ -235,7 +237,7 @@ a {
   }
   .screen {
     position: absolute;
-    bottom: 114px;
+    bottom: 102px;
     left: 321px;
   }
   #middle {

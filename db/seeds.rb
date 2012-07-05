@@ -8,7 +8,7 @@ g.id = 1
 g.save
 g = Game.new(
   title: 'SPAM-SHOOT',
-  description: '**Hate spam?** Vent your frustration and shoot as many email spam as you can.  
+  description: '**Hate spam?** Vent your frustration and shoot as many spam emails as you can.  
 Ready... Aim... Fire!'
 )
 g.id = 2
