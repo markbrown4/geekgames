@@ -7,7 +7,7 @@
     = f.text_field :username
   
     = f.label :country
-    = f.country_code_select :country
+    = country_selector(f)
   
     .button-area
       = f.submit :value => 'Save'

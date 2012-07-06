@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
   
   after_create :send_to_campaign_monitor, :if => :opt_in
   
+  before_save do
+    self.password_confirmation = self.password
+    self.username = self.email[/[^@]+/]
+  end
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

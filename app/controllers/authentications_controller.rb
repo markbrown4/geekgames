@@ -28,7 +28,7 @@ class AuthenticationsController < ApplicationController
   end
 
   def update
-    if current_user.update_attributes filter_attr params[:user], %w(email opt_in)
+    if current_user.update_attributes filter_attr params[:user], %w(email opt_in username country)
       redirect_to after_sign_in_path_for current_user
     else
       render :edit

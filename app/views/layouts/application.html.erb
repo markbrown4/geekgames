@@ -21,18 +21,25 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <![endif]-->
 </head>
 <body class="<%= controller.controller_name %> <%= @body_class %>">
+<script>
+google_conversion_id = 1071863924;
+google_conversion_language = "en";
+google_conversion_format = "3";
+google_conversion_color = "ffffff";
+google_conversion_label = "Z1h2CNbGvAMQ9LCN_wM";
+google_conversion_value = 0;
+</script>
+<script src="http://www.googleadservices.com/pagead/conversion.js"></script>
+<noscript>
+<div style="display:inline;"><img height="1" width="1" style="border-style:none" alt="" src="http://www.googleadservices.com/pagead/conversion/1071863924/?value=0&amp;label=Z1h2CNbGvAMQ9LCN_wM&amp;guid=ON&amp;script=0"></div>
+</noscript>
 <div id="overlay"></div>
 <div id="wrapper">
   <div id="header">
     <% if user_signed_in? %>
-    <div class="drop-down" id="profile">
-      <a class="trigger" href="#"><%= gravatar_image_tag(current_user.email, :alt => "") %> Hi <%= current_user.username %> <b class="caret"></b></a>
-      <ul>
-        <li<%= ' class="active"'.html_safe if menu == "profile" %>><%= link_to "Profile", profile_path %></li>
-        <li><%= link_to "Update avatar", "https://en.gravatar.com/site/login/" %></li>
-        <li class="divider"></li>
-        <li><%= link_to "Sign out", destroy_user_session_path, :method=>'delete' %></li>
-      </ul>
+    <div id="profile">
+      Hi <%= current_user.username %>
+      <a href="https://en.gravatar.com/site/login/" title="Update avatar"><%= gravatar_image_tag(current_user.email, :alt => "") %></a>
     </div>
     <ul id="menu">
       <li class="home"><%= link_to "Home", home_path %></li>

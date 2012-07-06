@@ -1,13 +1,18 @@
 - content_for :before_content do
-  %h1 Confirm your email
+  %h1 Confirm your details
 
 .bluey
   = form_for current_user, :url => authentication_path(current_user.id), :html => { :id => "authentication_form" } do |form|
-
     %ul
       %li
         = form.label :email
         = form.text_field :email
+      %li
+        = form.label :username
+        = form.text_field :username
+      %li
+        = form.label :country
+        = country_selector(form)
       %li
         = form.label :opt_in, :class => "checkbox" do
           = form.check_box :opt_in, :checked => 'checked'

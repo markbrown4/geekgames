@@ -112,16 +112,13 @@ a {
     position: absolute;
     top: 27px;
   }
-  .drop-down {
+  #profile {
     float: right;
     height: 30px;
     line-height: 30px;
     margin: 10px 0 0 20px;
     font-size: 14px;
     text-align: left;
-    .trigger {
-      color: #333;
-    }
     img {
       float: right;
       height: 30px;
@@ -131,6 +128,7 @@ a {
       overflow: hidden;
     }
     a {
+      color: #6D6C6C;
       text-decoration: none;
     }
   }
