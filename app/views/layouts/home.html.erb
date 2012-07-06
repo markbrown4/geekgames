@@ -34,8 +34,9 @@ google_conversion_value = 0;
     <a id="logo" href="http://www.sitepoint.com/"><%= image_tag "logo.png" %></a>
     <% if user_signed_in? %>
     <div id="profile">
+      <a class="avatar" href="https://en.gravatar.com/site/login/" title="Update avatar"><%= gravatar_image_tag(current_user.email, :alt => "") %></a>
+      <%= link_to "Sign out", destroy_user_session_path, :method=>'delete', :class => "sign_out" %>
       Hi <%= current_user.username %>
-      <a href="https://en.gravatar.com/site/login/" title="Update avatar"><%= gravatar_image_tag(current_user.email, :alt => "") %></a>
     </div>
     <% end %>
     <ul id="menu">
