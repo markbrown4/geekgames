@@ -50,7 +50,7 @@ google_conversion_value = 0;
       <li class="win"><%= link_to "Win!", win_path %></li>
     </ul>
     <% else %>
-    <a id="logo" href="http://www.sitepoint.com/"><%= image_tag "logo.png" %></a>
+    <a id="logo" href="http://www.sitepoint.com/" target="_blank"><%= image_tag "logo.png" %></a>
     <ul id="menu">
       <li class="home <%='active' if menu == 'home' %>"><%= link_to t('home'), home_path %></li>
     </ul>
@@ -81,8 +81,8 @@ google_conversion_value = 0;
     <li><%= link_to "Competition details", page_path('terms') %></li>
   </ul>
   <p id="sub-footer">
-    <span id="new-relic">Geek Games brought to you by <a href="http://newrelic.com/"><%= image_tag "new-relic-logo.png" %></a></span>
-    <a href="http://www.sitepoint.com/"><%= image_tag "logo-small.png" %></a>
+    <span id="new-relic">Geek Games brought to you by <a href="http://newrelic.com/" target="_blank"><%= image_tag "new-relic-logo.png" %></a></span>
+    <a href="http://www.sitepoint.com/" target="_blank"><%= image_tag "logo-small.png" %></a>
   </p>
 </div>
 <%= javascript_include_tag "application" %>

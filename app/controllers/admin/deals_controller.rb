@@ -29,4 +29,10 @@ class Admin::DealsController < Admin::ApplicationController
     redirect_to admin_deals_path
   end
   
+  def show
+    @round = Round.first
+    @deal = deal
+    render :template => "rounds/win", :layout => 'application'
+  end
+  
 end

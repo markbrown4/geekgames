@@ -265,7 +265,7 @@ a {
     @include clearfix;
   }
 }
-.rounds {
+.rounds, .deals {
   .game {
     margin: 0;
     position: static;
@@ -707,10 +707,15 @@ canvas {
       float: left;
       width: 75px;
       color: #434343;
-      font-weight: bold;
       line-height: 35px;
+      font-weight: bold;
+    }
+    small {
+      color: #333;
+      font-weight: bold;
     }
     .price {
+      font-weight: normal;
       text-decoration: line-through;
       color: #7e7e7e;
     }

@@ -14,9 +14,9 @@
 		<div class="container">
 			<a class="brand" href="/admin/">geekgames admin</a>
 			<ul class="nav pull-left">
-				<%- menu_items = ['dashboard', 'pages','games','deals','users','errors'] %>
+				<%- menu_items = ['dashboard', 'pages','games','deals','users'] %>
 				<%- menu_items.each do |page| %>
-				<li<%= %( class="active").html_safe if menu == page %>><%= link_to page, [:admin, page] %></li>
+				<li<%= %( class="active").html_safe if menu == page %>><%= link_to t(page), [:admin, page] %></li>
 				<%- end %>
 			</ul>
 			<% if user_signed_in? %>
