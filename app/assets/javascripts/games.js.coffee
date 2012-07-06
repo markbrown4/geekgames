@@ -133,6 +133,8 @@ class Mouse extends Game
     @offsetTop = offset.top + 10
     @offsetLeft = offset.left
     
+    $('#timer').show()
+    
     if not ($.browser.msie || $.browser.opera)
       @getCanvas()
       @ctx.strokeStyle = "red"
@@ -143,7 +145,15 @@ class Mouse extends Game
     winningLine.attr('stroke': 'black')
     @startPoint.attr({ 'fill':'white' })
     @startPoint.hover(@prepStart, @start)
-
+  
+  frame: ->
+    time = (20 - (new Date().getTime() - @start_time) / 1000).toFixed(2)
+    if (time < 0)
+      time = 0
+      @lose true
+      $('#timer_count').html('0.00')
+    $('#timer_count').html(time)
+  
   render: ->
     @deathLine = @paper.path(@path).attr({ 'stroke-width':500, 'stroke': 'white', 'stroke-linecap': 'round' })
 
@@ -161,6 +171,8 @@ class Mouse extends Game
     data = []
     data.push([String(new Date().getTime())])
     @startPoint.mouseout(@prepStart, @start)
+    
+    @start_time = new Date().getTime()
 
   prepStart: =>
     @playing = true
@@ -188,9 +200,9 @@ class Mouse extends Game
       @ctx.stroke();
     @prev = @pos
 
-  lose: =>
+  lose: (reallyLose = false)=>
     # Double check
-    if @lines[0].isPointInside(@pos.x, @pos.y)
+    if !reallyLose && @lines[0].isPointInside(@pos.x, @pos.y)
       return
     
     @playing = false

@@ -348,12 +348,12 @@ canvas {
   font-size: 30px;
   font-weight: bold;
 }
-#score {
+#score, #timer {
   float: right;
   width: 110px;
   text-align: center;
 }
-#score_count {
+#score_count, #timer_count {
   @include pie;
   float: right;
   background: #fff;
@@ -366,6 +366,7 @@ canvas {
   font-size: 40px;
   font-weight: bold;
 }
+#timer_count { font-size: 22px }
 .game {
   background: #fff;
   @include box-shadow(0 0 10px rgba(0, 0, 0, 0.5) inset);
