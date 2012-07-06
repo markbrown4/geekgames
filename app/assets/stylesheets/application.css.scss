@@ -260,9 +260,7 @@ a {
   #content {
     width: 812px;
     margin: 0 auto;
-  }
-  #middle {
-    padding-bottom: 0;
+    @include clearfix;
   }
 }
 .rounds {

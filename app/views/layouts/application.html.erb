@@ -64,7 +64,7 @@ google_conversion_value = 0;
         <%= yield :sidebar %>
       </div>
       <% end %>
-      <div id="content"<%= "class=\"max\"".html_safe unless content_for?(:sidebar) %>>
+      <div id="content"<%= " class=\"max\"".html_safe unless content_for?(:sidebar) %>>
         <%= yield %>
       </div>
     </div>
