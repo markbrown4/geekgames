@@ -258,9 +258,8 @@ a {
 }
 .leaderboard {
   #content {
-    margin: 20px auto 0;
-    width: 770px;
-    overflow: hidden;
+    width: 812px;
+    margin: 0 auto;
   }
   #middle {
     padding-bottom: 0;
@@ -393,24 +392,17 @@ canvas {
   }
 }
 #leaderboard {
+  @include clearfix;
   @include pie;
   list-style: none;
   margin: 1em 0 -15px 0;
   padding: 0;
   margin: 0 auto;
-  background: #fff;
-  background: rgba(#fff, .8);
-  border: 1px solid rgba(#000,.1);
-  border-bottom: none;
   color: #000;
   font-size: 14px;
   text-align: left;
-  width: 400px;
+  width: 452px;
   float: left;
-  #content {
-    width: 770px;
-    margin: 0 auto;
-  }
   small {
     font-size: 100%;
     color: #333;
@@ -418,35 +410,43 @@ canvas {
   li {
     overflow: hidden;
     padding: 11px 20px;
-    border-bottom: 1px solid #eee;
-    border-bottom: 1px solid rgba(#000,.2);
+    border: 1px solid #fff;
+    background-color: #fff;
+    @include box-shadow(0 0 10px rgba(black, .5) inset);
+    border-radius: 2px;
+    margin-bottom: 3px;
     font-size: 13px;
-    &:last-child {
-      border: none;
-    }
   }
   .place {
+    font-family: "Gill Sans","Arial Black";
     text-transform: uppercase;
     font-weight: bold;
     float: left;
     width: 34px;
-    margin: 7px 10px -4px 0;
+    margin: 0 10px -4px 0;
     padding: 0;
-    font-size: 16px;
+    font-size: 30px;
     text-shadow: 0 1px white;
-    color: #333;
+    color: #ff9527;
   }
-  .pos-1 , .pos-2, .pos-3 {
-    background: #FFF7D3;
+  .pos-1 {
+    background-color: #ff9527 !important;
+    @include box-shadow(0 0 10px rgba(black, .5) inset);
+    color: #fff;
     padding: 20px;
     font-size: 14px;
     .place {
-      color: #000;
+      margin-right: 86px;
+      font-size: 36px;
+    }
+    .name, .place, .score, small {
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(black, .5);
     }
   }
   .user {
     float: left;
-    width: 240px;
+    width: 235px;
   }
   .score {
     float: right;

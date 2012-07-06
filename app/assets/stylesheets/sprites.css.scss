@@ -4,6 +4,9 @@ $icons-email-spacing: 35;
 $icons-auth_twitter-spacing: 50;
 $icons-auth_facebook-spacing: 50;
 
+$icons-main_prize-spacing: 50;
+$icons-kindle-spacing: 50;
+
 @import "icons/*.png";
 
 #menu {
@@ -46,4 +49,13 @@ $icons-auth_facebook-spacing: 50;
 
 #header {
   @include icons-sprite(dude, false, 95px, 9px);
+}
+
+#leaderboard {
+  li {
+    @include icons-sprite(kindle, false, 64px, 15px);
+    &.pos-1 {
+      @include icons-sprite(main_prize, false, 58px, 13px);
+    }
+  }
 }

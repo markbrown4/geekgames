@@ -5,7 +5,7 @@
 %ol#leaderboard
   - @leaders.each_with_index do |round, i|
     %li{:class => "pos-#{i+1}"}
-      .place= (i+1).ordinalize
+      .place= String(i+1) + '.'
       = render(round.user)
       .score= sprintf("%.2f", round.total_score)
 
