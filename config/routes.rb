@@ -12,11 +12,14 @@ GeekGames::Application.routes.draw do
     get 'dashboard' => "dashboard#index"
     resources :pages
     resources :users
+    resources :errors
     resources :games
     resources :deals do
       resources :prizes
     end
   end
+  
+  post 'errors' => 'errors#log'
 
   get  "leaderboard" => 'leaderboard#index'
 

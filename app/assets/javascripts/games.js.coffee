@@ -86,18 +86,25 @@ class Game
     if !@submitted
       @submitted = true
       pong = @constructor.name == 'Pong'
+      if pong
+        console.log "PONG"
       $.ajax '/games/submit',
         type: 'POST'
         dataType: "json"
         data: { data: Base64.encode(@data) }
-        success: (data)-> window.location = if pong then "/win?score=#{data.score}" else window.location
-        error: (data)-> window.location = if pong then "/win?score=#{data.score}" else window.location
+        success: ->
+          window.location = if pong then "/win" else window.location
+        error: ->
+          alert('Oh, there was an error with that submission, please try again.')
+          window.location = window.location
     
     false
 
   getCanvas: ->
-    $canvas = $('#canvas').append('<canvas width="700" height="400">')
-    @ctx = $canvas.find('canvas')[0].getContext("2d")
+    canvas = $('#canvas').append('<canvas width="700" height="400"></canvas>').find('canvas')[0]
+    if window.G_vmlCanvasManager
+      canvas = window.G_vmlCanvasManager.initElement(canvas)
+    @ctx = canvas.getContext '2d'
 
   clearCanvas: ->
     @ctx.clearRect(0, 0, 700, 400);
@@ -125,11 +132,12 @@ class Mouse extends Game
     offset = $('#canvas').offset()
     @offsetTop = offset.top + 10
     @offsetLeft = offset.left
-
-    @getCanvas()
-    @ctx.strokeStyle = "red"
-    @ctx.lineWidth - 2
-    @ctx.beginPath();
+    
+    if not ($.browser.msie || $.browser.opera)
+      @getCanvas()
+      @ctx.strokeStyle = "red"
+      @ctx.lineWidth - 2
+      @ctx.beginPath();
 
   reset: ->
     winningLine.attr('stroke': 'black')
@@ -175,7 +183,7 @@ class Mouse extends Game
 
   mousemove: (e) =>
     @pos = x: Math.floor(e.pageX - @offsetLeft), y: Math.floor(e.pageY - @offsetTop)
-    if @playing
+    if @playing && @ctx
       @ctx.lineTo(@pos.x,@pos.y);
       @ctx.stroke();
     @prev = @pos

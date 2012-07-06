@@ -5,6 +5,22 @@
 //= require games
 //= require deals
 
+window.onerror = function(message, file, line) {
+  $.ajax({
+    type: 'POST',
+    url: '/errors',
+    data: JSON.stringify({
+      error: {
+        user_agent: JSON.stringify($.browser),
+        message: message,
+        file: file.split("/").slice(3).join("/"),
+        line: line
+      }
+    }),
+    contentType: 'application/json; charset=utf-8'
+  }); 
+}
+
 $body = $("body");
 
 // drop downs

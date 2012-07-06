@@ -1,0 +1,21 @@
+.page-header
+  %h1 JavaScript errors
+
+= form_tag([:admin, :errors], :method => "get") do
+  = text_field_tag :search, params[:search], :placeholder => "Search"
+  = submit_tag "Search", :class => 'btn'
+
+%table.table.table-bordered.table-bordered
+  %tr
+    %th File
+    %th Error
+    %th Browser
+    %th Time
+  - @errors.each do |log|
+    %tr
+      %td= "#{log.file}:#{log.line}"
+      %td= log.message
+      %td= log.user_agent
+      %td= log.created_at.strftime('%H:%M %d/%m/%Y')
+
+= will_paginate @errors, :renderer => BootstrapPagination::Rails

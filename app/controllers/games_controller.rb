@@ -21,6 +21,9 @@ class GamesController < ApplicationController
   def submit
     data = Base64.decode64(params[:data])
     if @round.process_score(data)
+      if @round.complete?
+        flash[:success] = "Your score for that round was #{sprintf("%.2f", @round.total_score)}"
+      end
       success()
     else
       error()
@@ -28,15 +31,15 @@ class GamesController < ApplicationController
   end
   
   def success
-    render :json => { :score => @round.total_score }.to_json
+    render :json => { :that_makes_me => ':)' }.to_json, :status => 200
   end
   
   def invalid
-    render :inline => ':P', :status => 400
+    render :json => { :that_makes_me => ':)' }.to_json, :status => 400
   end
   
   def error
-    render :inline => ':(', :status => 500
+    render :json => { :that_makes_me => ':(' }.to_json, :status => 500
   end
 
 end
