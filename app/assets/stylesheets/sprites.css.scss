@@ -53,7 +53,7 @@ $icons-kindle-spacing: 50;
 
 #leaderboard {
   li {
-    @include icons-sprite(kindle, false, 64px, 15px);
+    @include icons-sprite(kindle, false, 74px, 15px);
     &.pos-1 {
       @include icons-sprite(main_prize, false, 58px, 13px);
     }
