@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   
   before_save do
     self.password_confirmation = self.password
-    self.username = self.email[/[^@]+/]
+    self.username ||= self.email[/[^@]+/]
   end
   
   # Include default devise modules. Others available are:

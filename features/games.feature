@@ -4,6 +4,4 @@ Feature: Gameplay
   
   Scenario:
     Given A logged in user "Competitor"
-      And I am on the games page
-    When I follow "Start"
-    Then I should see "Play now"
+    Then I should see "Play"

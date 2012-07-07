@@ -5,16 +5,12 @@ module HtmlSelectorsHelpers
     case locator
     when '/the content/'
       "#content"
-    when /the user drop down/
-      '#profile'
-    when /todays first/
-      '#today .pos-1'
-    when /all time first/
-      '#all-time .pos-1'
+    when /first place$/
+      '#leaderboard .pos-1'
     when /first placed country/
-      '#country .pos-1'
+      '#country_board .pos-1'
     when /second placed country/
-      '#country .pos-2'
+      '#country_board .pos-2'
        
     when /^"(.+)"$/
       $1

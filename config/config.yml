@@ -3,6 +3,11 @@ development:
     api_key: ***REMOVED***
     list_id: ***REMOVED***
 
+test:
+  campaign_monitor: 
+    api_key: ***REMOVED***
+    list_id: ***REMOVED***
+
 staging:
   campaign_monitor: 
     api_key: ***REMOVED***

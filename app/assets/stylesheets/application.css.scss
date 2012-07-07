@@ -21,6 +21,12 @@ $pie-behavior: url("/assets/PIE.htc");
 @import "sprites";
 @import "authentications";
 
+@mixin offleft {
+  position: absolute;
+  top: -9999px;
+  left: -9999px
+}
+
 body {
   margin: 0;
   background: #ececec;
@@ -494,6 +500,7 @@ canvas {
   .pos-3 { padding-top: 50px }
   .pos-2 .place { padding-top: 30px }
   .pos-1 .place { padding-top: 50px }
+  .name { @include offleft; }
 }
 
 .drop-down {

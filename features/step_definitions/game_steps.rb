@@ -6,9 +6,9 @@ Given /^these rounds$/ do |table|
     round.created_at = row[:date] || Date.today
     round.save
     
-    round.save_score(row[:score1])
-    round.save_score(row[:score2])
-    round.save_score(row[:score3])
+    round.save_score(row[:score1].to_f, "")
+    round.save_score(row[:score2].to_f, "")
+    round.save_score(row[:score3].to_f, "")
   end
 end
 

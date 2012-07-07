@@ -19,7 +19,7 @@ Given /^A logged in user "([^\/"]*)"$/ do |username|
 end
 
 Then /^I should be signed in$/ do
-  page.should have_css('#profile.drop-down')
+  page.should have_css('#profile')
 end
 
 And /^my email should be filled in$/ do

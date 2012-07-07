@@ -13,11 +13,20 @@
   %h2 Overall country leaderboard
   %ol
     %li.pos-2
-      .country= image_tag "flags/#{@country_scores.keys[1] || 'none'}.png".downcase
+      .country
+        - country = (@country_scores.keys[1] || 'none').downcase
+        .name= t("countries.#{country}.name")
+        = image_tag "flags/#{country}.png"
       .place 2
     %li.pos-1
-      .country= image_tag "flags/#{@country_scores.keys[0] || 'none'}.png".downcase
+      .country
+        - country = (@country_scores.keys[0] || 'none').downcase
+        .name= t("countries.#{country}.name")
+        = image_tag "flags/#{country}.png"
       .place 1
     %li.pos-3
-      .country= image_tag "flags/#{@country_scores.keys[2] || 'none'}.png".downcase
+      .country
+        - country = (@country_scores.keys[2] || 'none').downcase
+        .name= t("countries.#{country}.name")
+        = image_tag "flags/#{country}.png"
       .place 3

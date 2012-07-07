@@ -1,5 +1,9 @@
 en:
   countries:
+    none: 
+      common_name: !!null
+      name: None
+      official_name: None
     ad:
       common_name: !!null
       name: Andorra
