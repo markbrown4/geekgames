@@ -23,8 +23,9 @@ GeekGames::Application.routes.draw do
 
   get  "leaderboard" => 'leaderboard#index'
 
-  get  "profile" => "profile#edit", :as => :profile
   put  "profile" => "profile#update"
+  get  "profile" => "profile#edit", :as => :profile
+  
 
   get  "win"  => "rounds#win", :as => :win
   post "games/submit" => "games#submit"

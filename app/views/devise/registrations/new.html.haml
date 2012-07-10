@@ -1,4 +1,5 @@
 - content_for :before_content do
+  = devise_error_messages!
   %h1 Sign up
 
 .bluey
@@ -14,8 +15,8 @@
       = f.label :password
       = f.password_field :password
 
-      = f.label :country
-      = country_selector(f)
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
 
       .button-area
         = f.submit "Sign up", :class => 'btn'

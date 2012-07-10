@@ -8,9 +8,8 @@ class User < ActiveRecord::Base
   
   after_create :send_to_campaign_monitor, :if => :opt_in
   
-  before_save do
-    self.password_confirmation = self.password
-    self.username ||= self.email[/[^@]+/]
+  def password_required?
+    new_record?
   end
   
   # Include default devise modules. Others available are:
@@ -20,15 +19,17 @@ class User < ActiveRecord::Base
 
   def current_round
     round = rounds.last
-    
-    # if you haven't got one create it
-    return self.rounds.create() unless round.present?
-    # if it's not complete use it
-    return round unless round.complete?
-    # if you've completed and can have another go create it
-    return self.rounds.create() if round.complete? && number_of_rounds_today < 3
-    
-    nil
+  
+    unless round.present?
+      return self.rounds.create()
+    end
+
+    unless round.complete?
+      return round
+    else
+      return self.rounds.create()
+    end
+
   end
   
   def number_of_rounds_today

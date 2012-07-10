@@ -1,10 +1,10 @@
 <% content_for :before_content do %>
+<%= devise_error_messages! %>
 <h1>Change your password</h1>
 <% end %>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
 
-	<%= devise_error_messages! %>
 	<%= f.hidden_field :reset_password_token %>
 
 	<%= f.label :password, "New password" %>

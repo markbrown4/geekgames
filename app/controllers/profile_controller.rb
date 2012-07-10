@@ -1,8 +1,6 @@
 class ProfileController < ApplicationController
 
-  before_filter do
-    @menu = 'profile'
-  end
+  before_filter :authenticate_user!
   
   def edit
   end
@@ -12,6 +10,7 @@ class ProfileController < ApplicationController
       flash[:success] = "Profile updated"
       redirect_to games_path
     else
+      flash[:error] = "Sorry, username is already taken"
       render :edit
     end
   end

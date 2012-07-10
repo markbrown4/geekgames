@@ -1,8 +1,13 @@
 - content_for :before_content do
-  %h1 Edit profile
+  %h1 Confirm your details
 
 .bluey
   = form_for(current_user, :url => profile_path) do |f|
+    
+    - unless current_user.email.present?
+      = f.label :email
+      = f.text_field :email
+    
     = f.label :username
     = f.text_field :username
   
