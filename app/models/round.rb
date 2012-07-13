@@ -119,6 +119,9 @@ class Round < ActiveRecord::Base
     unless complete?
       self.total_score += value
       if self.step == 3
+        if self.total_score > self.user.max_score
+          self.user.update_attribute('max_score', self.total_score)
+        end
         self.complete = true
       else
         self.step += 1
