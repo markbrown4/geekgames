@@ -265,7 +265,7 @@ class Shoot extends Game
     @pos = x: Math.floor(e.pageX - @offsetLeft), y: Math.floor(e.pageY - @offsetTop)
 
   frame: (ms)=>
-    if @lives == 0
+    if @lives < 1
       @finish()
       return
     for object, i in @objects
