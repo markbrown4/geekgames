@@ -1,0 +1,16 @@
+- @body_class = "weekend"
+
+%h1 COME BACK ON MONDAY
+
+:markdown
+  #{@page.body}
+
+= image_tag("colors.png", :class => 'screen')
+= image_tag("dude.png", :class => 'dude')
+
+- content_for :button_area do
+  %p.btn-aside
+    See who is at the top
+    %br
+    of the
+    = link_to "Leaderboard", leaderboard_path

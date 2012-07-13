@@ -10,8 +10,8 @@ module ApplicationHelper
   
   def country_selector(form)
     form.country_code_select :country, {
-      'Australia' => 'AU',
       'United States' => 'US',
+      'Australia' => 'AU',
       'United Kingdom' => 'UK',
       'India' => 'IN',
       'Germany' => 'DE'

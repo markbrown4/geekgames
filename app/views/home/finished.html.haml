@@ -1,0 +1,18 @@
+- @body_class = "finished"
+
+%h1
+  CONGRATULATIONS TO
+  %br
+  = @winner.username
+  %br
+  FOR WINNING THE MAIN PRIZE
+
+= image_tag("colors.png", :class => 'screen')
+= image_tag("dude.png", :class => 'dude')
+
+- content_for :button_area do
+  %p.btn-aside
+    See who is at the top
+    %br
+    of the
+    = link_to "Leaderboard", leaderboard_path

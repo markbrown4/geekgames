@@ -129,7 +129,12 @@ class Round < ActiveRecord::Base
   
   # db queries
   scope :today, where("created_at > ?", Time.zone.now.beginning_of_day)
+  
   scope :leaders, order('total_score DESC').limit(10)
+  # todo make users unique
+  # SELECT MAX(total_score) as max_score, user_id, id FROM "rounds" GROUP BY user_id, id ORDER BY max_score LIMIT 10
+  # Round.select('MAX(total_score) as total_score, rounds.id').joins(:user).group(:user_id, :total_score, 'rounds.id').order('total_score DESC').limit(10)
+  # Round.select('DISTINCT ON (user_id) id, user_id, total_score').group(:user_id).order('total_score DESC').limit(10)
   
   def self.top_three_countries
     Round.joins(:user)

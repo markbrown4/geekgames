@@ -264,6 +264,17 @@ a {
   }
   #sub-footer #new-relic { position: static }
 }
+.weekend, .finished {
+  .screen {
+    bottom: 114px;
+    left: 321px;
+  }
+  .btn-aside {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+}
 .leaderboard {
   #content {
     width: 812px;
@@ -677,7 +688,7 @@ canvas {
 
 #deal-dialog {
   width: 900px;
-  height: 400px;
+  min-height: 400px;
   margin-left: -450px;
   text-align: left;
   h1 { color: #fb8723 }
@@ -729,7 +740,7 @@ canvas {
     }
   }
   .deal-content {
-    margin-right: 450px;
+    margin-right: 490px;
     font-size: 14px;
     height: 340px;
     overflow: hidden;

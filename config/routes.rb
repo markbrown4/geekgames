@@ -31,8 +31,11 @@ GeekGames::Application.routes.draw do
   post "games/submit" => "games#submit"
   get  "games"        => "games#index", :as => :games
 
-  get ":slug" => "pages#show", :as => :page
+  get "finished" => "home#finished", :as => :finished
+  get "weekend" => "home#weekend", :as => :weekend
 
+  get ":slug" => "pages#show", :as => :page
+  
   root :to => "home#index", :as => :home
 
 end

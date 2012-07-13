@@ -4,11 +4,13 @@ class GamesController < ApplicationController
     if !user_signed_in?
       redirect_to new_user_session_path
     else
-      @round = current_user.current_round
-      unless @round.present?
-        flash[:alert] = "Sorry, you can only compete 3 times a day, please try again tomorrow."
-        redirect_to win_path
+      today = Date.today
+      if today > Date.new(2012, 8, 10)
+        redirect_to finished_path
+      elsif today.saturday? || today.sunday?
+        redirect_to weekend_path
       end
+      @round = current_user.current_round
     end
   end
 
