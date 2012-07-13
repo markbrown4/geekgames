@@ -86,8 +86,6 @@ class Game
     if !@submitted
       @submitted = true
       pong = @constructor.name == 'Pong'
-      if pong
-        console.log "PONG"
       $.ajax '/games/submit',
         type: 'POST'
         dataType: "json"
@@ -419,9 +417,7 @@ $ ->
   
   $body.keydown (e)->
     if (e.which == 27)
-      $body.removeClass('finished')
-  $(".close").click ->
-    $body.removeClass('finished')
+      $body.removeClass('finished show-dialog show-deal show-main-prize')
     
     false
   

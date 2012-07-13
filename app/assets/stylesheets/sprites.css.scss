@@ -29,7 +29,6 @@ $icons-kindle-spacing: 50;
     @include icons-sprite(win, true);
   }
 }
-
 .twitter a {
   @include icons-sprite(twitter, false, 85px, 10px);
 }

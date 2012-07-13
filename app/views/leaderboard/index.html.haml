@@ -2,6 +2,7 @@
   %h1 The Leaderboard
   %p.description Challenge the best to WIN the overall Prize
 
+.win-header Win!
 %ol#leaderboard
   - @leaders.each_with_index do |round, i|
     %li{:class => "pos-#{i+1}"}

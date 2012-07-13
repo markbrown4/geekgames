@@ -11,7 +11,7 @@
 - if @deal.present?
   .game
     #deal-dialog.dialog
-      %a{ :href => '#', :class => 'close', :id => 'close_deal' } &times;
+      %a{ :href => '#', :class => 'close' } &times;
       %h1= @deal.title
       .prizes
         %ul
@@ -27,11 +27,20 @@
       .deal-content
         %img{ height: '240', width: '410', src: @deal.image_url }
         %p= @deal.description
+        
+    #main-prize-dialog.dialog
+      %a{ :href => '#', :class => 'close' } &times;
+      %h1 The Main Prize
+      .deal-content
+        %p= image_tag "main-prize.jpg"
+        %p The person in first place on the 10th August 2012 will win the main prize.  This skilful competitor will win themselves a brand new Macbook Air AND an iPad 3.
+        %p Play again for greater chance of winning.
 
     #main-prize
       %h2 Main prize
       %p You're now in the running to WIN the Main Prize!
       %p= image_tag "main-prize.jpg"
+      = link_to "View more", "#", :class => "btn btn-blue", :id => 'view-main-prize'
 
     #todays-deal
       %h1 Today's deal
@@ -54,6 +63,6 @@
         = time_until @deal.end_time
     %li.twitter= link_to "TWEET YOUR SCORE", "http://twitter.com/share?url=geekgames.sitepoint.com&text=I am ranked #{@rank} at http://games.sitepoint.com/ : ", :target => '_blank'
     %li.facebook= link_to "UPDATE YOUR STATUS", "https://www.facebook.com/dialog/feed?app_id=***REMOVED***&link=http://games.sitepoint.com/&picture=https://si0.twimg.com/client_application_images/566163/sp-logo-small.jpg&name=Geek%20Games&description=Join%20in%20the%20fun%20and%20compete%20with%20geeks,%20techies%20and%20web%20devs%20around%20the%20world%20as%20you%20play%203%20online%20games%20to%20WIN%20an%20iPad%20and%20MacBook%20Air,%20Amazon%20Kindles%20and%20qualify%20for%20DISCOUNTS%20of%20up%20to%20100%%20on%20SitePoint%20books%20and%20more.&redirect_uri=http://games.sitepoint.com/", :target => '_blank'
-    %li.email= link_to "EMAIL A FRIEND", "mailto:?subject=I am ranked #{@rank} at http://games.sitepoint.com/"
+    %li.email= link_to "EMAIL A FRIEND", "mailto:?subject=I'm playing ... www.geekgam.es"
     %li
       %a#demo.btn.btn-blue{ :href => leaderboard_path } Leaderboard

@@ -5,9 +5,14 @@ $('.open-deal').click ->
   $('#buy-now').attr('href', firstOption.val())
   
   false
+  
+$('#view-main-prize').click ->
+  $body.addClass('show-main-prize show-dialog')
+  
+  false
 
-$('#close_deal').click ->
-  $body.removeClass('show-deal show-dialog')
+$('.close').click ->
+  $body.removeClass('show-deal show-main-prize show-dialog')
   
   false
 
