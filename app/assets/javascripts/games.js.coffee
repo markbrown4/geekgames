@@ -418,8 +418,6 @@ $ ->
   $body.keydown (e)->
     if (e.which == 27)
       $body.removeClass('finished show-dialog show-deal show-main-prize')
-    
-    false
   
   if $body.hasClass('games')
     game = null
