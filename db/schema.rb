@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706011229) do
+ActiveRecord::Schema.define(:version => 20120713070403) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -63,8 +63,9 @@ ActiveRecord::Schema.define(:version => 20120706011229) do
     t.decimal  "price",         :precision => 8, :scale => 2
     t.decimal  "reduced_price", :precision => 8, :scale => 2
     t.integer  "deal_id"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
+    t.integer  "position",                                    :default => 0
   end
 
   add_index "prizes", ["deal_id"], :name => "index_prizes_on_deal_id"
