@@ -4,11 +4,11 @@
 
 .win-header Win!
 %ol#leaderboard
-  - @leaders.each_with_index do |round, i|
+  - @leaders.each_with_index do |user, i|
     %li{:class => "pos-#{i+1}"}
       .place= String(i+1) + '.'
-      = render(round.user)
-      .score= sprintf("%.2f", round.total_score)
+      = render(user)
+      .score= sprintf("%.2f", user.max_score)
 
 #country_board
   %h2 Overall country leaderboard

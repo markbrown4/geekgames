@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120713070403) do
+ActiveRecord::Schema.define(:version => 20120713103400) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20120713070403) do
     t.string   "authentication_token"
     t.string   "first_name"
     t.string   "last_name"
+    t.float    "max_score",              :default => 0.0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
