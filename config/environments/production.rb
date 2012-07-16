@@ -59,6 +59,7 @@ GeekGames::Application.configure do
     :user_name      => 'geekgames',
     :password       => 'ejsbtWVgLU1y6BiVIdmd'
   }
+  config.action_mailer.default_url_options[:host] = 'games.sitepoint.com'
   
   # Enable threaded mode
   # config.threadsafe!
