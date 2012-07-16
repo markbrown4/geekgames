@@ -12,7 +12,7 @@ form {
     clear: both;
   }
   input[type=text], select, input[type=submit] {
-    width: 200px;
+    min-width: 200px;
   }
   input[type=text], select, input[type=email], input[type=password] {
     font-size: 16px;
