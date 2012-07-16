@@ -24,6 +24,7 @@ class GamesController < ApplicationController
     data = Base64.decode64(params[:data])
     if @round.process_score(data)
       if @round.complete?
+        User.increment_counter(:plays, current_user.id)
         flash[:success] = "Your score for that round was #{sprintf("%.2f", @round.total_score)}"
       end
       success()

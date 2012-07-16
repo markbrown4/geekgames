@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   def self.search(search, page)
     paginate :per_page => 20, :page => page,
              :conditions => ['username like ?', "%#{search}%"],
-             :order => 'username'
+             :order => 'plays DESC'
   end
   
   def name
