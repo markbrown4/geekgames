@@ -1,8 +1,8 @@
 $('.open-deal').click ->
   $body.addClass('show-deal show-dialog')
-  firstOption = $('input:radio[name=prize]').first()
-  firstOption.attr('checked', 'checked');
-  $('#buy-now').attr('href', firstOption.val())
+  lastOption = $('input:radio[name=prize]').last()
+  lastOption.attr('checked', 'checked');
+  $('#buy-now').attr('href', lastOption.val())
   
   false
   
