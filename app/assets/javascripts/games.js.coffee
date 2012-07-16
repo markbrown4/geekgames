@@ -62,7 +62,7 @@ class Game
     
     null
 
-  stop: ->
+  stop: =>
     $body.removeClass 'playing'
     $body.addClass 'finished show-dialog'
     cancelAnimationFrame(@loop)
@@ -145,12 +145,13 @@ class Mouse extends Game
     @startPoint.hover(@prepStart, @start)
   
   frame: ->
-    time = (20 - (new Date().getTime() - @start_time) / 1000).toFixed(2)
-    if (time < 0)
-      time = 0
-      @lose true
-      $('#timer_count').html('0.00')
-    $('#timer_count').html(time)
+    if @playing
+      time = (20 - (new Date().getTime() - @start_time) / 1000).toFixed(2)
+      if (time < 0)
+        time = 0
+        @lose true
+        $('#timer_count').html('0.00')
+      $('#timer_count').html(time)
   
   render: ->
     @deathLine = @paper.path(@path).attr({ 'stroke-width':500, 'stroke': 'white', 'stroke-linecap': 'round' })
@@ -303,9 +304,11 @@ class Shoot extends Game
         @ctx.drawImage @image, object.x, object.y, @objWidth, @objHeight
 
   finish: =>
-    data.push([String(new Date().getTime())])
-    @data = data.join('*')
-    @stop()
+    unless @finished
+      @finished = true
+      data.push([String(new Date().getTime())])
+      @data = data.join('*')
+      @stop()
 
 class Pong extends Game
 
@@ -409,18 +412,21 @@ class Pong extends Game
     false
 
   finish: =>
-    data.push([String(new Date().getTime())])
-    @data = data.join('*')
-    @stop()
+    unless @finished
+      @finished = true
+      data.push([String(new Date().getTime())])
+      @data = data.join('*')
+      @stop()
 
 $ ->
   
   $body.keydown (e)->
     if (e.which == 27)
-      $body.removeClass('finished show-dialog show-deal show-main-prize')
+      $body.removeClass('finished show-dialog show-deal show-main-prize playing retry')
   
   if $body.hasClass('games')
     game = null
+
     if ($body.hasClass('game-1'))
       game = new Mouse()
     else if ($body.hasClass('game-2'))

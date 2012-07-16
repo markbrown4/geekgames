@@ -74,7 +74,7 @@ class Round < ActiveRecord::Base
       if event[2].to_i > 700
         # missed
         if evil
-          score -= 10
+          score -= 5
         else
           score += 0.3
         end
@@ -83,7 +83,7 @@ class Round < ActiveRecord::Base
         if evil
           score += 1
         else
-          score -= 5
+          score -= 10
         end
       end
     end
@@ -99,7 +99,7 @@ class Round < ActiveRecord::Base
       event = event.split('|')
       diff = event[1].to_i
       if (diff > -1 && diff < 81)
-        score += 2
+        score += 1.5
       end
     end
     
