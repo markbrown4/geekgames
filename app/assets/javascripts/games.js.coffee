@@ -30,7 +30,6 @@ class Game
 
   constructor: ->
     @wrapper = $('.game')
-    @frameRate = 10
     
     @init()
     @addEvents()
@@ -59,16 +58,18 @@ class Game
     @onStart() if @onStart
     $body.addClass('playing');
     @prev = @startTime = new Date().getTime()
-    @timer = setInterval(@loop, @frameRate)
+    @loop()
+    
     null
 
   stop: ->
     $body.removeClass 'playing'
     $body.addClass 'finished show-dialog'
-    
-    clearInterval @timer
+    cancelAnimationFrame(@loop)
 
   loop: =>
+    requestAnimationFrame(@loop)
+    
     now = new Date().getTime()
     ms = now - @prev
     @prev = now

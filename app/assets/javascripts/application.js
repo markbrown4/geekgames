@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require raphael
 
+//= require requestAnimFrame
 //= require games
 //= require deals
 
