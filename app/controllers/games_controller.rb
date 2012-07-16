@@ -33,7 +33,8 @@ class GamesController < ApplicationController
   end
   
   def success
-    render :json => { :that_makes_me => ':)' }.to_json, :status => 200
+    redirect_url = flash[:success].present? ? win_path : games_path
+    render :json => { that_makes_me: ':)', redirect_to: redirect_url  }.to_json, :status => 200
   end
   
   def invalid

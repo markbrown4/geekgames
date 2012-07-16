@@ -85,13 +85,12 @@ class Game
   submit: =>
     if !@submitted
       @submitted = true
-      pong = @constructor.name == 'Pong'
       $.ajax '/games/submit',
         type: 'POST'
         dataType: "json"
         data: { data: Base64.encode(@data) }
-        success: ->
-          window.location = if pong then "/win" else window.location
+        success: (data)->
+          window.location = data.redirect_to
         error: ->
           alert('Oh, there was an error with that submission, please try again.')
           window.location = window.location
