@@ -357,17 +357,17 @@ class Pong extends Game
 
     # boundaries
     if !@missed
-      if (@ball.y < 10 && @ball.ySpeed < 0)
-        @ball.y = 10
-        @ball.ySpeed = (0 - @ball.ySpeed)
-      if (@ball.y > 390 && @ball.ySpeed > 0)
-        @ball.y = 390
+      if (@ball.y < 0)
+        @ball.y = 0
+      else if (@ball.y > 400)
+        @ball.y = 400
+      if (@ball.y == 0 || @ball.y == 400)
         @ball.ySpeed = (0 - @ball.ySpeed)
         
       if @ball.x < 60 && @ball.xSpeed < 0
         diff = @ball.y - @player.y
         data.push([new Date().getTime(), diff, @ball.x, @ball.y].join('|'))
-        if diff < 0 || diff > 80 # missed paddle
+        if diff < 1 || diff > 79 # missed paddle
           @inTheNet()
         else # bounced off paddle
           @incrementScore()
