@@ -1,5 +1,43 @@
 - content_for :before_content do
-  %h1= @page.title
+  %h1 COMPETITION DETAILS
+
+.terms
+  %h2 HOW TO WIN PRIZES
+  %p Play the 3 online games: Mouse-Questrian, Spam-Shoot and Pong-Long, to get the best score you can.
+  %p Each time you've completed all 3 games, you'll see your score (as calculated by our super-geeky-ranking-algorithm) and it'll be automatically submitted to the leaderboard. 
+  %p
+    If you're the person with the highest score on the leaderboard
+    = link_to "when the competition closes", "http://www.timeanddate.com/worldclock/fixedtime.html?msg=geekgames+closing&iso=20120812T14&p1=152"
+    you'll WIN the OVERALL PRIZE of: 1x 13.3 inch MacBook Air + 1x Apple iPad3 (see full details below in 5.1)
+
+  %p
+    If you're the person with one of the next 9 highest scores (i.e. in positions 2-10 on the leaderboard)
+    = link_to "when the competition closes", "http://www.timeanddate.com/worldclock/fixedtime.html?msg=geekgames+closing&iso=20120812T14&p1=152"
+    you'll WIN a RUNNER-UP PRIZE of: 1x Kindle Wi-Fi 6-Inch Touch (see full details below in 5.2)"
+
+  %p All prize winners will be notified by email (using their profile email address) after the competition closes. Prizes will also be shipped direct from Amazon.com.
+
+  %h2 HOW TO PLAY GAMES
+  %p
+    1. MOUSE-QUESTRIAN
+    %br
+    In this game you test your mouse accuracy and skill, by tracing a wavy line from start to finish, and without straying too far from the path. But be quick, as you ONLY have 20 seconds to complete it. Don't worry though, you get as MANY turns as you like, to get to the finish line!
+
+  %p
+    2. SPAM-SHOOT
+    %br
+    This game helps you vent your spam frustration, by shooting as many rogue emails as you can in the allotted time. 
+
+  %p
+    3. PONG-LONG
+    %br
+    A classic. Use your UP and DOWN cursor keys to see how long you can keep the red ball bouncing.
+    %br
+    Each time you hit the ball with your paddle you SCORE a point. You have 5 turns to earn as high a score as you can!
+
+  %p
+    If you have any questions about the GeekGames, simply email:
+    = link_to "books@sitepoint.com", "mailto:books@sitepoint.com"
 
 .bluey
   :markdown

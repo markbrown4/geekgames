@@ -1,6 +1,13 @@
 - content_for :before_content do
   %h1 The Leaderboard
-  %p.description Challenge the best to WIN the overall Prize
+  %p.description
+    Challenge the best to WIN the overall Prize.
+    %br
+    See
+    = link_to "competition details", page_path('terms')
+    for more information, or
+    = link_to "play again", games_path
+    to beat your score.
 
 .win-header Win!
 %ol#leaderboard

@@ -4,9 +4,7 @@
     = @round.rank.ordinalize
 
   %p.description
-    You're now in the draw to WIN GREAT PRIZES!
-    %br
-    PLUS... you've qualified for TODAY'S DEAL
+    You're on your way to winning GREAT PRIZES, and have qualified for TODAY'S DEAL!
 
 - if @deal.present?
   .game
@@ -30,29 +28,45 @@
         
     #main-prize-dialog.dialog
       %a{ :href => '#', :class => 'close' } &times;
-      %h1 The Main Prize
+      %h1 WIN GREAT PRIZES!
+      %p= image_tag "main-prize.jpg"
       .deal-content
-        %p= image_tag "main-prize.jpg"
-        %p The person in first place on the 10th August 2012 will win the main prize.  This skilful competitor will win themselves a brand new Macbook Air AND an iPad 3.
-        %p Play again for greater chance of winning.
+        
+        %p
+          The person with the highest score from playing the 3 games
+          = link_to "when the competition closes", "http://www.timeanddate.com/worldclock/fixedtime.html?msg=geekgames+closing&iso=20120812T14&p1=152"
+          WINS the OVERALL PRIZE of:
+          %br
+          = "- 1x MacBook Air (Apple MacBook Air MD231LL/A 13.3-Inch Laptop with 128GB storage"
+          %br
+          = "- 1x Apple iPad3 (Apple iPad MD328LL/A - 16GB, Wi-Fi, White)"
+          %br
+          %br
+          The people in positions 2-10 on the leaderboard
+          = link_to "when the competition closes", "http://www.timeanddate.com/worldclock/fixedtime.html?msg=geekgames+closing&iso=20120812T14&p1=152"
+          each WIN a RUNNER-UP prize of:
+          %br
+          = "- 1x Kindle Touch (Wi-Fi 6-Inch)"
+          %br
+          Prizes will be shipped direct to runner-up prizewinners via Amazon.com (using email address submitted in profile to get in touch)
+        %p
+          Remember, you can play as many times as you like to improve your overall score!
+          %br
+          = link_to "Read full competition details here", page_path('terms')
 
     #main-prize
-      %h2 Main prize
-      %p You're now in the running to WIN the Main Prize!
-      %p= image_tag "main-prize.jpg"
-      = link_to "View more", "#", :class => "btn btn-blue", :id => 'view-main-prize'
+      %h2 WIN PRIZES!
+      %p If you're on the leaderboard, you're in the running to win great prizes.
+      %p.open-main-prize
+        = link_to image_tag("main-prize.jpg"), "#", :id => 'view-main-prize'
+      %small
+        = link_to "PLAY AGAIN", games_path
+        TO BEAT YOUR SCORE
 
     #todays-deal
       %h1 Today's deal
       %img{ height: '240', width: '410', src: @deal.image_url, :class => 'open-deal' }
-      = link_to "View more", "#", :class => "btn btn-blue open-deal", :id => 'view-deal'
-
-- content_for :button_area do
-  %a.btn.btn-green{ :href => "#", :id => 'deal', :class => 'open-deal' } Grab today's deal
-  %p.btn-aside
-    Try again to beat your score
-    %br
-    = link_to "PLAY AGAIN", games_path
+      %a.btn.btn-green{ :href => "#", :id => 'deal', :class => 'open-deal' } Grab today's deal
 
 - content_for :sidebar do
   %ul
