@@ -12,7 +12,7 @@ module ApplicationHelper
     form.country_code_select :country, {
       'United States' => 'US',
       'Australia' => 'AU',
-      'United Kingdom' => 'UK',
+      'United Kingdom' => 'GB',
       'India' => 'IN',
       'Germany' => 'DE'
     }
