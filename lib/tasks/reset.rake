@@ -3,6 +3,6 @@ namespace :scores do
   task :reset => :environment do
     Round.delete_all
     Score.delete_all
-    User.update_all(:max_score => 0)
+    User.update_all(:max_score => 0, :plays => 0)
   end
 end

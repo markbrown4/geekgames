@@ -8,7 +8,9 @@ $icons-main_prize-spacing: 50;
 $icons-kindle-spacing: 50;
 
 @import "icons/*.png";
-
+.facebook_home, .twitter_home {
+  text-indent: -9999px;
+}
 #menu {
   .home a, .game1 a, .game2 a, .game3 a, .win a {
     text-indent: -9999px;
@@ -44,6 +46,21 @@ $icons-kindle-spacing: 50;
 }
 .auth_facebook {
   @include icons-sprite(auth_facebook, false, 19px, 0);
+}
+
+.twitter_home {
+  position: absolute;
+  top: 27px;
+  right: 0;
+  margin: 0;
+  @include icons-sprite(twitter_home, true);
+}
+.facebook_home {
+  position: absolute;
+  top: 35px;
+  right: 65px;
+  margin: 0;
+  @include icons-sprite(facebook_home, true);
 }
 
 #header {
