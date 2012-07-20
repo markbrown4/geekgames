@@ -23,6 +23,7 @@ gem 'rdiscount'
 gem 'dotiw'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'compass-rails'
