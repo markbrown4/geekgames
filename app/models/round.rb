@@ -14,10 +14,6 @@ class Round < ActiveRecord::Base
     self.scores.where('game_id = ?', self.step).last
   end
   
-  def rank
-    Round.where("total_score > ?", self.total_score).count + 1
-  end
-  
   def process_score(data)
     score = 0
     events = data.split('*')

@@ -20,7 +20,7 @@
     = image_tag "instructions-#{@game.id}.jpg"
 
   #message.dialog
-    %h1 Good game
+    %h1 GOOD GAME!
     .btn-area
       %a.btn.btn-green{  :href => "#", :id => 'submit' }= (@game.id == 3) ? "Continue" : "Play the next game"
     %p
@@ -30,8 +30,8 @@
         you can try to beat your score once you've played all 3 games
 
   #retry.dialog
-    %h1 Oops
-    %p You can't stray too far from the line and live to tell the story, please try again.
+    %h1 OOPS!
+    %p You can't stray too far from the line and live to tell the story! Try again...
     .btn-area
       %a.btn.btn-green{  :href => "#", :id => 'retry' } Retry
 

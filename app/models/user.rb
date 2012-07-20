@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
   
   scope :top_ten, order('max_score desc').limit(10)
   
+  def rank
+    User.where("max_score > ?", self.max_score).count + 1
+  end
+  
   def self.search(search, page)
     paginate :per_page => 20, :page => page,
              :conditions => ['username like ?', "%#{search}%"],

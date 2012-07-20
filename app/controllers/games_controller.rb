@@ -2,7 +2,7 @@ class GamesController < ApplicationController
 
   before_filter do
     if !user_signed_in?
-      redirect_to new_user_session_path
+      redirect_to new_user_registration_path
     else
       today = Date.today
       if today > Date.new(2012, 8, 10)
