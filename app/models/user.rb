@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     rounds.order('total_score desc').limit(1).first
   end
   
-  scope :top_ten, order('max_score desc').limit(10)
+  scope :top_ten, order('max_score desc').limit(10).where('max_score > 0')
   
   def rank
     User.where("max_score > ?", self.max_score).count + 1

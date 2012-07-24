@@ -134,7 +134,9 @@ class Round < ActiveRecord::Base
       .group('users.country')
       .order('average_rounds_total_score DESC')
       .limit(3)
+      .where("rounds.total_score > 0")
       .average("rounds.total_score")
+      
   end
 
 end
