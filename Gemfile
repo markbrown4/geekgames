@@ -17,7 +17,9 @@ gem 'omniauth-facebook',
   :git => 'https://github.com/mkdynamic/omniauth-facebook.git',
   :ref => '0a878f3520'
 gem 'omniauth-twitter'
-gem 'country_code_select'
+gem 'country_code_select',
+  :git => 'https://github.com/markbrown4/country_code_select.git',
+  :ref => 'df6c640533'
 gem 'decent_exposure'
 gem 'rdiscount'
 gem 'dotiw'
