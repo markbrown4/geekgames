@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
   
   scope :top_ten, order('max_score desc').limit(10).where('max_score > 0')
   
+  def self.winner
+    order('max_score desc').limit(1).where('max_score > 0').first
+  end
+  
   def rank
     User.where("max_score > ?", self.max_score).count + 1
   end

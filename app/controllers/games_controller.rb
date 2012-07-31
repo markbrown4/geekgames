@@ -7,8 +7,6 @@ class GamesController < ApplicationController
       today = Date.today
       if today > Date.new(2012, 8, 10)
         redirect_to finished_path
-      elsif today.saturday? || today.sunday?
-        redirect_to weekend_path
       end
       @round = current_user.current_round
     end

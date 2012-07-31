@@ -9,7 +9,7 @@ class HomeController < ApplicationController
   end
   
   def finished
-    @winner = Round.leaders.first.user
+    @winner = User.winner
   end
   
 end
