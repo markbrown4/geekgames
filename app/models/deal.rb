@@ -2,6 +2,8 @@ class Deal < ActiveRecord::Base
   has_many :prizes, :dependent => :destroy
   attr_accessible :title, :description, :image_url
 
+  attr_accessible :end_time
+
   default_scope do
     order("end_time ASC")
   end

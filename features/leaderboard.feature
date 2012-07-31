@@ -8,8 +8,8 @@ Feature: Accurate Leaderboard
       | markbrown4  | AU      | 50      | 50      | 50      | |
       | MaoZedong   | CN      | 50      | 50      | 51      | |
       | LiuBei      | CN      | 50      | 50      | 48      | |
-      | Jesus       | IL      | 50      | 50      | 52      | '0001-01-01' |
-      | Barabbus    | IL      | 1       | 1       | 1       | '0001-01-01' |
+      | Jesus       | IL      | 50      | 50      | 52      | '0001-01-02' |
+      | Barabbus    | IL      | 1       | 1       | 1       | '0001-01-02' |
     When I am on the leaderboard page
      And I should see "Jesus" within first place
      And I should see "152" within first place

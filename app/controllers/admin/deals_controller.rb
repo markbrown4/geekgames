@@ -4,7 +4,6 @@ class Admin::DealsController < Admin::ApplicationController
   expose(:deal)
   
   def update
-    deal.end_time = Date.strptime(params[:end_time], '%d/%m/%Y').end_of_day
     if deal.save
       flash[:success] = "Deal updated"
       redirect_to edit_admin_deal_path(deal)
@@ -14,7 +13,6 @@ class Admin::DealsController < Admin::ApplicationController
   end
   
   def create
-    deal.end_time = Date.strptime(params[:end_time], '%d/%m/%Y').end_of_day
     if deal.save
       flash[:success] = "Deal created"
       redirect_to admin_deals_path
