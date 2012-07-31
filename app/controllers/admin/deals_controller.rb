@@ -1,6 +1,6 @@
 class Admin::DealsController < Admin::ApplicationController
 
-  expose(:deals) { Deal.all }
+  expose(:deals) { Deal.scoped }
   expose(:deal)
   
   def update
