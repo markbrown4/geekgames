@@ -13,7 +13,7 @@ class Deal < ActiveRecord::Base
     #     "#{diff.hour.to_s} hours, #{diff.min.to_s} minutes"
   end
   
-  def self.todays
-    where("DATE(end_time) = DATE(?)", Time.now).limit(1).first
+  def self.current
+    order("end_time ASC").where("end_time > ?", Time.zone.now).first
   end
 end

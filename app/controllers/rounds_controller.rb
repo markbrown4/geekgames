@@ -6,7 +6,7 @@ class RoundsController < ApplicationController
   end
   
   def win
-    @deal = Deal.todays
+    @deal = Deal.current
     @rank = current_user.rank.ordinalize
   end
 end
