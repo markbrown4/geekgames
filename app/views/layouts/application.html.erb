@@ -58,7 +58,7 @@ google_conversion_value = 0;
       <a href="<%= new_user_session_path %>" class="btn btn-blue">Sign in</a>
       <a href="<%= new_user_registration_path %>" class="btn btn-green">Sign up</a>
     </div>
-    <a id="logo" href="http://www.sitepoint.com/" target="_blank"><%= image_tag "logo.png" %></a>
+    <a id="logo" href="http://www.sitepoint.com/" onClick="_gaq.push(['_trackEvent', 'Links', 'Click', 'SitePoint']);" target="_blank"><%= image_tag "logo.png" %></a>
     <ul id="menu">
       <li class="home <%='active' if menu == 'home' %>"><%= link_to t('home'), home_path %></li>
     </ul>
@@ -90,7 +90,7 @@ google_conversion_value = 0;
   </ul>
   <p id="sub-footer">
     <%= render partial: "/new_relic_link" %>
-    <a href="http://www.sitepoint.com/" target="_blank"><%= image_tag "logo-small.png" %></a>
+    <a href="http://www.sitepoint.com/" onClick="_gaq.push(['_trackEvent', 'Links', 'Click', 'SitePoint']);" target="_blank"><%= image_tag "logo-small.png" %></a>
   </p>
 </div>
 <%= javascript_include_tag "application" %>
