@@ -4,8 +4,7 @@ class GamesController < ApplicationController
     if !user_signed_in?
       redirect_to new_user_registration_path
     else
-      today = Date.today
-      if today > Date.new(2012, 8, 10)
+      if Time.now > DateTime.new(2012, 8, 12, 21, 0) # 12 August 2012 at 9pm
         redirect_to finished_path
       end
       @round = current_user.current_round
