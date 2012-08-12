@@ -36,6 +36,6 @@ GeekGames::Application.routes.draw do
 
   get ":slug" => "pages#show", :as => :page
   
-  root :to => "home#index", :as => :home
+  root :to => "home#finished", :as => :home
 
 end

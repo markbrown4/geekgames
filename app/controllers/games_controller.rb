@@ -1,15 +1,18 @@
 class GamesController < ApplicationController
 
   before_filter do
-    if !user_signed_in?
-      redirect_to new_user_registration_path
-    else
-      if Time.now > DateTime.new(2012, 8, 12, 21, 0) # 12 August 2012 at 9pm
-        redirect_to finished_path
-      end
-      @round = current_user.current_round
-    end
+    redirect_to finished_path
   end
+  # before_filter do
+  #   if !user_signed_in?
+  #     redirect_to new_user_registration_path
+  #   else
+  #     if Time.now > DateTime.new(2012, 8, 12, 21, 0) # 12 August 2012 at 9pm
+  #       redirect_to finished_path
+  #     end
+  #     @round = current_user.current_round
+  #   end
+  # end
 
   # GET games/
   def index
