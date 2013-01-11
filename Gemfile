@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'thin'
 gem 'dalli'
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.11'
 gem 'jquery-rails'
 gem 'pg'
 gem 'devise'
@@ -29,7 +29,7 @@ gem 'newrelic_rpm'
 
 group :assets do
   gem 'compass-rails'
-  gem 'compass-twitter-bootstrap'
+  gem 'compass_twitter_bootstrap', :git => "git://github.com/vwall/compass-twitter-bootstrap.git"#, :tag => 'v0.1.1'
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
