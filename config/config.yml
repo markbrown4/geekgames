@@ -1,20 +1,20 @@
 development:
   campaign_monitor: 
-    api_key: ***REMOVED***
-    list_id: ***REMOVED***
+    api_key: 
+    list_id: 
 
 test:
   campaign_monitor: 
-    api_key: ***REMOVED***
-    list_id: ***REMOVED***
+    api_key: 
+    list_id: 
 
 staging:
   campaign_monitor: 
-    api_key: ***REMOVED***
-    list_id: ***REMOVED***
+    api_key: 
+    list_id: 
 
 production:
   campaign_monitor: 
-    api_key: ***REMOVED***
-    list_id: ***REMOVED***
+    api_key: 
+    list_id: 
 

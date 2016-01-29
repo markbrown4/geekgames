@@ -2,42 +2,42 @@
 # PRODUCTION
 # http://games.sitepoint.com/
 # Twitter
-# key     ***REMOVED***
-# secret  ***REMOVED***
+# key     
+# secret  
 # Facebook
-# key     ***REMOVED***
-# secret  ***REMOVED***
+# key     
+# secret  
 
 # STAGING
 # http://geek-games-staging.herokuapp/
 # Twitter
-# key     ***REMOVED***
-# secret  ***REMOVED***
+# key     
+# secret  
 # Facebook
-# key     ***REMOVED***
-# secret  ***REMOVED***
+# key     
+# secret  
 
 # DEV
 # http://geek-games.dev/
 # Twitter
-# key     ***REMOVED***
-# secret  ***REMOVED***
+# key     
+# secret  
 # Facebook
-# key     ***REMOVED***
-# secret  ***REMOVED***
+# key     
+# secret  
 
 Rails.application.config.middleware.use OmniAuth::Builder do
 
   case Rails.env
   when 'production'
-    provider :twitter, '***REMOVED***', '***REMOVED***'
-    provider :facebook, '***REMOVED***', '***REMOVED***'
+    provider :twitter, '', ''
+    provider :facebook, '', ''
   when 'staging'
-    provider :twitter, '***REMOVED***', '***REMOVED***'
-    provider :facebook, '***REMOVED***', '***REMOVED***'
+    provider :twitter, '', ''
+    provider :facebook, '', ''
   else
-    provider :twitter, '***REMOVED***', '***REMOVED***'
-    provider :facebook, '***REMOVED***', '***REMOVED***'
+    provider :twitter, '', ''
+    provider :facebook, '', ''
   end
 
 end

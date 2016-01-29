@@ -11,10 +11,10 @@ production:
   adapter:  postgresql
   encoding: unicode
   pool:     5
-  database: ***REMOVED***
-  username: ***REMOVED***
-  password: ***REMOVED***
-  host:     ***REMOVED***
+  database: 
+  username: 
+  password: 
+  host:     
   port:     5612
 
 test: &test
