@@ -1,6 +1,16 @@
 # Geek Games
 Competition built for Sitepoint, a series of game with a leaderboard and prizes.
 
+## Installation
+
+Requires ruby 1.9.3 and openssl
+
+```sh
+gem install eventmachine -v 1.0.0 -- --with-cppflags=-I/usr/local/opt/openssl/include
+bundle install
+bundle exec rake db:setup
+```
+
 ## Deployment
 http://games.sitepoint.com/  
 git remote add production git@heroku.com:sitepoint-geekgames.git

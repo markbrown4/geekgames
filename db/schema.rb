@@ -100,19 +100,20 @@ ActiveRecord::Schema.define(:version => 20120725212441) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "password_salt"
+    t.string   "authentication_token"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.string   "username"
     t.string   "country"
     t.boolean  "admin",                  :default => false
     t.boolean  "opt_in",                 :default => false
-    t.string   "authentication_token"
     t.string   "first_name"
     t.string   "last_name"
     t.float    "max_score",              :default => 0.0
     t.integer  "plays",                  :default => 0
   end
 
+  add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["max_score"], :name => "index_users_on_max_score", :order => {"max_score"=>:desc}
   add_index "users", ["plays"], :name => "index_users_on_plays", :order => {"plays"=>:desc}
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true

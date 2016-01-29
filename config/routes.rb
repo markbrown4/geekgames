@@ -3,10 +3,10 @@ GeekGames::Application.routes.draw do
   devise_for :users do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  
+
   resources :authentications
   match '/auth/:provider/callback' => 'authentications#create'
-  
+
   namespace :admin do
     get '/' => "dashboard#index"
     get 'dashboard' => "dashboard#index"
@@ -18,14 +18,14 @@ GeekGames::Application.routes.draw do
       resources :prizes
     end
   end
-  
+
   post 'errors' => 'errors#log'
 
   get  "leaderboard" => 'leaderboard#index'
 
   put  "profile" => "profile#update"
   get  "profile" => "profile#edit", :as => :profile
-  
+
 
   get  "win"  => "rounds#win", :as => :win
   post "games/submit" => "games#submit"
@@ -35,7 +35,7 @@ GeekGames::Application.routes.draw do
   get "weekend" => "home#weekend", :as => :weekend
 
   get ":slug" => "pages#show", :as => :page
-  
-  root :to => "home#finished", :as => :home
+
+  root :to => "home#index", :as => :home
 
 end
